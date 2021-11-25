@@ -14,6 +14,7 @@
       <Packaging>module</Packaging>
       <SourcesRoot>src</SourcesRoot>
       <Resource Name="dc.sample.rest.PKG"/>
+      <Resource Name="dx.PKG"/>
       <Invoke Class="dc.sample.rest.Person" Method="AddTestData"></Invoke>
       <Invoke Class="dc.sample.rest.Security" Method="CreateUsers"></Invoke>
       <Invoke Class="dc.sample.rest.Security" Method="CreateRoles"></Invoke>
