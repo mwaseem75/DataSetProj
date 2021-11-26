@@ -2,7 +2,7 @@
 
     zn "%SYS"
     Do ##class(Security.Users).UnExpireUserPasswords("*")
-    Do ##class("/opt/irisapp/scw/scw/Patient").Populate(10)
+    Do ##class(scw.Patient).Populate(10)
 
     zn "USER"
     zpm "load /opt/irisapp/ -v":1:1
