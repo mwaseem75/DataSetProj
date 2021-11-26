@@ -19,6 +19,7 @@
       <Invoke Class="dc.sample.rest.Security" Method="CreateUsers"></Invoke>
       <Invoke Class="dc.sample.rest.Security" Method="CreateRoles"></Invoke>
       <Invoke Class="dc.sample.rest.Security" Method="GrantRoles"></Invoke>
+      <Invoke Class="scw.Patient" Method="AddTestData"></Invoke>
 
        <CSPApplication 
         Url="/crud"

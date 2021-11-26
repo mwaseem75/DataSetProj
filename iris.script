@@ -2,8 +2,8 @@
 
     zn "%SYS"
     Do ##class(Security.Users).UnExpireUserPasswords("*")
-    Do ##class(scw.Patient).Populate(10)
-
+    
     zn "USER"
     zpm "load /opt/irisapp/ -v":1:1
+   
     halt

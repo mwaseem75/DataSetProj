@@ -7,6 +7,11 @@ Property Type As %String(VALUELIST = ",Business,Personal");
 
 Property Address As scw.Address;
 
+ClassMethod AddTestData(amount As %Integer = 10)
+{
+    d ..Populate(amount)
+}
+
 Storage Default
 {
 <Data name="PatientDefaultData">
