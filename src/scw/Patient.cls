@@ -1,9 +1,9 @@
 Class scw.Patient Extends (%Persistent, %Populate, %XML.Adaptor, %ZEN.DataModel.Adaptor)
 {
 
-Property Name As %String [ Required ];
+Property FirstName As %String [ Required ];
 
-Property Address As %String [ Required ];
+Property LastName As %String [ Required ];
 
 Property Type As %String(VALUELIST = ",Staff,VIP,Company");
 
@@ -19,10 +19,10 @@ Storage Default
 <Value>%%CLASSNAME</Value>
 </Value>
 <Value name="2">
-<Value>Name</Value>
+<Value>FirstName</Value>
 </Value>
 <Value name="3">
-<Value>Address</Value>
+<Value>LastName</Value>
 </Value>
 <Value name="4">
 <Value>Type</Value>

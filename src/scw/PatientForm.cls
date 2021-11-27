@@ -27,10 +27,10 @@ Method %OnGetJSResources(ByRef pResources As %String) As %Status [ Private ]
  Set pResources("LabelTitleHide") = $$$Text("Find all records")
  Set pResources("FailedDataValidation") = $$$Text("Some data was incorrect or incomplete. Please try again. To view tips for entering the correct data format for a field, hover the cursor over the field (or its title) and wait for a tooltip to display"_ $c(13,10,13,10)) 
  
- Set pResources("RequiredAddress") = $$$Text("Address is a required field, but it was empty."_$c(13,10))
- Set pResources("FailedStringAddress") = $$$Text("Address was too short or too long."_$c(13,10))
- Set pResources("RequiredName") = $$$Text("Name is a required field, but it was empty."_$c(13,10))
- Set pResources("FailedStringName") = $$$Text("Name was too short or too long."_$c(13,10))
+ Set pResources("RequiredFirstName") = $$$Text("FirstName is a required field, but it was empty."_$c(13,10))
+ Set pResources("FailedStringFirstName") = $$$Text("FirstName was too short or too long."_$c(13,10))
+ Set pResources("RequiredLastName") = $$$Text("LastName is a required field, but it was empty."_$c(13,10))
+ Set pResources("FailedStringLastName") = $$$Text("LastName was too short or too long."_$c(13,10))
  Set pResources("FailedStringType") = $$$Text("Type was too short or too long."_$c(13,10))
  
  Quit $$$OK
@@ -148,10 +148,10 @@ ClientMethod toggleSearchTable() As %Status [ Language = javascript ]
 ClientMethod validateAndSave() As %String [ Language = javascript ]
 {
  var msg = '';
- if (zenPage.validateRequired('Address') == false)
-  msg += zenText('RequiredAddress');
- if (zenPage.validateRequired('Name') == false)
-  msg += zenText('RequiredName');
+ if (zenPage.validateRequired('FirstName') == false)
+  msg += zenText('RequiredFirstName');
+ if (zenPage.validateRequired('LastName') == false)
+  msg += zenText('RequiredLastName');
  if (msg.length == 0) zenPage.saveRec(true);
  else alert(zenText('FailedDataValidation') + msg);
 }
@@ -306,8 +306,8 @@ XData Contents [ XMLNamespace = "http://www.intersystems.com/zen" ]
 </hgroup>
 <spacer height="10" />
  <text label="(System Assigned) ID" id="ID" title="System assigned identifier. Do not edit when creating a new record." size="10" value="#(%page.MyId)#" height="23" onblur="zenPage.getRecord(zenThis.getValue());" />
- <text id="Address"  label="Address *" title="Enter a value" size="50" dataBinding="Address" height="23" />
- <text id="Name"  label="Name *" title="Enter a value" size="50" dataBinding="Name" height="23" />
+ <text id="FirstName"  label="FirstName *" title="Enter a value" size="50" dataBinding="FirstName" height="23" />
+ <text id="LastName"  label="LastName *" title="Enter a value" size="50" dataBinding="LastName" height="23" />
  <combobox id="Type" label="Type" valueList=",Staff,VIP,Company" title="Choose a value" dropdownHeight="100" dropdownWidth="200" dataBinding="Type" />
  <html id="requiredText" >* Indicates a required field</html>
    <spacer height="20" />
