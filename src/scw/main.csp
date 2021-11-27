@@ -1,0 +1,20 @@
+<html>
+<head>
+
+<!-- Put your page Title here -->
+<title>	Cache Server Page </title>
+
+</head>
+
+<body>
+<csp:class encoded=1 super="%CSP.Page,scw.Security">
+		<!-- Put your page code here -->
+		My page body
+  <a href=. onClick="#server(..CreateUsers())#;return false;">
+
+    create users
+
+    </a>		
+		
+</body>
+</html>
