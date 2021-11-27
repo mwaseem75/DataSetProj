@@ -13,9 +13,6 @@
         "internalPort": 52773
       },
       "links": {
-        "SwaggerUI": "http://localhost:${port}/swagger-ui/index.html",
-        "All Records Unsecured": "http://localhost:${port}/crudall/persons/all",
-        "All Records Basic Authentication (Bill)": "http://localhost:${port}/crud/persons/all",
         "Management Portal": "http://localhost:${port}/csp/sys/%25CSP.Portal.Home.zen?$NAMESPACE=%25SYS",
         "Open Application": "http://localhost:52773/csp/user/scw.PatientForm.cls",
       },

@@ -1,5 +1,5 @@
 /// Class to deploy roles and users
-Class dc.sample.rest.Security
+Class scw.Security
 {
 
 /// Create users

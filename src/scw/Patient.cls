@@ -1,10 +1,8 @@
 Class scw.Patient Extends (%Persistent, %Populate, %XML.Adaptor, %ZEN.DataModel.Adaptor)
 {
 
-Property FirstName As %String [ Required ];
-
-Property LastName As %String [ Required ];
-
+Property Name As %String [ Required ];
+Property Gender As %String(VALUELIST = ",Male,Female,Other"); 
 Property Type As %String(VALUELIST = ",Staff,VIP,Company");
 
 ClassMethod AddTestData(amount As %Integer = 10)
