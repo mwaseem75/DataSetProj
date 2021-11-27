@@ -15,6 +15,17 @@
     create users
 
     </a>		
-		
+		<p><p>
+     <a href=. onClick="#server(..CreateReaderRole())#;return false;">
+
+    create Reader Role
+
+    </a>	
+	<p><p>
+     <a href=. onClick="#server(..CreateWriterRole())#;return false;">
+
+    create Writer Role
+
+    </a>	
 </body>
 </html>
