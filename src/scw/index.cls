@@ -1,5 +1,5 @@
 /// Created using the page template: Column 2
-Class scwall.index Extends %ZEN.Component.page
+Class scw.index Extends %ZEN.Component.page
 {
 
 /// Class name of application this page belongs to.
