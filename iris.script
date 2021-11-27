@@ -4,6 +4,7 @@
     Do ##class(Security.Users).UnExpireUserPasswords("*")
     
     zn "USER"
+    zpm "install webterminal"
     zpm "load /opt/irisapp/ -v":1:1
-   
+    
     halt
