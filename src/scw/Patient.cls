@@ -2,7 +2,7 @@ Class scw.Patient Extends (%Persistent, %Populate, %XML.Adaptor, %ZEN.DataModel.
 {
 
 Property Name As %String [ Required ];
-Property Gender As %String(VALUELIST = ",Male,Female,Other"); 
+
 Property Type As %String(VALUELIST = ",Staff,VIP,Company");
 
 ClassMethod AddTestData(amount As %Integer = 10)
@@ -17,12 +17,9 @@ Storage Default
 <Value>%%CLASSNAME</Value>
 </Value>
 <Value name="2">
-<Value>FirstName</Value>
+<Value>Name</Value>
 </Value>
 <Value name="3">
-<Value>LastName</Value>
-</Value>
-<Value name="4">
 <Value>Type</Value>
 </Value>
 </Data>
