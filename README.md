@@ -2,24 +2,27 @@
 
 ## Summary
 Web Application build on InterSystems IRIS for Health and Docker. 
-Demonostrate Authentication and Authorization process. Create users, grant roles and grant privileges programatically, Enable/Disable Application.
+Demonstrate Authentication and Authorization process. Create users, grant roles and grant privileges programmatically, Enable/Disable Application.
 
 This application is derived from secured-rest-api template : https://openexchange.intersystems.com/package/secured-rest-api 
 
-Recommended for use with online learning course: https://learning.intersystems.com/course/view.php?id=1774 
+Recommended for use with online learning course: https://learning.intersystems.com/course/view.php?id=1774
+
 
 ## Features
-* Demonostrate Authentication and Authorization process
-* Create New User programatically
-* Gratnt roles programatically
+* Demonstrate Authentication and Authorization process
+* Create New User programmatically
+* Grant roles programmatically
 * Enable/Disable Application
+
 
 ## Repo Contents   
 * Dockerfile, docker-compose.yml, and Installer.cls to create container
-* iris.script, containts script to execute during container initilization including 
-  installing and importing TestRanges
+* iris.script, contains script to execute during container initialization including 
+  Installing and importing TestRanges
 * /src with source files 
-* /.vscode/settings.json for automatic server connections when opened in VS Code. 
+* /.vscode/settings.json for automatic server connections when opened in VS Code.
+
 
 ## Requirements:  
 * [Docker desktop]( https://www.docker.com/products/docker-desktop)
