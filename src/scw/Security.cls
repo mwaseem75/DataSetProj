@@ -22,14 +22,14 @@ ClassMethod CreateRoles() As %Status
     &sql(CREATE ROLE Writer)
     if SQLCODE < 0 throw ##class(%Exception.SQL).CreateFromSQLCODE(SQLCODE,%msg)
 
-    &sql(GRANT UPDATE,INSERT ON dc_sample_rest.Person TO writer)
+    &sql(GRANT UPDATE,INSERT ON scw.Patient TO writer)
     if SQLCODE < 0 throw ##class(%Exception.SQL).CreateFromSQLCODE(SQLCODE,%msg)
 
 
     &sql(CREATE ROLE Reader)
     if SQLCODE < 0 throw ##class(%Exception.SQL).CreateFromSQLCODE(SQLCODE,%msg)
 
-    &sql(GRANT SELECT ON dc_sample_rest.Person TO Reader)
+    &sql(GRANT SELECT ON scw.Patient TO Reader)
     if SQLCODE < 0 throw ##class(%Exception.SQL).CreateFromSQLCODE(SQLCODE,%msg)
 
     Return sc
