@@ -1,0 +1,31 @@
+<html>
+<head>
+
+<!-- Put your page Title here -->
+<title>	Cache Server Page </title>
+
+</head>
+
+<body>
+<csp:class encoded=1 super="%CSP.Page,scw.Security">
+		<!-- Put your page code here -->
+		My page body
+  <a href=. onClick="#server(..CreateUsers())#;return false;">
+
+    create users
+
+    </a>		
+	<br>
+	 <a href=. onClick="#server(..CreateReaderRole())#;return false;">
+
+    grant role and read priviledge
+
+    </a>	
+    <br>
+	 <a href=. onClick="#server(..CreateWriterRole())#;return false;">
+
+    grant role and write priviledge
+
+    </a>		
+</body>
+</html>
