@@ -54,6 +54,7 @@ ClassMethod GrantRoles() As %Status
 
     Return sc
 }
+
 /// Create users
 ClassMethod CreateUser() As %Status
 {
