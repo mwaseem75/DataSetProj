@@ -27,9 +27,6 @@ ClassMethod CreateReaderRole() As %Status
     &sql(GRANT Reader To Test)
     if SQLCODE < 0 throw ##class(%Exception.SQL).CreateFromSQLCODE(SQLCODE,%msg)
     
-    &sql(GRANT Reader To UnknownUser)
-    if SQLCODE < 0 throw ##class(%Exception.SQL).CreateFromSQLCODE(SQLCODE,%msg)
-
     Return sc
 }
 

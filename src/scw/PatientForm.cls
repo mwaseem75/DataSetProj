@@ -34,6 +34,16 @@ Method %OnGetJSResources(ByRef pResources As %String) As %Status [ Private ]
  Quit $$$OK
 }
 
+ClassMethod DrawHTML(pSeed As %String) As %Status
+{
+    &html<<br>>
+    &html<<h1>User : #($UserName)#<h1>>
+    &html<<h1>Roles : #($ROLES)#<h1>>
+    
+
+    Quit $$$OK
+}
+
 ClassMethod ModelIdExists(modelId As %String) As %Boolean [ ZenMethod ]
 {
  if ($classmethod("scw.Patient","%ExistsId",modelId)) {
@@ -289,7 +299,7 @@ ClientMethod viewRec() As %Status [ Language = javascript ]
 XData Contents [ XMLNamespace = "http://www.intersystems.com/zen" ]
 {
 <page xmlns="http://www.intersystems.com/zen" title="List of Patients" >
-<dataController id="mvc" modelClass="scw.Patient" modelId="" />
+<html>Item : <b> wsret wert </b></html>
 <form controllerId="mvc" id="PatientForm" width="100%" >
 <spacer height="10" />
 <vgroup align="left" valign="top" labelPosition="left" >
@@ -311,14 +321,59 @@ XData Contents [ XMLNamespace = "http://www.intersystems.com/zen" ]
    </tablePane>
    <spacer height="10" />
   </vgroup>
- </form>
+
+</form>
+<html OnDrawContent="DrawHTML"></html>
 </page>
 }
 
 XData Style
 {
- <style type="text/css">
-</style>
+<style type="text/css">
+    /*Style classes for use on this page */
+   
+     body { font-family: arial; }
+
+     table.tpTable caption{
+       background: transparent;
+       font-size: 1.4em;
+       font-weight: bold;
+       text-align: left;
+       border: none;
+     }
+
+    /* even rows */
+     .tpEven { color: black; background: #ebf3ff; }
+    
+    /* odd rows */
+     .tpOdd { color: black; background: white; }
+
+    /* this is a selected row */
+     table.tpTable tr.tpSelected { background: #3d80df; color: white; }
+   
+    /* hover for odd and even rows */
+     tr.tpOdd:hover,tr.tpEven:hover { 
+        background-color: #3d80df; 
+        color: #ffffff; }
+  
+    /* table header style */
+    table.tpTable th {
+        border-right: 1px solid gray;
+        border-bottom: 1px solid gray;
+        background: #C5D6D6;
+        color: black;
+        font-weight: bold;
+        text-align: left;
+        padding: 2px;
+        overflow: hidden;
+     }
+
+    /* selected column header (th) */
+     table.tpTable th.tpHdrSelected { background: #3d80df; }
+
+    /* filter layout */
+     table.tpFilterLayout td { border: none; background: #C5D6D6; }
+  </style>
 }
 
 }

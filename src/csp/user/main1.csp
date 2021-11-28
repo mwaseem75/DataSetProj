@@ -1,0 +1,45 @@
+<html>
+<head>
+
+<!-- Put your page Title here -->
+<title>	Authentication and Authorization </title>
+
+</head>
+
+<body>
+<csp:class encoded=1 super="%CSP.Page,scw.Security">
+		<!-- Put your page code here -->
+		<h1>USER: #($UserName)# </h1>
+		
+		<h1>ROLES: #($ROLES)# </h1>
+  <a href=. onClick="#server(..CreateUsers())#;return false;">
+
+    Create Test User
+
+    </a>		
+		<p><p>
+     <a href=. onClick="#server(..CreateReaderRole())#;return false;">
+
+    Creade Reader Role
+
+    </a>	
+	<p><p>
+     <a href=. onClick="#server(..CreateWriterRole())#;return false;">
+
+    Create Writer Role
+
+    </a>	
+    <br>
+    <br>
+    <a href="http://localhost:52773/csp/user/scw.PatientForm.cls">
+    Patients List </a>
+    </br>
+    <br>
+    <a href="http://127.0.0.1:52773/csp/sys/%25CSP.Portal.Home.zen?IRISLogout=end">
+    Management Portal </a>
+    </br>
+    
+    <a href= "http://localhost:52773/csp/user/scw.Login.cls">
+     Login </a>    
+</body>
+</html>
