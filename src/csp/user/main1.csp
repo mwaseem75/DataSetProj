@@ -12,7 +12,7 @@
 		<h1>USER: #($UserName)# </h1>
 		
 		<h1>ROLES: #($ROLES)# </h1>
-  <a href=. onClick="#server(..CreateUsers())#;return false;">
+  <a href=. onClick="#server(..CreateUser())#;return false;">
 
     Create Test User
 

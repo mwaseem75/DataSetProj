@@ -9,7 +9,9 @@
       <SourcesRoot>src</SourcesRoot>
       <Resource Name="scw.PKG"/>
       <Invoke Class="scw.Patient" Method="AddTestData"></Invoke>
-
+      <Invoke Class="scw.Security" Method="CreateUsers"></Invoke>
+      <Invoke Class="scw.Security" Method="CreateRoles"></Invoke>
+      <Invoke Class="scw.Security" Method="GrantRoles"></Invoke>
       <CSPApplication 
         Url="/scw"
         CSPZENEnabled="1"
