@@ -225,6 +225,13 @@ ClassMethod DrawHTML(pSeed As %String) As %Status
     &html<<h1>User : #($UserName)#<h1>>
     &html<<h1>Roles : #($ROLES)#<h1>>
     
+    &html<<ul>>
+    &html<<li><a href="http://127.0.0.1:52773/csp/sys/%25CSP.Portal.Home.zen?IRISLogout=end">Management Portal</a></li>>
+    &html<<li><a href="http://localhost:52773/terminal/">Web Terminal</a></li>>
+    &html<<li><a href="http://localhost:52773/csp/user/list.csp">Main Tasks</a></li>>
+    &html<<li><a href="http://localhost:52773/csp/user/scw.DataForm.cls">Data Form</a></li>>
+    &html<<li><a href="http://localhost:52773/csp/user/scw.Login.cls">Login</a></li>>
+    &html<</ul>>
 
     Quit $$$OK
 }
