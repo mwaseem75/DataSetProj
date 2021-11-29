@@ -106,7 +106,7 @@ li a:hover {
 /// This XML block defines the contents of this page.
 XData Contents [ XMLNamespace = "http://www.intersystems.com/zen" ]
 {
-<page xmlns="http://www.intersystems.com/zen" title="">
+<page xmlns="http://www.intersystems.com/zen" title="Login - Data_APP_Security">
  <html OnDrawContent="DrawHTML"></html>
 <html align="center"><h2>Login Page</h2></html>
 <loginForm align="center" cellStyle="padding:5px;" id="form"> 
