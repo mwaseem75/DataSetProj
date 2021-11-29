@@ -2,7 +2,7 @@
 Class scw.Security
 {
 
-/// Create users
+/// Create TestUser 
 ClassMethod CreateUser() As %Status
 {
     Set sc = $$$OK
@@ -13,7 +13,7 @@ ClassMethod CreateUser() As %Status
     Return sc
 }
 
-/// Create Roles
+/// Create Reader Role
 ClassMethod CreateReaderRole() As %Status
 {
     Set sc = $$$OK
@@ -30,7 +30,7 @@ ClassMethod CreateReaderRole() As %Status
     Return sc
 }
 
-/// Description
+/// Create Writer Role
 ClassMethod CreateWriterRole() As %Status
 {
     Set sc = $$$OK
@@ -46,6 +46,7 @@ ClassMethod CreateWriterRole() As %Status
     Return sc
 }
 
+/// Grant %All to TestUser
 ClassMethod GrantAll() As %Status
 {
     Set sc = $$$OK
@@ -55,51 +56,53 @@ ClassMethod GrantAll() As %Status
     Return sc
 }
 
+/// Disable Web terminal web application
 ClassMethod DisableWT() As %Status
 {
     Set sc = $$$OK
     New $Namespace
     Set $Namespace = "%SYS"
-    Set App = ##class(Security.Applications).%OpenId("/Terminal")
-    Set App.Enabled="0"
+    Set App = ##class(Security.Applications).%OpenId("/terminal")
+    Set App.Enabled=0
     Do App.%Save()
 
     Return sc
 }
 
+/// Enable Web terminal web application
 ClassMethod EnableWT() As %Status
 {
     Set sc = $$$OK
     New $Namespace
     Set $Namespace = "%SYS"
-    Set App = ##class(Security.Applications).%OpenId("/Terminal")
-    Set App.Enabled="1"
+    Set App = ##class(Security.Applications).%OpenId("/terminal")
+    Set App.Enabled=1
     Do App.%Save()
 
     Return sc
 }
 
+/// Unauthenticate Web terminal web application
 ClassMethod Unauth() As %Status
 {
     Set sc = $$$OK
     New $Namespace
     Set $Namespace = "%SYS"
-    Set App = ##class(Security.Applications).%OpenId("/Terminal")
-    Set App.PasswordAuthEnabled="0"
-    Set App.UnauthenticatedEnabled="0"
+    Set App = ##class(Security.Applications).%OpenId("/terminal")
+    Set App.AutheEnabled=0
     Do App.%Save()
 
     Return sc
 }
 
+/// Authenticate Web terminal web application
 ClassMethod Auth() As %Status
 {
     Set sc = $$$OK
     New $Namespace
     Set $Namespace = "%SYS"
-    Set App = ##class(Security.Applications).%OpenId("/Terminal")
-    Set App.PasswordAuthEnabled="1"
-    Set App.UnauthenticatedEnabled="1"
+    Set App = ##class(Security.Applications).%OpenId("/terminal")
+    Set App.AutheEnabled=32
     Do App.%Save()
 
     Return sc
