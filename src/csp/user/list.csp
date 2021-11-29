@@ -2,7 +2,7 @@
 <head>
 
 <!-- Put your page Title here -->
-<title>	Cache Server Page </title>
+<title>	Data_APP_Security </title>
 <STYLE>
 body { font-family: arial; }
 
@@ -92,7 +92,7 @@ li a:hover {
 </head>
 
 <body>
-
+<csp:class encoded=1 super="%CSP.Page,scw.Security">
 	<ul>
     <li><a href="http://127.0.0.1:52773/csp/sys/%25CSP.Portal.Home.zen?IRISLogout=end">Management Portal</a></li>
     <li><a href="http://localhost:52773/terminal/">Web Terminal</a></li>
