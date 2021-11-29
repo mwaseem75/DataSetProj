@@ -126,8 +126,8 @@ li a:hover {
     
     <br>
      <ul id="ul">
-    <li id="li"><a id = "vula" href=. onClick="#server(..Unauth())#;return false;">Unauthenticate Application</a></li>
-    <li id="li"><a id = "vula" href=. onClick="#server(..Auth())#;return false;">Authenticate Application</a></li>
+    <li id="li"><a id = "vula" href=. onClick="#server(..Unauth())#;return false;">Disable WebTerminal Authentication</a></li>
+    <li id="li"><a id = "vula" href=. onClick="#server(..Auth())#;return false;">Enable WebTerminal Authentication</a></li>
     
     </ul>
   </div>
