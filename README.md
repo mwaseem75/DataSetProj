@@ -1,19 +1,22 @@
 # Data_APP_Security
 
 ## Summary
-Web Application build on InterSystems IRIS for Health and Docker. 
-Demonstrate Authentication and Authorization process. Create users, grant roles and grant privileges programmatically, Enable/Disable Application.
+Web Application build on InterSystems IRIS for Health and Docker to demonstrate Authentication and Authorization process.
+By using the application New user can be created programmatically along with roles and SQL privileges, Option to Enable/Disable and Unauthenticate/ Authenticate web application. 
 
-This application is derived from secured-rest-api template : https://openexchange.intersystems.com/package/secured-rest-api 
-
-Recommended for use with online learning course: https://learning.intersystems.com/course/view.php?id=1774
+## Recommendation 
+ * View online learning course : https://learning.intersystems.com/course/view.php?id=1774 
+ * Read related documentations : https://docs.intersystems.com/latest/csp/docbook/DocBook.UI.Page.cls?KEY=TSQS_preface
 
 
 ## Features
 * Demonstrate Authentication and Authorization process
-* Create New User programmatically
-* Grant roles programmatically
-* Enable/Disable Application
+* Create New User by code
+* Create SQL table reader role and assign to user
+* Create SQL table writer role and assign to user
+* Grant all priviliges to user by assigning %All role by code
+* Enable/Disable Web Terminal Application by code
+* Authenticate/Unauthenticate Web Terminal Application by code
 
 
 ## Repo Contents   
@@ -53,6 +56,8 @@ Log in with credentials: SuperUser | SYS
 
 Navigate to http://localhost:52773/csp/user/list.csp for langindg page
 
+# Thanks to:
+Evgeny Shvarov for: https://openexchange.intersystems.com/package/secured-rest-api template for guidance
 
 
 
