@@ -55,4 +55,54 @@ ClassMethod GrantAll() As %Status
     Return sc
 }
 
+ClassMethod DisableWT() As %Status
+{
+    Set sc = $$$OK
+    New $Namespace
+    Set $Namespace = "%SYS"
+    Set App = ##class(Security.Applications).%OpenId("/Terminal")
+    Set App.Enabled="0"
+    Do App.%Save()
+
+    Return sc
+}
+
+ClassMethod EnableWT() As %Status
+{
+    Set sc = $$$OK
+    New $Namespace
+    Set $Namespace = "%SYS"
+    Set App = ##class(Security.Applications).%OpenId("/Terminal")
+    Set App.Enabled="1"
+    Do App.%Save()
+
+    Return sc
+}
+
+ClassMethod Unauth() As %Status
+{
+    Set sc = $$$OK
+    New $Namespace
+    Set $Namespace = "%SYS"
+    Set App = ##class(Security.Applications).%OpenId("/Terminal")
+    Set App.PasswordAuthEnabled="0"
+    Set App.UnauthenticatedEnabled="0"
+    Do App.%Save()
+
+    Return sc
+}
+
+ClassMethod Auth() As %Status
+{
+    Set sc = $$$OK
+    New $Namespace
+    Set $Namespace = "%SYS"
+    Set App = ##class(Security.Applications).%OpenId("/Terminal")
+    Set App.PasswordAuthEnabled="1"
+    Set App.UnauthenticatedEnabled="1"
+    Do App.%Save()
+
+    Return sc
+}
+
 }
