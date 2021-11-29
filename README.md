@@ -47,6 +47,8 @@ By using the application New user can be created programmatically along with rol
 Log in with credentials: SuperUser | SYS
 
 # Getting Started
+* Releted article on community protal https://community.intersystems.com/post/programmatically-create-users-grant-privileges-enabledisable-and-authenticateunauthenticate-web
+
 * Navigate to http://localhost:52773/csp/user/list.csp for landing page
 First of all create New user by cliking "Create TestUser" button. Make sure to login as SUPERUSER OR _SYSTEM in order to create new User.
 Newly created user can be viewed from management portal (System > Security Management > User)
