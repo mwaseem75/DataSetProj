@@ -305,7 +305,7 @@ ClientMethod viewRec() As %Status [ Language = javascript ]
 
 XData Contents [ XMLNamespace = "http://www.intersystems.com/zen" ]
 {
-<page xmlns="http://www.intersystems.com/zen" title="scw.Patient Zen Page" >
+<page xmlns="http://www.intersystems.com/zen" title="Data_APP_Security" >
 <dataController id="mvc" modelClass="scw.Patient" modelId="" />
 
  <html OnDrawContent="DrawHTML"></html>
