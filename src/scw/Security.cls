@@ -13,36 +13,20 @@ ClassMethod CreateUser() As %Status
     Return sc
 }
 
-/// Create Reader Role
-ClassMethod CreateReaderRole() As %Status
+/// Create ReadWrite Role
+ClassMethod GrantRoles() As %Status
 {
     Set sc = $$$OK
     
-    &sql(CREATE ROLE Reader)
+    &sql(CREATE ROLE ReadWrite)
     if SQLCODE < 0 throw ##class(%Exception.SQL).CreateFromSQLCODE(SQLCODE,%msg)
     
-    &sql(GRANT SELECT ON scw.Patient TO Reader)
+    &sql(GRANT SELECT,UPDATE,INSERT ON scw.Patient TO ReadWrite)
     if SQLCODE < 0 throw ##class(%Exception.SQL).CreateFromSQLCODE(SQLCODE,%msg)
     
-    &sql(GRANT Reader To TestUser)
+    &sql(GRANT ReadWrite To TestUser)
     if SQLCODE < 0 throw ##class(%Exception.SQL).CreateFromSQLCODE(SQLCODE,%msg)
     
-    Return sc
-}
-
-/// Create Writer Role
-ClassMethod CreateWriterRole() As %Status
-{
-    Set sc = $$$OK
-    // do something
-    &sql(CREATE ROLE Writer)
-    if SQLCODE < 0 throw ##class(%Exception.SQL).CreateFromSQLCODE(SQLCODE,%msg)
-
-    &sql(GRANT UPDATE,INSERT ON scw.Patient TO writer)
-    if SQLCODE < 0 throw ##class(%Exception.SQL).CreateFromSQLCODE(SQLCODE,%msg)
-
-    &sql(GRANT Writer To TestUser)
-    if SQLCODE < 0 throw ##class(%Exception.SQL).CreateFromSQLCODE(SQLCODE,%msg)
     Return sc
 }
 
