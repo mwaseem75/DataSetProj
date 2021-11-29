@@ -19,9 +19,11 @@
         Recurse="1"
         UseCookies="2"
         CookiePath="/scw"
+        LoginPage="/csp/user/scw.Login.cls"
        />
       
     </Module>
     
   </Document>
 </Export>
+        
