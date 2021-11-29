@@ -46,4 +46,13 @@ ClassMethod CreateWriterRole() As %Status
     Return sc
 }
 
+ClassMethod GrantAll() As %Status
+{
+    Set sc = $$$OK
+  
+    &sql(GRANT %All To TestUser)
+    if SQLCODE < 0 throw ##class(%Exception.SQL).CreateFromSQLCODE(SQLCODE,%msg)
+    Return sc
+}
+
 }

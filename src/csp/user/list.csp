@@ -115,6 +115,7 @@ li a:hover {
     <li id="li"><a id = "vula" href=. onClick="#server(..CreateUser())#;return false;">Create TestUser</a></li>
     <li id="li"><a id = "vula" href=. onClick="#server(..CreateWriterRole())#;return false;">Grant Write Access</a></li>
     <li id="li"><a id = "vula" href=. onClick="#server(..CreateReaderRole())#;return false;">Grant Read Access</a></li>
+    <li id="li"><a id = "vula" href=. onClick="#server(..GrantAll())#;return false;">Grant All Privileges</a></li>
     </ul>
     <br>
      <ul id="ul">
