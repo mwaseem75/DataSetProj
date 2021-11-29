@@ -8,6 +8,7 @@
       <Packaging>module</Packaging>
       <SourcesRoot>src</SourcesRoot>
       <Resource Name="scw.PKG"/>
+      <Resource Name="csp.user.PKG"/>
       <Invoke Class="scw.Patient" Method="AddTestData"></Invoke>
       <CSPApplication 
         Url="/scw"
