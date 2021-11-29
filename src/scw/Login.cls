@@ -13,10 +13,7 @@ Parameter DOMAIN;
 
 ClassMethod DrawHTML(pSeed As %String) As %Status
 {
-    &html<<br>>
-    &html<<h1>User : #($UserName)#<h1>>
-    &html<<h1>Roles : #($ROLES)#<h1>>
-    
+       
     &html<<ul>>
     &html<<li><a href="http://127.0.0.1:52773/csp/sys/%25CSP.Portal.Home.zen?IRISLogout=end">Management Portal</a></li>>
     &html<<li><a href="http://localhost:52773/terminal/">Web Terminal</a></li>>
@@ -25,6 +22,9 @@ ClassMethod DrawHTML(pSeed As %String) As %Status
     &html<<li><a href="http://localhost:52773/csp/user/scw.Login.cls">Login</a></li>>
     &html<</ul>>
 
+    &html<<br><br>>
+    &html<<h2>User : #($UserName)#<h2>>
+    &html<<h2>Roles : #($ROLES)#<h2>>
     Quit $$$OK
 }
 
@@ -75,6 +75,31 @@ XData Style
 
     /* filter layout */
      table.tpFilterLayout td { border: none; background: #C5D6D6; }
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #2b3589;
+}
+
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+/* Change the link color to #111 (black) on hover */
+li a:hover {
+  background-color: #111;
+}
   </style>
 }
 
@@ -82,12 +107,13 @@ XData Style
 XData Contents [ XMLNamespace = "http://www.intersystems.com/zen" ]
 {
 <page xmlns="http://www.intersystems.com/zen" title="">
+ <html OnDrawContent="DrawHTML"></html>
 <html align="center"><h2>Login Page</h2></html>
 <loginForm align="center" cellStyle="padding:5px;" id="form"> 
 <text label="User:" name="CacheUserName" /> 
 <password label="Pwd:" name="CachePassword" /> <submit caption="Login"/> 
 </loginForm> 
-<html OnDrawContent="DrawHTML"></html>
+
 </page>
 }
 

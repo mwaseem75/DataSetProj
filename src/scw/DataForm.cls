@@ -221,10 +221,7 @@ ClientMethod validateMonthDay(field1 As %String, field2 As %String) As %Status [
 
 ClassMethod DrawHTML(pSeed As %String) As %Status
 {
-    &html<<br>>
-    &html<<h1>User : #($UserName)#<h1>>
-    &html<<h1>Roles : #($ROLES)#<h1>>
-    
+       
     &html<<ul>>
     &html<<li><a href="http://127.0.0.1:52773/csp/sys/%25CSP.Portal.Home.zen?IRISLogout=end">Management Portal</a></li>>
     &html<<li><a href="http://localhost:52773/terminal/">Web Terminal</a></li>>
@@ -233,6 +230,9 @@ ClassMethod DrawHTML(pSeed As %String) As %Status
     &html<<li><a href="http://localhost:52773/csp/user/scw.Login.cls">Login</a></li>>
     &html<</ul>>
 
+    &html<<br><br>>
+    &html<<h2>User : #($UserName)#<h2>>
+    &html<<h2>Roles : #($ROLES)#<h2>>
     Quit $$$OK
 }
 
@@ -307,6 +307,9 @@ XData Contents [ XMLNamespace = "http://www.intersystems.com/zen" ]
 {
 <page xmlns="http://www.intersystems.com/zen" title="scw.Patient Zen Page" >
 <dataController id="mvc" modelClass="scw.Patient" modelId="" />
+
+ <html OnDrawContent="DrawHTML"></html>
+ 
 <form controllerId="mvc" id="DataForm" width="100%" >
 <spacer height="10" />
 <vgroup align="left" valign="top" labelPosition="left" >
@@ -330,13 +333,78 @@ XData Contents [ XMLNamespace = "http://www.intersystems.com/zen" ]
   </vgroup>
  </form>
  
- <html OnDrawContent="DrawHTML"></html>
+
 </page>
 }
 
 XData Style
 {
 <style type="text/css">
+body { font-family: arial; }
+
+     table.tpTable caption{
+       background: transparent;
+       font-size: 1.4em;
+       font-weight: bold;
+       text-align: left;
+       border: none;
+     }
+
+    /* even rows */
+     .tpEven { color: black; background: #ebf3ff; }
+    
+    /* odd rows */
+     .tpOdd { color: black; background: white; }
+
+    /* this is a selected row */
+     table.tpTable tr.tpSelected { background: #3d80df; color: white; }
+   
+    /* hover for odd and even rows */
+     tr.tpOdd:hover,tr.tpEven:hover { 
+        background-color: #3d80df; 
+        color: #ffffff; }
+  
+    /* table header style */
+    table.tpTable th {
+        border-right: 1px solid gray;
+        border-bottom: 1px solid gray;
+        background: #C5D6D6;
+        color: black;
+        font-weight: bold;
+        text-align: left;
+        padding: 2px;
+        overflow: hidden;
+     }
+
+    /* selected column header (th) */
+     table.tpTable th.tpHdrSelected { background: #3d80df; }
+
+    /* filter layout */
+     table.tpFilterLayout td { border: none; background: #C5D6D6; }
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #2b3589;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+/* Change the link color to #111 (black) on hover */
+li a:hover {
+  background-color: #111;
+}
 </style>
 }
 
