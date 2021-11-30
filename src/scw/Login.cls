@@ -14,7 +14,7 @@ Parameter DOMAIN;
 ClassMethod DrawHTML(pSeed As %String) As %Status
 {
        
-    &html<<ul id=pSeed>>
+    &html<<ul>>
     &html<<li><a href="http://127.0.0.1:52773/csp/sys/%25CSP.Portal.Home.zen?IRISLogout=end">Management Portal</a></li>>
     &html<<li><a href="http://localhost:52773/terminal/">Web Terminal</a></li>>
     &html<<li><a href="http://localhost:52773/csp/user/list.csp">Main Tasks</a></li>>
@@ -22,7 +22,7 @@ ClassMethod DrawHTML(pSeed As %String) As %Status
     &html<<li><a href="http://localhost:52773/csp/user/scw.Login.cls">Login</a></li>>
     &html<</ul>>
 
-    &html<<br><br>>
+    &html<<br>#(pSeed)#<br>>
     &html<<h2>User : #($UserName)#<h2>>
     &html<<h2>Roles : #($ROLES)#<h2>>
     Quit $$$OK
