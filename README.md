@@ -3,16 +3,6 @@
 ## Summary
 Web Application build on InterSystems IRIS for Health and Docker to demonstrate Authentication and Authorization process.
 By using the application New user can be created programmatically along with roles and SQL privileges, Option to Enable/Disable and Authenticate/Unauthenticate web application. 
-
-## Recommendation 
- * InterSystems online course (InterSystems Security Basics) : https://learning.intersystems.com/course/view.php?id=1774 
- * Read related documentations (Authentication and Authorization) : https://docs.intersystems.com/latest/csp/docbook/DocBook.UI.Page.cls?KEY=TSQS_preface
- * Read related documentations (Auditing Guide) : https://docs.intersystems.com/irislatest/csp/docbook/DocBook.UI.Page.cls?KEY=AAUDIT
-
-## Installation with ZPM
-```
-zpm:USER>zpm "install scw-Patient"
-```
 ## Features
 * Demonstrate Authentication,Authorization and Auditing basics
 * Create New User by code
@@ -25,6 +15,15 @@ zpm:USER>zpm "install scw-Patient"
 ## Application Layout
 ![image](https://user-images.githubusercontent.com/18219467/143904440-21d604b6-43e5-46f6-b19f-0f3292aa5152.png)
 
+## Recommendation 
+ * InterSystems online course (InterSystems Security Basics) : https://learning.intersystems.com/course/view.php?id=1774 
+ * Read related documentations (Authentication and Authorization) : https://docs.intersystems.com/latest/csp/docbook/DocBook.UI.Page.cls?KEY=TSQS_preface
+ * Read related documentations (Auditing Guide) : https://docs.intersystems.com/irislatest/csp/docbook/DocBook.UI.Page.cls?KEY=AAUDIT
+ * 
+## Installation with ZPM
+```
+zpm:USER>zpm "install scw-Patient"
+```
 ## Repo Contents   
 * Dockerfile, docker-compose.yml, and Installer.cls to create container
 * iris.script, contains script to execute during container initialization 
