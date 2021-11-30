@@ -11,10 +11,10 @@ Parameter PAGENAME;
 /// Domain used for localization.
 Parameter DOMAIN;
 
-ClassMethod DrawHTML() As %Status
+ClassMethod DrawHTML(pSeed As %String) As %Status
 {
        
-    &html<<ul>>
+    &html<<ul id=pSeed>>
     &html<<li><a href="http://127.0.0.1:52773/csp/sys/%25CSP.Portal.Home.zen?IRISLogout=end">Management Portal</a></li>>
     &html<<li><a href="http://localhost:52773/terminal/">Web Terminal</a></li>>
     &html<<li><a href="http://localhost:52773/csp/user/list.csp">Main Tasks</a></li>>
