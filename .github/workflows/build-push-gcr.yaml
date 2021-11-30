@@ -8,17 +8,16 @@ on:
 
 env:
   # Change this section according to your needs
-  IMAGE_NAME:   iris-google-run-demo
-  SERVICE:      deploy-demo
-  DOMAIN_NAME:  deploy.contest.community.intersystems.com
-
-  # Leave this section untouched
-  PROJECT_ID:   hackathon-297608
-  CLUSTER_NAME: contest
+  IMAGE_NAME:   dataAppSecurity-image
+  SERVICE:      dataAppSecurity
+  DOMAIN_NAME:  dataAppSecurity.demo.community.intersystems.com
+# Leave this section untouched
+  PROJECT_ID:   iris-community-demos
+  CLUSTER_NAME: demo
   GITHUB_SHA:   ${{ github.sha }}
   GCR_LOCATION: eu.gcr.io
   REGION:       europe-west2
-  NAMESPACE:    contest
+  NAMESPACE:    demo
 
 jobs:
   deploy-cloud-run:
@@ -37,14 +36,17 @@ jobs:
     - name: Authorize Docker push
       run: gcloud auth configure-docker
 
+
     - name: Build and Push image
       run: |
         docker build -t ${GCR_LOCATION}/${PROJECT_ID}/${IMAGE_NAME}:${GITHUB_SHA} .
         docker push ${GCR_LOCATION}/${PROJECT_ID}/${IMAGE_NAME}:${GITHUB_SHA}
+
     - name: Deploy to Cloud Run
       run: |
         echo "[INFO] Set google project..."
         gcloud config set project ${PROJECT_ID}
+
         echo "[INFO] Deploy service..."
         gcloud run deploy ${SERVICE}   \
           --platform gke               \
@@ -57,6 +59,7 @@ jobs:
           --timeout 300                \
           --verbosity debug            \
           --image ${GCR_LOCATION}/${PROJECT_ID}/${IMAGE_NAME}:${GITHUB_SHA}
+
         echo "[INFO] Create domain mappings..."
         if [[ $(gcloud run domain-mappings list --platform gke --cluster ${CLUSTER_NAME} --cluster-location ${REGION} --namespace ${NAMESPACE} --filter "DOMAIN=${DOMAIN_NAME}" | grep -v DOMAIN | wc -l) == 0 ]]; then
           gcloud run domain-mappings create \
@@ -68,6 +71,7 @@ jobs:
             --verbosity debug               \
             --domain ${DOMAIN_NAME}
         fi
+
     - name: Create domain name
       run: |
         gcloud container clusters get-credentials ${CLUSTER_NAME} --region ${REGION} --project ${PROJECT_ID}
@@ -82,6 +86,7 @@ jobs:
         else
           echo "[INFO] Domain [${DOMAIN_NAME}] is in the domains list. Leave untouched...";     \
         fi
+
     - name: Enable TLS-access
       run: |
         gcloud container clusters get-credentials ${CLUSTER_NAME} --region ${REGION} --project ${PROJECT_ID}
