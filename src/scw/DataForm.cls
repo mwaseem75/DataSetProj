@@ -219,7 +219,7 @@ ClientMethod validateMonthDay(field1 As %String, field2 As %String) As %Status [
  return false;
 }
 
-ClassMethod DrawHTML(pSeed As %String) As %Status
+ClassMethod DrawHTML() As %Status
 {
        
     &html<<ul>>
