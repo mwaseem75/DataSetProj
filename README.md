@@ -12,7 +12,7 @@ By using the application New user can be created programmatically along with rol
 * Enable/Disable Web Terminal Application by code
 * Authenticate/Unauthenticate Web Terminal Application by code
 ## Online Demo
-https://dappsecurity.demo.community.intersystems.com/csp/user/list_od.csp
+https://dappsecurity.demo.community.intersystems.com/csp/user/list.csp
 ## Community Article
 https://community.intersystems.com/post/programmatically-create-users-grant-privileges-enabledisable-and-authenticateunauthenticate-web
 
