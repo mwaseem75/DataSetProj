@@ -11,7 +11,15 @@ By using the application New user can be created programmatically along with rol
 * Grant all privileges to user by assigning %All role by code
 * Enable/Disable Web Terminal Application by code
 * Authenticate/Unauthenticate Web Terminal Application by code
+## Online Demo
+https://dappsecurity.demo.community.intersystems.com/csp/user/list.csp
+## Community Article
+https://community.intersystems.com/post/programmatically-create-users-grant-privileges-enabledisable-and-authenticateunauthenticate-web
 
+## Installation with ZPM
+```
+zpm:USER>zpm "install scw-Patient"
+```
 ## Application Layout
 ![image](https://user-images.githubusercontent.com/18219467/143904440-21d604b6-43e5-46f6-b19f-0f3292aa5152.png)
 
@@ -19,11 +27,7 @@ By using the application New user can be created programmatically along with rol
  * InterSystems online course (InterSystems Security Basics) : https://learning.intersystems.com/course/view.php?id=1774 
  * Read related documentations (Authentication and Authorization) : https://docs.intersystems.com/latest/csp/docbook/DocBook.UI.Page.cls?KEY=TSQS_preface
  * Read related documentations (Auditing Guide) : https://docs.intersystems.com/irislatest/csp/docbook/DocBook.UI.Page.cls?KEY=AAUDIT
- * 
-## Installation with ZPM
-```
-zpm:USER>zpm "install scw-Patient"
-```
+
 ## Repo Contents   
 * Dockerfile, docker-compose.yml, and Installer.cls to create container
 * iris.script, contains script to execute during container initialization 
@@ -33,7 +37,6 @@ zpm:USER>zpm "install scw-Patient"
 ## Requirements:  
 * [Docker desktop]( https://www.docker.com/products/docker-desktop)
 * Get the latest InterSystems IRIS for Health image for use in the Dockerfile: https://hub.docker.com/_/intersystems-iris-for-health  
-
 
 ## To Run on Windows:  
 ```
@@ -51,8 +54,6 @@ zpm:USER>zpm "install scw-Patient"
 Log in with credentials: SuperUser | SYS
 
 # Getting Started
-* Releted article on community protal https://community.intersystems.com/post/programmatically-create-users-grant-privileges-enabledisable-and-authenticateunauthenticate-web
-
 * Navigate to http://localhost:52773/csp/user/list.csp for landing page
 First of all create New user by cliking "Create TestUser" button. Make sure to login as SUPERUSER OR _SYSTEM in order to create new User.
 Newly created user can be viewed from management portal (System > Security Management > User)
