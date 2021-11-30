@@ -3,41 +3,64 @@ Class scw.Security
 {
 
 /// Create TestUser 
-ClassMethod CreateUser() As %Status
+ClassMethod CreateUser() As %String
 {
-    Set sc = $$$OK
+    
     // 
     &sql(CREATE USER TestUser IDENTIFY BY demo)
-    if SQLCODE < 0 throw ##class(%Exception.SQL).CreateFromSQLCODE(SQLCODE,%msg)
-
-    Return sc
+    //if SQLCODE < 0 throw ##class(%Exception.SQL).CreateFromSQLCODE(SQLCODE,%msg)
+	if SQLCODE < 0 
+	{
+		DO ##class(%Exception.SQL).CreateFromSQLCODE(SQLCODE,%msg)
+		Return %msg
+	}
+	else
+	{
+		Return "TestUser with password demo is created"	
+	}
 }
 
 /// Create ReadWrite Role
-ClassMethod GrantRoles() As %Status
+ClassMethod GrantRoles() As %String
 {
-    Set sc = $$$OK
-    
+      
     &sql(CREATE ROLE ReadWrite)
-    if SQLCODE < 0 throw ##class(%Exception.SQL).CreateFromSQLCODE(SQLCODE,%msg)
+    if SQLCODE < 0 
+	{
+		DO ##class(%Exception.SQL).CreateFromSQLCODE(SQLCODE,%msg)
+		Return %msg
+	}
+
     
     &sql(GRANT SELECT,UPDATE,INSERT ON scw.Patient TO ReadWrite)
-    if SQLCODE < 0 throw ##class(%Exception.SQL).CreateFromSQLCODE(SQLCODE,%msg)
+     if SQLCODE < 0 
+	{
+		DO ##class(%Exception.SQL).CreateFromSQLCODE(SQLCODE,%msg)
+		Return %msg
+	}
+
     
     &sql(GRANT ReadWrite To TestUser)
-    if SQLCODE < 0 throw ##class(%Exception.SQL).CreateFromSQLCODE(SQLCODE,%msg)
+     if SQLCODE < 0 
+	{
+		DO ##class(%Exception.SQL).CreateFromSQLCODE(SQLCODE,%msg)
+		Return %msg
+	}
     
-    Return sc
+    Return "Role is created and granted to TestUser successfully"
 }
 
 /// Grant %All to TestUser
-ClassMethod GrantAll() As %Status
+ClassMethod GrantAll() As %String
 {
-    Set sc = $$$OK
-  
+     
     &sql(GRANT %All To TestUser)
-    if SQLCODE < 0 throw ##class(%Exception.SQL).CreateFromSQLCODE(SQLCODE,%msg)
-    Return sc
+     if SQLCODE < 0 
+	{
+		DO ##class(%Exception.SQL).CreateFromSQLCODE(SQLCODE,%msg)
+		Return %msg
+	}
+    Return "Role %ALL is granted to TestUser successfully"
 }
 
 /// Disable Web terminal web application
@@ -47,10 +70,20 @@ ClassMethod DisableWT() As %Status
     New $Namespace
     Set $Namespace = "%SYS"
     Set App = ##class(Security.Applications).%OpenId("/terminal")
-    Set App.Enabled=0
-    Do App.%Save()
-
-    Return sc
+    Set sts = App.Enabled
+    if sts = 0 
+    {
+	    return "Web Terminal application already Disabled"
+	}
+	set App.Enabled = 0
+    if App.%Save() = sc 
+    {
+	    return "Web Terminal application Disabled successfully"
+	 }
+	 else
+	 {
+		return "Error while disabling Web Terminal Application"
+	 }
 }
 
 /// Enable Web terminal web application
@@ -60,10 +93,20 @@ ClassMethod EnableWT() As %Status
     New $Namespace
     Set $Namespace = "%SYS"
     Set App = ##class(Security.Applications).%OpenId("/terminal")
-    Set App.Enabled=1
-    Do App.%Save()
-
-    Return sc
+    Set sts = App.Enabled
+    if sts = 1 
+    {
+	    return "Web Terminal application already Enabled"
+	}
+	set App.Enabled = 1
+    if App.%Save() = sc 
+    {
+	    return "Web Terminal application Enabled successfully"
+	 }
+	 else
+	 {
+		return "Error while enabling Web Terminal Application"
+	 }
 }
 
 /// Unauthenticate Web terminal web application
@@ -73,10 +116,20 @@ ClassMethod Unauth() As %Status
     New $Namespace
     Set $Namespace = "%SYS"
     Set App = ##class(Security.Applications).%OpenId("/terminal")
+    Set sts = App.AutheEnabled
+    if sts = 0
+    {
+	    return "Web Terminal Web Application Authentication already Disabled" 
+	}
     Set App.AutheEnabled=0
-    Do App.%Save()
-
-    Return sc
+     if App.%Save() = sc 
+    {
+	    return "Web Terminal application Authentication Disabled"
+	 }
+	 else
+	 {
+		return "Error while disabling Web Terminal Application Authentication"
+	 }
 }
 
 /// Authenticate Web terminal web application
@@ -86,10 +139,20 @@ ClassMethod Auth() As %Status
     New $Namespace
     Set $Namespace = "%SYS"
     Set App = ##class(Security.Applications).%OpenId("/terminal")
+    Set sts = App.AutheEnabled
+    if sts = 32
+    {
+	    return "Web Terminal Web Application Authentication already Enabled" 
+	}
     Set App.AutheEnabled=32
-    Do App.%Save()
-
-    Return sc
+     if App.%Save() = sc 
+    {
+	    return "Web Terminal application Authentication Enabled"
+	 }
+	 else
+	 {
+		return "Error while enabling Web Terminal Application Authentication"
+	 }
 }
 
 }
