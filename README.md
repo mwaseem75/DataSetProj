@@ -5,18 +5,19 @@ Web Application build on InterSystems IRIS for Health and Docker to demonstrate 
 By using the application New user can be created programmatically along with roles and SQL privileges, Option to Enable/Disable and Authenticate/Unauthenticate web application. 
 
 ## Recommendation 
- * View online learning course : https://learning.intersystems.com/course/view.php?id=1774 
- * Read related documentations: https://docs.intersystems.com/latest/csp/docbook/DocBook.UI.Page.cls?KEY=TSQS_preface
+ * InterSystems Security Basics online course : https://learning.intersystems.com/course/view.php?id=1774 
+ * Read related documentations (Authentication and Authorization) : https://docs.intersystems.com/latest/csp/docbook/DocBook.UI.Page.cls?KEY=TSQS_preface
+ * Read related documentations (Auditing Guide) : https://docs.intersystems.com/irislatest/csp/docbook/DocBook.UI.Page.cls?KEY=AAUDIT
 
 ## Installation with ZPM
 ```
 zpm:USER>zpm "install scw-Patient"
 ```
 ## Features
-* Demonstrate Authentication and Authorization process
+* Demonstrate Authentication,Authorization and Auditing basics
 * Create New User by code
-* Create SQL table reader role and assign to user
-* Create SQL table writer role and assign to user
+* Programatically added audit Log
+* Create Role and Assign SQL table priviliges
 * Grant all privileges to user by assigning %All role by code
 * Enable/Disable Web Terminal Application by code
 * Authenticate/Unauthenticate Web Terminal Application by code
