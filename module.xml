@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Export generator="Cache" version="25">
-  <Document name="scw-Patient.ZPM">
+  <Document name="Data_APP_Security.ZPM">
     <Module>
       <Description>Project for security contest 2021</Description>
-      <Name>scw-Patient</Name>
+      <Name>Data_APP_Security</Name>
       <Version>1.0.1</Version>
       <Packaging>module</Packaging>
       <SourcesRoot>src</SourcesRoot>
