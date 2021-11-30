@@ -5,7 +5,7 @@ Web Application build on InterSystems IRIS for Health and Docker to demonstrate 
 By using the application New user can be created programmatically along with roles and SQL privileges, Option to Enable/Disable and Authenticate/Unauthenticate web application. 
 
 ## Recommendation 
- * InterSystems Security Basics online course : https://learning.intersystems.com/course/view.php?id=1774 
+ * InterSystems online course (InterSystems Security Basics) : https://learning.intersystems.com/course/view.php?id=1774 
  * Read related documentations (Authentication and Authorization) : https://docs.intersystems.com/latest/csp/docbook/DocBook.UI.Page.cls?KEY=TSQS_preface
  * Read related documentations (Auditing Guide) : https://docs.intersystems.com/irislatest/csp/docbook/DocBook.UI.Page.cls?KEY=AAUDIT
 
