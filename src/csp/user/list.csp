@@ -80,12 +80,10 @@ li a:hover {
 }
 
 .center {
-  margin: 0;
+  
   position: absolute;
-  top: 40%;
   left: 20%;
-  -ms-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
+  
 }
 
 </STYLE>
@@ -112,21 +110,24 @@ li a:hover {
     <br><br>
     
     <ul id="ul">
-    <li id="li"><a id = "vula" href=. onClick="#server(..CreateUser())#;return false;">Create TestUser</a></li>
-    <li id="li"><a id = "vula" href=. onClick="#server(..GrantRoles())#;return false;">Grant Read/Write Access</a></li>
-    <li id="li"><a id = "vula" href=. onClick="#server(..GrantAll())#;return false;">Grant All Privileges</a></li>
+    <li id="li"><a id = "vula" href=. onClick="var res = #server(..CreateUser())#;alert(res);return false;">Create TestUser</a></li>
+    <li id="li"><a id = "vula" href=. onClick="var res = #server(..GrantRoles())#;alert(res);return false;">Grant Read/Write Access</a></li>
+    <li id="li"><a id = "vula" href=. onClick="var res = #server(..GrantAll())#;alert(res);return false;">Grant All Privileges</a></li>
+  
+      
     </ul>
     <br>
      <ul id="ul">
-    <li id="li"><a id = "vula" href=. onClick="#server(..DisableWT())#;return false;">Disable WebTerminal Application</a></li>
-    <li id="li"><a id = "vula" href=. onClick="#server(..EnableWT())#;return false;">Enable WebTerminal Application</a></li>
-    
+      <li id="li"><a id = "vula" href=. onClick="var res = #server(..DisableWT())#;alert(res);return false;">Disable WebTerminal Application</a></li>
+      <li id="li"><a id = "vula" href=. onClick="var res = #server(..EnableWT())#;alert(res);return false;">Enable WebTerminal Application</a></li>
+      
     </ul>
     
     <br>
      <ul id="ul">
-    <li id="li"><a id = "vula" href=. onClick="#server(..Unauth())#;return false;">Disable WebTerminal Authentication</a></li>
-    <li id="li"><a id = "vula" href=. onClick="#server(..Auth())#;return false;">Enable WebTerminal Authentication</a></li>
+     
+       <li id="li"><a id = "vula" href=. onClick="var res = #server(..Unauth())#;alert(res);return false;">Disable WebTerminal Authentication</a></li>
+       <li id="li"><a id = "vula" href=. onClick="var res = #server(..Auth())#;alert(res);return false;">Enable WebTerminal Application</a></li>
     
     </ul>
   </div>
