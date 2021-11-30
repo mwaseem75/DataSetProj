@@ -2,20 +2,20 @@
 Class scw.Security
 {
 
-/// Create TestUser 
+///Create TestUser with password demo and log the record in audit LOG 
 ClassMethod CreateUser() As %String
 {
-    
-    // 
+        
     &sql(CREATE USER TestUser IDENTIFY BY demo)
-    //if SQLCODE < 0 throw ##class(%Exception.SQL).CreateFromSQLCODE(SQLCODE,%msg)
-	if SQLCODE < 0 
+    if SQLCODE < 0 
 	{
+		//in case of error return message
 		DO ##class(%Exception.SQL).CreateFromSQLCODE(SQLCODE,%msg)
 		Return %msg
 	}
 	else
 	{
+		Do $SYSTEM.Security.Audit("%System","%Security","UserChange","User:TestUser | Password:demo","Audit Log inserted from Data_APP_Security")		                        
 		Return "TestUser with password demo is created"	
 	}
 }
@@ -27,22 +27,23 @@ ClassMethod GrantRoles() As %String
     &sql(CREATE ROLE ReadWrite)
     if SQLCODE < 0 
 	{
+		//in case of error return message
 		DO ##class(%Exception.SQL).CreateFromSQLCODE(SQLCODE,%msg)
 		Return %msg
 	}
-
     
     &sql(GRANT SELECT,UPDATE,INSERT ON scw.Patient TO ReadWrite)
      if SQLCODE < 0 
 	{
+		//in case of error return message
 		DO ##class(%Exception.SQL).CreateFromSQLCODE(SQLCODE,%msg)
 		Return %msg
 	}
-
     
     &sql(GRANT ReadWrite To TestUser)
      if SQLCODE < 0 
 	{
+		//in case of error return message
 		DO ##class(%Exception.SQL).CreateFromSQLCODE(SQLCODE,%msg)
 		Return %msg
 	}
@@ -57,6 +58,7 @@ ClassMethod GrantAll() As %String
     &sql(GRANT %All To TestUser)
      if SQLCODE < 0 
 	{
+		//in case of error return message
 		DO ##class(%Exception.SQL).CreateFromSQLCODE(SQLCODE,%msg)
 		Return %msg
 	}
