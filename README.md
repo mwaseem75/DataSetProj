@@ -16,8 +16,8 @@ zpm:USER>zpm "install scw-Patient"
 ## Features
 * Demonstrate Authentication,Authorization and Auditing basics
 * Create New User by code
-* Programatically added audit Log
-* Create Role and Assign SQL table priviliges
+* Add Audit Log Programatically
+* Create Role and Assign SQL table priviliges by code
 * Grant all privileges to user by assigning %All role by code
 * Enable/Disable Web Terminal Application by code
 * Authenticate/Unauthenticate Web Terminal Application by code
