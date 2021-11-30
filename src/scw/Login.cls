@@ -11,7 +11,7 @@ Parameter PAGENAME;
 /// Domain used for localization.
 Parameter DOMAIN;
 
-ClassMethod DrawHTML(pSeed As %String) As %Status
+ClassMethod DrawHTML() As %Status
 {
        
     &html<<ul>>
