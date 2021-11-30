@@ -8,9 +8,9 @@ on:
 
 env:
   # Change this section according to your needs
-  IMAGE_NAME:   data-app-security-image
-  SERVICE:      data-app-security
-  DOMAIN_NAME:  data-app-security.demo.community.intersystems.com
+  IMAGE_NAME:   dataappsecurity-image
+  SERVICE:      dataappsecurity
+  DOMAIN_NAME:  dataappsecurity.demo.community.intersystems.com
 # Leave this section untouched
   PROJECT_ID:   iris-community-demos
   CLUSTER_NAME: demo
