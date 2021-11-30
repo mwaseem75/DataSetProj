@@ -8,7 +8,10 @@ By using the application New user can be created programmatically along with rol
  * View online learning course : https://learning.intersystems.com/course/view.php?id=1774 
  * Read related documentations: https://docs.intersystems.com/latest/csp/docbook/DocBook.UI.Page.cls?KEY=TSQS_preface
 
-
+## Installation with ZPM
+```
+zpm:USER>zpm "install scw-Patient"
+```
 ## Features
 * Demonstrate Authentication and Authorization process
 * Create New User by code
@@ -30,6 +33,7 @@ By using the application New user can be created programmatically along with rol
 ## Requirements:  
 * [Docker desktop]( https://www.docker.com/products/docker-desktop)
 * Get the latest InterSystems IRIS for Health image for use in the Dockerfile: https://hub.docker.com/_/intersystems-iris-for-health  
+
 
 ## To Run on Windows:  
 ```
