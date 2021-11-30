@@ -4,7 +4,7 @@
 Web Application build on InterSystems IRIS for Health and Docker to demonstrate Authentication and Authorization process.
 By using the application New user can be created programmatically along with roles and SQL privileges, Option to Enable/Disable and Authenticate/Unauthenticate web application. 
 ## Features
-* Demonstrate Authentication,Authorization and Auditing basics
+* Authentication, Authorization and Auditing basics
 * Create New User by code
 * Add Audit Log Programatically
 * Create Role and Assign SQL table priviliges by code
