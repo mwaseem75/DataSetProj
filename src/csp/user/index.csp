@@ -92,7 +92,7 @@ li a:hover {
 <body>
 <csp:class encoded=1 super="%CSP.Page,scw.Security">
 	<ul>
-    <li><a href="/csp/sys/%25CSP.Portal.Home.zen?IRISLogout=end">Management Portal</a></li>
+    <li><a href="/csp/sys/%25CSP.Portal.Home.zen">Management Portal</a></li>
     <li><a href="/terminal/">Web Terminal</a></li>
     <li><a href="/csp/user/index.csp">Main Tasks</a></li>
     <li><a href="/csp/user/scw.DataForm.cls">Data Form</a></li>
