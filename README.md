@@ -53,12 +53,19 @@ zpm:USER>zpm "install scw-Patient"
 ```
 Log in with credentials: SuperUser | SYS
 
-## Getting Started with AUTHENTICATION
+## Getting Started 
 
+## AUTHENTICATION
 * Navigate to http://localhost:52773/csp/user/index.csp index page, First of all create New user by cliking "Create TestUser" button. Make sure to login as SUPERUSER OR _SYSTEM in order to create new User.
 Newly created user can be viewed from management portal (System > Security Management > User)
 ![image](https://user-images.githubusercontent.com/18219467/143899649-a1f630de-fff5-4e08-ae11-30185c83b718.png)
 
+## AUDITING
+Upon creating user, record with Description "Audit Log inserted from DATA_APP_Security" is added in auditing database which can be viewed from Management portal 
+(Security > Security Management > View Audit Database)
+![image](https://user-images.githubusercontent.com/18219467/144225356-f285bf7b-226d-45e8-bad6-6ccc525301a5.png)
+
+## AUTHORIZATION
 * Navigate to http://localhost:52773/csp/user/scw.DataForm.cls data form by using *TestUser | demo* 
 By clicking search button system will raise error: 	
 "ERROR #5580: SQL Privilege Violation: 'User TestUser is not privileged for the operation'"
@@ -69,6 +76,7 @@ Now navigate back to http://localhost:52773/csp/user/scw.DataForm.cls for data f
 
 ![image](https://user-images.githubusercontent.com/18219467/143901209-ec5d2e19-a6c5-4670-af52-95983fc6f269.png)
 
+## GRANTING ALL PRIVILEGES
 * Log in to management portal from docker http://localhost:52773/csp/sys/%25CSP.Portal.Home.zen using *TestUser | demo*
 System will raise the "ERROR #940: Insufficient privilege for operation"
 ![image](https://user-images.githubusercontent.com/18219467/143904877-714ddd94-bdfb-4fa6-a2bf-e69952fcb24a.png)
@@ -77,6 +85,8 @@ System will raise the "ERROR #940: Insufficient privilege for operation"
 Now login to management portal http://localhost:52773/csp/sys/%25CSP.Portal.Home.zen by using *TestUser | demo* and now user has all privileges
 ![image](https://user-images.githubusercontent.com/18219467/143905675-2415fc00-cb9d-4099-a2ed-e93ecaf151c3.png)
 
+
+## ENABLE/DISABLE WEB APPLICATION
 * Navigate to web terminal application by clicking Web Terminal menu option
 ![image](https://user-images.githubusercontent.com/18219467/143905910-8e65a149-8fc2-48f9-bf95-bf0771aeb6b2.png)
 
@@ -88,16 +98,21 @@ Now login to management portal http://localhost:52773/csp/sys/%25CSP.Portal.Home
  ![image](https://user-images.githubusercontent.com/18219467/143906819-b37e725d-d023-471f-a065-56b07bf971a5.png)
 
 Web terminal application can be enabled by clicking "Enable WebTerminal Application" button.
- 
+
+
+## AUTHENTICATE/UNAUTHENTICATE WEB APPLICATION
  * Now Let's disable all the authentications for Web Terminal Application by pressing "Disable WebTerminal Authentication". 
  System will not allow to enter even providing correct credentials
  ![image](https://user-images.githubusercontent.com/18219467/143907300-e6177d2b-5b38-4d67-9b2d-3e11fa19169c.png)
 
 Web terminal application Authentication can be enabled by clicking "Enable WebTerminal Authentication" button.
 
+
+
 Thanks
 
-# Special Thanks to:
+
+## Special Thanks to:
 Evgeny Shvarov for: https://openexchange.intersystems.com/package/secured-rest-api template for guidance
 
 
