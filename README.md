@@ -12,7 +12,7 @@ By using the application New user can be created programmatically along with rol
 * Enable/Disable Web Terminal Application by code
 * Authenticate/Unauthenticate Web Terminal Application by code
 ## Online Demo
-https://dappsecurity.demo.community.intersystems.com/csp/user/list.csp
+https://dappsecurity.demo.community.intersystems.com/csp/user/index.csp
 ## Community Article
 https://community.intersystems.com/post/programmatically-create-users-grant-privileges-enabledisable-and-authenticateunauthenticate-web
 
@@ -53,8 +53,9 @@ zpm:USER>zpm "install scw-Patient"
 ```
 Log in with credentials: SuperUser | SYS
 
-# Getting Started
-* Navigate to http://localhost:52773/csp/user/list.csp for landing page
+## Getting Started 
+#From docker or from local instance 
+* Navigate to index page from docker > http://localhost:52773/csp/user/index.csp  
 First of all create New user by cliking "Create TestUser" button. Make sure to login as SUPERUSER OR _SYSTEM in order to create new User.
 Newly created user can be viewed from management portal (System > Security Management > User)
 ![image](https://user-images.githubusercontent.com/18219467/143899649-a1f630de-fff5-4e08-ae11-30185c83b718.png)
@@ -64,7 +65,7 @@ By clicking search button system will raise error:
 "ERROR #5580: SQL Privilege Violation: 'User TestUser is not privileged for the operation'"
 ![image](https://user-images.githubusercontent.com/18219467/143900764-fe45525c-3942-415d-8aa9-e90bc550c3a5.png)
 
-* Navigate to http://localhost:52773/csp/user/list.csp by using SuperUser | SYS and assign read access by clicking "Grant Read Access"
+* Navigate to http://localhost:52773/csp/user/index.csp by using SuperUser | SYS and assign read access by clicking "Grant Read Access"
 Now navigate back to http://localhost:52773/csp/user/scw.DataForm.cls data form by using *TestUser | demo* and data can be viewed 
 and updated successfully
 
@@ -74,7 +75,7 @@ and updated successfully
 System will raise the "ERROR #940: Insufficient privilege for operation"
 ![image](https://user-images.githubusercontent.com/18219467/143904877-714ddd94-bdfb-4fa6-a2bf-e69952fcb24a.png)
 
-* Navigate to http://localhost:52773/csp/user/list.csp for landing page by using SuperUser | SYS and Grant all privileges to TestUser by pressing "Grant All Privilege" button.
+* Navigate to http://localhost:52773/csp/user/index.csp for landing page by using SuperUser | SYS and Grant all privileges to TestUser by pressing "Grant All Privilege" button.
 Now login to management portal http://localhost:${port}/csp/sys/%25CSP.Portal.Home.zen?$NAMESPACE=%25SYS" by using *TestUser | demo* and now user has all privileges
 ![image](https://user-images.githubusercontent.com/18219467/143905675-2415fc00-cb9d-4099-a2ed-e93ecaf151c3.png)
 
