@@ -69,12 +69,12 @@ Now navigate back to http://localhost:52773/csp/user/scw.DataForm.cls for data f
 
 ![image](https://user-images.githubusercontent.com/18219467/143901209-ec5d2e19-a6c5-4670-af52-95983fc6f269.png)
 
-* Log in to management portal from docker http://localhost:${port}/csp/sys/%25CSP.Portal.Home.zen?$NAMESPACE=%25SYS" using *TestUser | demo*
+* Log in to management portal from docker http://localhost:52773/csp/sys/%25CSP.Portal.Home.zen using *TestUser | demo*
 System will raise the "ERROR #940: Insufficient privilege for operation"
 ![image](https://user-images.githubusercontent.com/18219467/143904877-714ddd94-bdfb-4fa6-a2bf-e69952fcb24a.png)
 
 * Navigate to http://localhost:52773/csp/user/index.csp index page by using SuperUser | SYS and Grant all privileges to TestUser by pressing "Grant All Privilege" button.
-Now login to management portal http://localhost:${port}/csp/sys/%25CSP.Portal.Home.zen?$NAMESPACE=%25SYS" by using *TestUser | demo* and now user has all privileges
+Now login to management portal http://localhost:52773/csp/sys/%25CSP.Portal.Home.zen by using *TestUser | demo* and now user has all privileges
 ![image](https://user-images.githubusercontent.com/18219467/143905675-2415fc00-cb9d-4099-a2ed-e93ecaf151c3.png)
 
 * Navigate to web terminal application by clicking Web Terminal menu option
