@@ -17,7 +17,7 @@ ClassMethod DrawHTML(pSeed As %String) As %Status
     &html<<ul>>
     &html<<li><a href="/csp/sys/%25CSP.Portal.Home.zen?IRISLogout=end">Management Portal</a></li>>
     &html<<li><a href="/terminal/">Web Terminal</a></li>>
-    &html<<li><a href="/csp/user/list.csp">Main Tasks</a></li>>
+    &html<<li><a href="/csp/user/index.csp">Main Tasks</a></li>>
     &html<<li><a href="/csp/user/scw.DataForm.cls">Data Form</a></li>>
     &html<<li><a href="/csp/user/scw.Login.cls">Login</a></li>>
     &html<</ul>>
