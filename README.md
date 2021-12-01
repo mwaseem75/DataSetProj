@@ -53,7 +53,7 @@ zpm:USER>zpm "install scw-Patient"
 ```
 Log in with credentials: SuperUser | SYS
 
-## Getting Started 
+## Getting Started with AUTHENTICATION
 
 * Navigate to http://localhost:52773/csp/user/index.csp index page, First of all create New user by cliking "Create TestUser" button. Make sure to login as SUPERUSER OR _SYSTEM in order to create new User.
 Newly created user can be viewed from management portal (System > Security Management > User)
