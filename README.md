@@ -1,8 +1,9 @@
 # Data_APP_Security
 
 ## Summary
-Web Application build on InterSystems IRIS for Health and Docker to demonstrate Authentication and Authorization process.
-By using the application New user can be created programmatically along with roles and SQL privileges, Option to Enable/Disable and Authenticate/Unauthenticate web application. 
+Web Application build on InterSystems IRIS for Health and Docker to demonstrate Authentication, Authorization AND Auditing basics.
+By using the application New user can be created programmatically along with auditing, roles and SQL privileges, Option to Enable/Disable and Authenticate/Unauthenticate web application. 
+
 ## Features
 * Authentication, Authorization and Auditing basics
 * Create New User by code
@@ -11,6 +12,7 @@ By using the application New user can be created programmatically along with rol
 * Grant all privileges to user by assigning %All role by code
 * Enable/Disable Web Terminal Application by code
 * Authenticate/Unauthenticate Web Terminal Application by code
+
 ## Online Demo
 https://dappsecurity.demo.community.intersystems.com/csp/user/index.csp by using SuperUser | SYS
 ## Community Article
