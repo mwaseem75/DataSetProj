@@ -1,9 +1,18 @@
-<html>
-<head>
+Class scw.Oauth Extends %CSP.Page
+{
 
-<!-- Put your page Title here -->
-<title>	Data_APP_Security </title>
-<STYLE>
+Parameter OAUTH2CLIENTREDIRECTURI = "/csp/user/scw.OauthRe.cls";
+
+Parameter OAUTH2ROOT = "https://github.com/login/oauth/authorize";
+
+Parameter OAUTH2APPNAME = "Data_APP_Security";
+
+ClassMethod OnPage() As %Status
+{
+ &html<<html>
+ <head>
+ </head>
+ <STYLE>
 body { font-family: arial; }
 
      table.tpTable caption{
@@ -87,11 +96,8 @@ li a:hover {
 }
 
 </STYLE>
-</head>
-
-<body>
-<csp:class encoded=1 super="%CSP.Page,scw.Security">
-	<ul>
+ <body style="text-align: center;">
+	  <ul>
     <li><a href="/csp/sys/%25CSP.Portal.Home.zen">Management Portal</a></li>
     <li><a href="/terminal/">Web Terminal</a></li>
     <li><a href="/csp/user/index.csp">Main Tasks</a></li>
@@ -99,39 +105,35 @@ li a:hover {
     <li><a href="/csp/user/scw.Login.cls">Login</a></li>
     <li><a href="/csp/user/scw.Oauth.cls">Login with Github account</a></li>
     </ul>
+        <!-- insert the page content here -->
+        <h1>GitHub OAuth2 API</h1>
+        <p>This page demo shows how to call Github API functions using OAuth2 authorization.
+        >
+      
+        
+  // we need to supply openid scope to authenticate to Github
+  //set scope="user"
+  set scope="user"
+  set properties("approval_prompt")="force"
+  set properties("include_granted_scopes")="true"
+  set url=##class(%SYS.OAuth2.Authorization).GetAuthorizationCodeEndpoint(..#OAUTH2APPNAME,scope,
+    ..#OAUTH2CLIENTREDIRECTURI,.properties,.isAuthorized,.sc) 
+  w !,"<p><a href='"_url_"'>Github Sign In</a>" 
 
 
- 
-  <div class="container">
-  <div class="center">
-  
-    
-    <h2>User : #($UserName)#<h2>
-    <h2>Roles : #($ROLES)#<h2>
-    <br><br>
-    
-    <ul id="ul">
-    <li id="li"><a id = "vula" href=. onClick="var res = #server(..CreateUser())#;alert(res);return false;">Create TestUser</a></li>
-    <li id="li"><a id = "vula" href=. onClick="var res = #server(..GrantRoles())#;alert(res);return false;">Grant Read/Write Access</a></li>
-    <li id="li"><a id = "vula" href=. onClick="var res = #server(..GrantAll())#;alert(res);return false;">Grant All Privileges</a></li>
-  
-      
-    </ul>
-    <br>
-     <ul id="ul">
-      <li id="li"><a id = "vula" href=. onClick="var res = #server(..DisableWT())#;alert(res);return false;">Disable WebTerminal Application</a></li>
-      <li id="li"><a id = "vula" href=. onClick="var res = #server(..EnableWT())#;alert(res);return false;">Enable WebTerminal Application</a></li>
-      
-    </ul>
-    
-    <br>
-     <ul id="ul">
-     
-       <li id="li"><a id = "vula" href=. onClick="var res = #server(..Unauth())#;alert(res);return false;">Disable WebTerminal Authentication</a></li>
-       <li id="li"><a id = "vula" href=. onClick="var res = #server(..Auth())#;alert(res);return false;">Enable WebTerminal Application</a></li>
-    
-    </ul>
-  </div>
-  </div>  
-</body>
-</html>
+   &html<</body>
+</html>>
+  Quit $$$OK
+}
+
+ClassMethod OnPreHTTP() As %Boolean [ ServerOnly = 1 ]
+{
+  #dim %response as %CSP.Response
+  set scope="user"
+  if ##class(%SYS.OAuth2.AccessToken).IsAuthorized(..#OAUTH2APPNAME,,scope,.accessToken,.idtoken,.responseProperties,.error) {
+    set %response.ServerSideRedirect="/csp/user/scw.Oauth.cls"
+  }
+  quit 1
+}
+
+}

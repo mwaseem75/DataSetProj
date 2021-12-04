@@ -1,9 +1,18 @@
-<html>
-<head>
+Include %occInclude
 
-<!-- Put your page Title here -->
-<title>	Data_APP_Security </title>
-<STYLE>
+Class scw.OauthRe Extends %CSP.Page
+{
+
+Parameter OAUTH2APPNAME = "Data_APP_Security";
+
+Parameter OAUTH2ROOT = "https://github.com/login/oauth/authorize";
+
+ClassMethod OnPage() As %Status
+{
+  &html<<html>
+   <head>
+   </head>
+   <STYLE>
 body { font-family: arial; }
 
      table.tpTable caption{
@@ -87,51 +96,40 @@ li a:hover {
 }
 
 </STYLE>
-</head>
-
-<body>
-<csp:class encoded=1 super="%CSP.Page,scw.Security">
-	<ul>
+   <body>
+   <ul>
     <li><a href="/csp/sys/%25CSP.Portal.Home.zen">Management Portal</a></li>
     <li><a href="/terminal/">Web Terminal</a></li>
     <li><a href="/csp/user/index.csp">Main Tasks</a></li>
     <li><a href="/csp/user/scw.DataForm.cls">Data Form</a></li>
     <li><a href="/csp/user/scw.Login.cls">Login</a></li>
     <li><a href="/csp/user/scw.Oauth.cls">Login with Github account</a></li>
-    </ul>
-
-
+    </ul>>
+  // Check if we have an access token
+  set scope="user"
+  // to see if token has already been saved locally 
+  set isAuth = ##class(%SYS.OAuth2.AccessToken).IsAuthorized(..#OAUTH2APPNAME,,scope,.accessToken,.idtoken,.responseProperties,.error)
+  
+   if $isobject(error) {
+   //error handling here
+   	}
+  
+ set scope="user"
+ set redirect="/csp/user/index.csp"
  
-  <div class="container">
-  <div class="center">
-  
-    
-    <h2>User : #($UserName)#<h2>
-    <h2>Roles : #($ROLES)#<h2>
-    <br><br>
-    
-    <ul id="ul">
-    <li id="li"><a id = "vula" href=. onClick="var res = #server(..CreateUser())#;alert(res);return false;">Create TestUser</a></li>
-    <li id="li"><a id = "vula" href=. onClick="var res = #server(..GrantRoles())#;alert(res);return false;">Grant Read/Write Access</a></li>
-    <li id="li"><a id = "vula" href=. onClick="var res = #server(..GrantAll())#;alert(res);return false;">Grant All Privileges</a></li>
-  
-      
-    </ul>
-    <br>
-     <ul id="ul">
-      <li id="li"><a id = "vula" href=. onClick="var res = #server(..DisableWT())#;alert(res);return false;">Disable WebTerminal Application</a></li>
-      <li id="li"><a id = "vula" href=. onClick="var res = #server(..EnableWT())#;alert(res);return false;">Enable WebTerminal Application</a></li>
-      
-    </ul>
-    
-    <br>
-     <ul id="ul">
-     
-       <li id="li"><a id = "vula" href=. onClick="var res = #server(..Unauth())#;alert(res);return false;">Disable WebTerminal Authentication</a></li>
-       <li id="li"><a id = "vula" href=. onClick="var res = #server(..Auth())#;alert(res);return false;">Enable WebTerminal Application</a></li>
-    
-    </ul>
-  </div>
-  </div>  
-</body>
-</html>
+ set url=##class(%SYS.OAuth2.Authorization).GetAuthorizationCodeEndpoint("Data_APP_Security",
+       scope,redirect,.properties,.isAuthorized,.sc)
+ if $$$ISERR(sc) {
+   //error handling here
+   w "<h1>Error while Authorization with Github!</h1>"
+ }
+  else
+  {
+   w "<h1>Successfully Authorize in IRIS via Github OAuth2</h1>"
+ }
+  &html<</body>
+  </html>>
+  Quit $$$OK
+}
+
+}

@@ -15,16 +15,18 @@ ClassMethod DrawHTML(pSeed As %String) As %Status
 {
        
     &html<<ul>>
-    &html<<li><a href="//csp/sys/%25CSP.Portal.Home.zen">Management Portal</a></li>>
+    &html<<li><a href="/csp/sys/%25CSP.Portal.Home.zen">Management Portal</a></li>>
     &html<<li><a href="/terminal/">Web Terminal</a></li>>
     &html<<li><a href="/csp/user/index.csp">Main Tasks</a></li>>
     &html<<li><a href="/csp/user/scw.DataForm.cls">Data Form</a></li>>
     &html<<li><a href="/csp/user/scw.Login.cls">Login</a></li>>
+    &html<<li><a href="/csp/user/scw.Oauth.cls">Login with Github account</a></li>>
     &html<</ul>>
 
     &html<<br>#(pSeed)#<br>>
     &html<<h2>User : #($UserName)#<h2>>
     &html<<h2>Roles : #($ROLES)#<h2>>
+    &html<<br>>
     Quit $$$OK
 }
 
