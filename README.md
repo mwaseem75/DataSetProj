@@ -2,11 +2,11 @@
 
 ## Summary
 Web Application build on InterSystems IRIS for Health and Docker to demonstrate Authentication, Authorization AND Auditing basics.
-By using the application New user can be created programmatically along with auditing, roles and SQL privileges, Option to Enable/Disable, Authenticate/Unauthenticate web application and login with Github account
+By using the application New user can be created programmatically along with auditing, roles and SQL privileges, Option to Enable/Disable, Authenticate/Unauthenticate web application and OAuth2 Authentication with GitHub
 
 ## Features
 * Authentication, Authorization and Auditing basics
-* Login with Github account (Oauth2)
+* OAuth2 Authentication with GitHub
 * Create New User by code
 * Add Audit Log Programatically
 * Create Role and Assign SQL table priviliges by code
@@ -16,8 +16,10 @@ By using the application New user can be created programmatically along with aud
 
 ## Online Demo
 https://dappsecurity.demo.community.intersystems.com/csp/user/index.csp by using SuperUser | SYS
-## Community Article
-https://community.intersystems.com/post/programmatically-create-users-grant-privileges-enabledisable-and-authenticateunauthenticate-web
+## Community Articles
+https://community.intersystems.com/post/programmatically-create-users-grant-privileges-enabledisable-and-authenticateunauthenticate-web 
+For OAuth2 GitHub authentication
+https://community.intersystems.com/post/oauth2-authentication-github-account-iris-web-application
 
 ## Installation with ZPM
 ```
@@ -69,7 +71,7 @@ Newly created user can be viewed from management portal (System > Security Manag
 * 1-Navigate to online Demo https://dappsecurity.demo.community.intersystems.com/csp/user/index.csp by using SuperUser | SYS
 * 2-Select menu option "Login with Github account" 
 * 3-Enter your github credentials in Github login screen
-* 4-For details see the article : 
+* 4-For details see the article : https://community.intersystems.com/post/oauth2-authentication-github-account-iris-web-application
 
 ## AUDITING
 Upon creating user, record with Description "Audit Log inserted from DATA_APP_Security" is added in auditing database which can be viewed from Management portal 
