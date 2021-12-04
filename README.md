@@ -2,10 +2,11 @@
 
 ## Summary
 Web Application build on InterSystems IRIS for Health and Docker to demonstrate Authentication, Authorization AND Auditing basics.
-By using the application New user can be created programmatically along with auditing, roles and SQL privileges, Option to Enable/Disable and Authenticate/Unauthenticate web application. 
+By using the application New user can be created programmatically along with auditing, roles and SQL privileges, Option to Enable/Disable, Authenticate/Unauthenticate web application and login with Github account
 
 ## Features
 * Authentication, Authorization and Auditing basics
+* Login with Github account (Oauth2)
 * Create New User by code
 * Add Audit Log Programatically
 * Create Role and Assign SQL table priviliges by code
@@ -62,6 +63,13 @@ Log in with credentials: SuperUser | SYS
 * Navigate to http://localhost:52773/csp/user/index.csp index page, First of all create New user by cliking "Create TestUser" button. Make sure to login as SUPERUSER OR _SYSTEM in order to create new User.
 Newly created user can be viewed from management portal (System > Security Management > User)
 ![image](https://user-images.githubusercontent.com/18219467/143899649-a1f630de-fff5-4e08-ae11-30185c83b718.png)
+
+## LOGIN With Github OAUTH2
+![image](https://user-images.githubusercontent.com/18219467/144722058-47423b00-f862-4e21-811b-316e7becc684.png)
+* 1-Navigate to online Demo https://dappsecurity.demo.community.intersystems.com/csp/user/index.csp by using SuperUser | SYS
+* 2-Select menu option "Login with Github account" 
+* 3-Enter your github credentials in Github login screen
+* 4-For details see the article : 
 
 ## AUDITING
 Upon creating user, record with Description "Audit Log inserted from DATA_APP_Security" is added in auditing database which can be viewed from Management portal 
