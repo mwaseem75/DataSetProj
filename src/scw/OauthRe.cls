@@ -106,18 +106,11 @@ li a:hover {
     <li><a href="/csp/user/scw.Oauth.cls">Login with Github account</a></li>
     </ul>>
   // Check if we have an access token
-  set scope="user"
   // to see if token has already been saved locally 
-  set isAuth = ##class(%SYS.OAuth2.AccessToken).IsAuthorized(..#OAUTH2APPNAME,,scope,.accessToken,.idtoken,.responseProperties,.error)
-  
-   if $isobject(error) {
-   //error handling here
-   	}
-  
  set scope="user"
- set redirect="/csp/user/index.csp"
+ set redirect="Oauth.cls"
  
- set url=##class(%SYS.OAuth2.Authorization).GetAuthorizationCodeEndpoint("Data_APP_Security",
+ do ##class(%SYS.OAuth2.Authorization).GetAuthorizationCodeEndpoint("Data_APP_Security",
        scope,redirect,.properties,.isAuthorized,.sc)
  if $$$ISERR(sc) {
    //error handling here
