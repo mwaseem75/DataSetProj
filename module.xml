@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Export generator="Cache" version="25">
+  <Document name="dataset-repo.ZPM">
+    <Module>
+      <Name>dataset-repo</Name>
+      <Version>1.5.4</Version>
+      <Description>DataSet Repository</Description>
+      <Keywords>SQL,Load</Keywords>
+      <Packaging>module</Packaging>
+      <CSPApplication CookiePath="/csp/datasets/" DefaultTimeout="900" DeployPath="{cspdir}/csp/${namespace}/" Description="Interoperability Management Portal" MatchRoles=":{$dbrole}" PasswordAuthEnabled="1" Recurse="1" ServeFiles="1" ServeFilesTimeout="3600" SourcePath="/src/csp" UnauthenticatedEnabled="0" Url="/csp/datasets" UseSessionCookie="2"/>
+      <SourcesRoot>src</SourcesRoot>
+    </Module>
+  </Document>
+</Export>
