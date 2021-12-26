@@ -4,7 +4,7 @@ Class dc.data.Utility
 ClassMethod CreateTable()
 {
    //
-   &sql( CREATE TABLE dc_data_health.Employee  ( ID  IDENTITY,
+   &sql( CREATE TABLE dc_data_health.Employee  (
                             Name CHAR(100) NULL,
                             Position CHAR(100) NULL,
                             Office    CHAR(100) NULL,
