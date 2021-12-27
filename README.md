@@ -1,6 +1,6 @@
-# DataSets Repository
+# Medical DataSet
 
-This Repository contains DataSets
+This dataset contains the core data to be used in projects for the textbook Introduction to Biomedical Data Science edited by Robert Hoyt MD FACP ABPM-CI, and Robert Muenchen MS PSAT (2019).
 
 ## How to Run
 
@@ -26,9 +26,16 @@ docker-compose up -d
 
 ## How to test
 
-Open the browser and go
+Open command prompt from terminal
+docker-compose exec iris iris session iris
 
-Ex.: <http://localhost:52773/csp/datasets/datasets.csp>
+Change name space to "DATASETS"
+zn "DATASETS"
 
-The username _SYSTEM/SYS can be used
+Start SQL Shell
+DO $SYSTEM.SQL.Shell()
+
+Select loaded Records from patients table
+SELECT * FROM dc_data_health.Patients
+
 
