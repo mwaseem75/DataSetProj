@@ -24,7 +24,55 @@ ClassMethod CreateTable()
       birthplace CHAR(50) NULL,
       address CHAR(100) NULL
    ))
-    &sql( LOAD DATA FROM FILE '/opt/irisapp/src/data/patients.csv' INTO dc_data_health.Patients)
+   IF SQLCODE > 0 {
+      &sql( LOAD DATA FROM FILE '/opt/irisapp/src/data/patients.csv' INTO dc_data_health.Patients)
+   }
+   &sql(
+      CREATE TABLE dc_data_health.Allergies (
+      sratrdate CHAR(10) NULL,
+      stopdate CHAR(10) NULL,
+      patient CHAR(100) NULL,
+      encounter CHAR(100) NULL,
+      code NUMBER,
+      description CHAR(100) NULL
+   ))
+   IF SQLCODE > 0 {
+      &sql( LOAD DATA FROM FILE '/opt/irisapp/src/data/allergies.csv' INTO dc_data_health.Allergies)
+   } 
+   &sql(
+      CREATE TABLE dc_data_health.AllPrevalences (       
+      Item CHAR(100) NULL,
+      PopulationType CHAR(25) NULL,
+      Occurrence NUMBER,
+      PopulationCount NUMBER,
+      PrevalenceRate DECIMAL(6,3),
+      PrevalencePercentage DECIMAL(6,3)
+      ))
+   IF SQLCODE > 0 {
+      &sql( LOAD DATA FROM FILE '/opt/irisapp/src/data/all_prevalences.csv' INTO dc_data_health.AllPrevalences USING {"from":{"file":{"header":"1"}}})
+   }
+
+   //TCODE,STARTDATE,STOPDATE,PATIENT,ENCOUNTER,CODE,DESCRIPTION,REASONCODE,REASONDESCRIPTION
+   &sql(
+      CREATE TABLE dc_data_health.Careplans (       
+      Tcode CHAR(50) NULL,
+      StartDate DATE NULL, 
+      StopDate DATE NULL,
+      Patient CHAR(50) NULL,
+      Encounter CHAR(50) NULL,
+      Code NUMBER NULL,
+      Description CHAR(100) NULL,
+      ReasonCode NUMBER,
+      ReasonDescription CHAR(100)
+      ))
+   IF SQLCODE > 0 {
+      &sql( LOAD DATA FROM FILE '/opt/irisapp/src/data/careplans.csv' INTO dc_data_health.Careplans USING {"from":{"file":{"header":"1"}}})
+   }   
+ //&sql( LOAD DATA FROM FILE '/opt/irisapp/src/data/allergies.csv' INTO dc_data_health.Allergies)
+ //&sql( LOAD DATA FROM FILE '/opt/irisapp/src/data/allergies.csv' INTO dc_data_health.Allergies)
+ //&sql( LOAD DATA FROM FILE '/opt/irisapp/src/data/allergies.csv' INTO dc_data_health.Allergies)
+ //&sql( LOAD DATA FROM FILE '/opt/irisapp/src/data/allergies.csv' INTO dc_data_health.Allergies)
+ //&sql( LOAD DATA FROM FILE '/opt/irisapp/src/data/allergies.csv' INTO dc_data_health.Allergies)
 }
 
 }
