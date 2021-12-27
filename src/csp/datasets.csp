@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-	<title>DS</title>
+	<title>Dataset Repo</title>
 	<meta content="width=device-width, initial-scale=1.0, shrink-to-fit=no" name="viewport" />
-	<link rel="icon" href="resources/img/ISC_IRIS_icon.ico" type="image/x-icon" />
+	<link rel="icon" href="resources/img/icon.ico" type="image/x-icon" />
 
 	<!-- Fonts and icons -->
 	<script src="resources/js/webfont.min.js"></script>
@@ -30,7 +30,7 @@
 	<!-- CSS Files -->
 	<link rel="stylesheet" type="text/css" href="resources/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="resources/css/atlantis.min.css">
-
+	<link rel="stylesheet" type="text/css" href="resources/css/datatables.min.css">
 	<style>
 		.hidden {
 			display: none;
@@ -45,24 +45,13 @@
     		width: 100%;
 		}
 	</style>
-	
-		 <script src="resources/js/jquery.min.js"></script>
-		 
-	 <link rel="stylesheet" type="text/css" href="resources/css/datatables.min.css">
- 	 <script src="resources/js/datatables.min.js"></script>
-<script type="text/javascript">
-$(document).ready(function() {
-    $('#basic-datatables').DataTable( {
-        dom: 'Bfrtip',
-        buttons: [
-            'copyHtml5',
-            'excelHtml5',
-            'csvHtml5',
-            'pdfHtml5'
-        ]
-    } );
-} );
-</script>
+	<script src="resources/js/jquery.min.js"></script>
+	<script src="resources/js/datatables.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+		$('#basic-datatables').DataTable();
+		} );
+    </script>
 </head>
 
 <body>
@@ -72,7 +61,7 @@ $(document).ready(function() {
 			<div class="logo-header" data-background-color="blue">
 				
 				<a href="../index.html" class="logo">
-					<img src="resources/img/logo.svg" alt="navbar brand" class="navbar-brand">
+					<img src="resources/img/logo.jpg" alt="navbar brand" class="navbar-brand">
 				</a>
 				<button class="navbar-toggler sidenav-toggler ml-auto" type="button" data-toggle="collapse" data-target="collapse" aria-expanded="false" aria-label="Toggle navigation">
 					<span class="navbar-toggler-icon">
