@@ -1,18 +1,18 @@
 {
-    "version": "0.2.0",
-    "configurations": [    
-      {
-        "type": "objectscript",
-        "request": "launch",
-        "name": "ObjectScript Debug Class", 
-        "program": "##class(PackageSample.ObjectScript).Test()",
-      },
-      {
-        "type": "objectscript",
-        "request": "attach",
-        "name": "ObjectScript Attach",
-        "processId": "${command:PickProcess}",
-        "system": true
-      }
-    ]
-  }
+  "version": "0.2.0",
+  "configurations": [    
+    {
+      "type": "objectscript",
+      "request": "launch",
+      "name": "ObjectScript Debug Class", 
+      "program": "##class(dc.data.medical.Utility).Run()",
+    },
+    {
+      "type": "objectscript",
+      "request": "attach",
+      "name": "ObjectScript Attach",
+      "processId": "${command:PickProcess}",
+      "system": true
+    }
+  ]
+}
