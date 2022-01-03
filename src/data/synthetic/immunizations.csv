@@ -1,4 +1,4 @@
-date,patient,encounter,code,description
+tdate,patient,encounter,code,description
 2008-03-11,71949668-1c2e-43ae-ab0a-64654608defb,5114a5b4-64b8-47b2-82a6-0ce24aae0943,140,Influenza  seasonal  injectable  preservative free
 2009-04-07,71949668-1c2e-43ae-ab0a-64654608defb,bdb926b8-5b6d-4366-bbe9-76fe3f3fbc4f,140,Influenza  seasonal  injectable  preservative free
 2012-07-02,71949668-1c2e-43ae-ab0a-64654608defb,36796523-2672-4680-84c5-2d9a2b080ddb,140,Influenza  seasonal  injectable  preservative free

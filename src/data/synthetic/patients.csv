@@ -1,4 +1,4 @@
-patient,birthdate,deathdate,ssn,drivers,passport,prefix,first,last,suffix,maiden,marital,race,ethnicity,gender,birthplace,address
+patient,birthdate,deathdate,ssn,drivers,passport,prefix,firstname,lastname,suffix,maiden,marital,race,ethnicity,gender,birthplace,address
 4ee2c837-e60f-4c54-9fdf-8686bc70760b,1929-04-08,2029-11-11,999-78-5976,,,,Rosamaria,Pfannerstill,,,,black,dominican,F,Pittsfield MA US,18797 Karson Burgs Suite 444 Palmer Town MA 01069 US
 efaf74f9-3de3-45dd-a5d5-26d08e8a3190,2016-12-15,2020-02-19,999-59-9186,,,,Loan,Bashirian,,,,white,american,F,Medford MA US,301 Eula Radial Suite 298 Brockton MA 02305 US
 aaa4c718-2f48-4c13-9ad0-d287cf280824,1943-11-28,2017-10-22,999-43-3780,S99992928,FALSE,Mr.,Angelo,Buckridge,,,S,black,african,M,Framingham MA US,8693 Fred Crossroad New Bedford MA 02746 US

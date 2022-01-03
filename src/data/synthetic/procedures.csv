@@ -1,4 +1,4 @@
-date,patient,encounter,code,description,reasoncode,reasondescription
+tdate,patient,encounter,code,description,reasoncode,reasondescription
 2013-02-09,71949668-1c2e-43ae-ab0a-64654608defb,6f2e3935-b203-493e-a9c0-f23e847b9798,23426006,Measurement of respiratory function (procedure),10509002,Acute bronchitis (disorder)
 2013-10-19,71949668-1c2e-43ae-ab0a-64654608defb,da4fd626-e74e-4930-91be-7fb3da7ea098,252160004,Standard pregnancy test,72892002,Normal pregnancy
 2014-05-17,71949668-1c2e-43ae-ab0a-64654608defb,988f02a3-bf7e-485a-8d26-3378ddc9524c,237001001,Augmentation of labor,72892002,Normal pregnancy
