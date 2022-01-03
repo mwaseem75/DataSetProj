@@ -4,44 +4,44 @@ Class dc.data.medical.Utility
 
 ClassMethod RunDir()
 {
-      Set pDir = "/irisdev/app/src/data/synthetic" 
-      set pFileSpec = "*.csv"
+      Set mDir = "/irisdev/app/src/data/synthetic" 
+      set mFileSpec = "*.csv"
       Set tRS=##class(%ResultSet).%New("%Library.File:FileSet")
 
-      Set tSC=tRS.Execute(pDir,pFileSpec)
+      Set tSC=tRS.Execute(mDir,mFileSpec)
 
       While tRS.Next() {
-            set fn=tRS.Get("Name")
-            kill pclass
-            kill prowtype
-            
-            set pclass="dc_data_synthetic_"_tRS.Get("ItemName")
-            //
-            set status=##class(dc.data.medical.Utility).Process(fn,,.pclass,.prowtype,1,.tResults)	     
+            set filename=tRS.Get("Name")
+            kill classname
+            kill coltype            
+            set classname=$REPLACE("dc_data_synthetic."_tRS.Get("ItemName"),".csv","")
+            set status=##class(dc.data.medical.Utility).Process(filename,,.classname,.coltype,.tResults)	     
+            //&sql( LOAD DATA FROM FILE %filename INTO %classname USING {"from":{"file":{"header":"1"}}})
 
+            set qry = "LOAD DATA FROM FILE  '"_filename_"' INTO "_classname_ " "_"USING {""from"":{""file"":{""header"":""1""}}}"
+            //set qry = "LOAD DATA FROM FILE %filename INTO %classname"
+            w "query :"_qry,!
+            SET myquery = qry 
+            SET tStatement = ##class(%SQL.Statement).%New()
+            SET qStatus = tStatement.%Prepare(myquery)
+            IF qStatus'=1 {WRITE "%Prepare failed:" DO $System.Status.DisplayError(qStatus) QUIT}
+            SET rset = tStatement.%Execute()
+            w qStatus
       }
 }
 
-ClassMethod Process(fncsv As %String, dlm As %String = ",", ByRef pclass As %String, ByRef prowtype As %String, pguessTypes As %Boolean = 1, Output recordsCount As %Integer, pverbose As %Boolean = 1, pappend As %Boolean = 0) As %Status
+ClassMethod Process(filenamecsv As %String, dlm As %String = ",", ByRef classname As %String, ByRef coltype As %String, Output recordsCount As %Integer, pverbose As %Boolean = 1, pappend As %Boolean = 0) As %Status
 {
     set sc=$$$OK
-    if $g(prowtype)="" set prowtype=..GetRowTypes(fncsv,dlm,pguessTypes)
-    set stc = ..CreateTbl(prowtype,pclass)
+    if $g(coltype)="" set coltype=..GetRowTypes(filenamecsv,dlm)
+    set stc = ..CreateTbl(coltype,classname)
     q sc
 }
 
-ClassMethod GetRowTypes(fncsv As %String, dlm As %String = ",", guessTypes As %Boolean = 0, deep As %Integer = 1) As %String
+ClassMethod GetRowTypes(filenamecsv As %String, dlm As %String = ",", deep As %Integer = 1) As %String
 {
     set rowtypes=""
-    set stream=..GetStreamFromFile(fncsv)
-    if 'guessTypes {
-        set line=stream.ReadLine()
-
-        for i=1:1:$Length(line,dlm) {
-            set $Piece(rowtypes,dlm,i)=$TR($Piece(line,dlm,i)," ","")_" VARCHAR(250)"
-        }
-    }
-    if guessTypes {
+    set stream=..GetStreamFromFile(filenamecsv)      
         set header=stream.ReadLine() // Get Header columns
         //set filename = stream.filename
         set header=$ZCONVERT(header,"L")
@@ -57,10 +57,6 @@ ClassMethod GetRowTypes(fncsv As %String, dlm As %String = ",", guessTypes As %B
             //Set 200 Varchar
             if type="VARCHAR" set type="VARCHAR(200)"
             set $Piece(rowtypes,dlm,i)=$TR($Piece(header,dlm,i)," ","")_" "_type
-
-        }
-    
-
     }
 
     set rowtypes=$TR(rowtypes,dlm,",")
@@ -69,11 +65,11 @@ ClassMethod GetRowTypes(fncsv As %String, dlm As %String = ",", guessTypes As %B
     Return rowtypes
 }
 
-ClassMethod GetStreamFromFile(fn As %String) As %Stream
+ClassMethod GetStreamFromFile(filename As %String) As %Stream
 {
     set stream = ##Class(%Stream.FileCharacter).%New()
     set stream.LineTerminator = $Char(13,10)
-    $$$TOE(sc,stream.LinkToFile(fn))
+    $$$TOE(sc,stream.LinkToFile(filename))
     //set filename = stream.FileName
     set abc="Test"
     //TBD check for sc
@@ -106,10 +102,10 @@ ClassMethod IsDate(pVar As %String = "") As %Boolean
     Quit result
 }
 
-ClassMethod HowManyRecords(pclass As %String, ByRef recordsCount As %Integer) As %Status
+ClassMethod HowManyRecords(classname As %String, ByRef recordsCount As %Integer) As %Status
 {
    s tSC=$$$OK
-   set table= ##class(%DeepSee.Utils).%GetSQLTableName(pclass)
+   set table= ##class(%DeepSee.Utils).%GetSQLTableName(classname)
    try {
     set st=##class(%SQL.Statement).%ExecDirect(,"SELECT COUNT(1) as ""result"" FROM "_table)
     if st.%SQLCODE < 0 throw ##class(%Exception.SQL).CreateFromSQLCODE(st.%SQLCODE,st.%Message)
