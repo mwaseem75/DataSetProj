@@ -48,6 +48,33 @@ ClassMethod CreateTbl(tblSql As %String, pp As %String) As %Status
  return sc
 }
 
+
+ClassMethod RunDir()
+{
+      Set pDir = '/irisdev/app/src/data/' 
+      set pFileSpec = "*.csv"
+      Set tRS=##class(%ResultSet).%New("%Library.File:FileSet")
+
+      Set tSC=tRS.Execute(pDir,pFileSpec)
+
+      While tRS.Next() {
+            set fn=tRS.Get("Name")
+            kill pclass
+            kill prowtype
+            set pclass=tRS.Get("ItemName")
+            //
+            set status=##class(dc.data.medical.Utility).Generate(fn,,.pclass,.prowtype,1,.tResults)
+	        //zwrite tRS
+	        //Write tRS.Get("ItemName"),!
+            //Write tRS.Get("Name"),?30,tRS.Get("DateModified"),?53,tRS.Get("Type"),!
+
+      }
+}
+
+
+
+
+
 ClassMethod CreateTable()
 {
    //Create Table Patient
