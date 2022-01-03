@@ -5,8 +5,7 @@
 
  zn "DATASETS"
  do $System.OBJ.LoadDir("/opt/irisapp/src","ck",,1)
- do ##class(dc.data.medical.Utility).CreateTable()
-
+ 
  zn "%SYS"
  Do ##class(Security.Users).UnExpireUserPasswords("*")
   

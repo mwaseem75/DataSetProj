@@ -2,14 +2,50 @@
 Class dc.data.medical.Utility
 {
 
-ClassMethod Run() As %Status
+ClassMethod RunDir()
 {
-	set fn="/irisdev/app/src/data/careplans.csv"
-    kill pclass
-    kill prowtype
-  	set status=##class(dc.data.medical.Utility).Generate(fn,,.pclass,.prowtype,1,.tResults)
-    set status=##class(dc.data.medical.Utility).Generate(fn,,.pclass,.prowtype,1,.tResults,,1)  
-    return status
+      Set pDir = "/irisdev/app/src/data/synthetic" 
+      set pFileSpec = "*.csv"
+      Set tRS=##class(%ResultSet).%New("%Library.File:FileSet")
+
+      Set tSC=tRS.Execute(pDir,pFileSpec)
+
+      While tRS.Next() {
+            set fn=tRS.Get("Name")
+            kill pclass
+            kill prowtype
+            //set pclass="dc_data_health."_tRS.Get("ItemName")
+            //set pclass="dc_data_health.aaa"
+            set pclass="dc_data_synthetic_"_tRS.Get("ItemName")
+            //set pclass=tRS.Get("ItemName")
+            //
+            set status=..Process(fn,,.pclass,.prowtype,1,.tResults)
+	        //zwrite tRS
+	        //Write tRS.Get("ItemName"),!
+            //Write tRS.Get("Name"),?30,tRS.Get("DateModified"),?53,tRS.Get("Type"),!
+
+      }
+}
+
+ClassMethod Process(fncsv As %String, dlm As %String = ",", ByRef pclass As %String, ByRef prowtype As %String, pguessTypes As %Boolean = 1, Output recordsCount As %Integer, pverbose As %Boolean = 1, pappend As %Boolean = 0) As %Status
+{
+    set sc=$$$OK
+    if $g(prowtype)="" set prowtype=..GetRowTypes(fncsv,dlm,pguessTypes)
+    set stc = ..CreateTbl(prowtype,pclass)
+    q sc
+}
+
+ClassMethod CreateTbl(tblSql As %String, pp As %String) As %Status
+{
+ set sc=$$$OK
+ set qry = "CREATE TABLE "_pp_" ("_tblSql_")"
+ w "query :"_qry,!
+ SET myquery = qry 
+ SET tStatement = ##class(%SQL.Statement).%New()
+ SET qStatus = tStatement.%Prepare(myquery)
+ IF qStatus'=1 {WRITE "%Prepare failed:" DO $System.Status.DisplayError(qStatus) QUIT}
+ SET rset = tStatement.%Execute()
+ return sc
 }
 
 ClassMethod CreateTable()
@@ -85,36 +121,6 @@ ClassMethod CreateTable()
  //&sql( LOAD DATA FROM FILE '/opt/irisapp/src/data/allergies.csv' INTO dc_data_health.Allergies)
 }
 
-ClassMethod Generate(fncsv As %String, dlm As %String = ",", ByRef pclass As %String, ByRef prowtype As %String, pguessTypes As %Boolean = 1, Output recordsCount As %Integer, pverbose As %Boolean = 1, pappend As %Boolean = 0) As %Status
-{
-    set sc=$$$OK
-    if $g(pclass)="" set pclass="community.csvgen.generated."_$TR($E(fncsv,1,5),":\/.","")_($zd($h,8))
-    if $g(pappend),##class(%Dictionary.CompiledClass).%ExistsId(pclass) {
-        ///ClassMethod Import(pSelectMode As %Library.Integer = {$zu(115,5)}, pFileName As %Library.String(MAXLEN=""), pDelimiter As %String = ",", pQuote As %String = """", pHeaders As %Integer = 0, ByRef pRecordCount As %Integer) As %Library.Integer [ SqlProc ]
-        set pRecordCount=$CLASSMETHOD(pclass,"Import",,fncsv,dlm,,1,,pappend)
-        }
-    else {
-        if $g(prowtype)="" set prowtype=..GetRowTypes(fncsv,dlm,pguessTypes)
-        do ##class(%SQL.Util.Procedures).CSVTOCLASS(1, prowtype, fncsv, dlm, ,1, pclass)
-        // change the generated method to add the Append support
-        set sc=..AddAppendtoImport(pclass)
-        if $$$ISERR(sc) q sc
-    }
-    If %sqlcontext.%SQLCODE && (%sqlcontext.%SQLCODE '= 100) Quit $$$ERROR($$$SQLCode, %sqlcontext.%SQLCODE, %sqlcontext.%Message)
-    set sc=..HowManyRecords(pclass,.recordsCount)
-    if $$$ISERR(sc) q sc
-    if pverbose {
-        Write !
-        Write "Class name: "_pclass,!
-        Write "Header: "_prowtype,!
-        Write "Records imported: "_recordsCount
-    }
-    
-    //ClassMethod Import(pSelectMode As %Library.Integer = {$zu(115,5)}, pFileName As %Library.String(MAXLEN=""), pDelimiter As %String = ",", pQuote As %String = """", pHeaders As %Integer = 0, ByRef pRecordCount As %Integer) As %Library.Integer [ SqlProc ]
-    //if importData d $ClassMethod(pclass,"Import",1,fncsv,dlm,,1,.recordCount)
-    q sc
-}
-
 ClassMethod GetRowTypes(fncsv As %String, dlm As %String = ",", guessTypes As %Boolean = 0, deep As %Integer = 1) As %String
 {
     set rowtypes=""
@@ -128,7 +134,7 @@ ClassMethod GetRowTypes(fncsv As %String, dlm As %String = ",", guessTypes As %B
     }
     if guessTypes {
         set header=stream.ReadLine() // Get Header columns
-        set filename = stream.filename
+        //set filename = stream.filename
         set header=$ZCONVERT(header,"L")
         set dataLine=stream.ReadLine() // Read First line of data
         //set dataLine =..RemoveDlm(dataLine,dlm) // check it later
@@ -159,7 +165,7 @@ ClassMethod GetStreamFromFile(fn As %String) As %Stream
     set stream = ##Class(%Stream.FileCharacter).%New()
     set stream.LineTerminator = $Char(13,10)
     $$$TOE(sc,stream.LinkToFile(fn))
-    set filename = stream.FileName
+    //set filename = stream.FileName
     set abc="Test"
     //TBD check for sc
     return stream
@@ -224,30 +230,6 @@ ClassMethod Decide(ByRef types) As %String
     }
     if $D(typesI) return typesI($Order(typesI(""),-1))
     return "VARCHAR"
-}
-
-ClassMethod AddAppendtoImport(pClassName As %String) As %Status
-{
- 
-    set method = ##class(%Dictionary.MethodDefinition).%OpenId(pClassName_"||Import")
-
-    if method.FormalSpec["pAppend" quit $$$OK
-    set method.FormalSpec=method.FormalSpec_",pAppend:%Boolean=0"
-    set imp=method.Implementation
-    set newImp=##class(%Stream.TmpCharacter).%New()
-
-    while 'imp.AtEnd {
-        set line=imp.ReadLine() 
-        if line'["%DeleteExtent" {do newImp.WriteLine(line)}
-        else {
-            do newImp.WriteLine($p(line,"do")_"if 'pAppend do ..%DeleteExtent(,.tDeleted,.tInstances,1)")
-        }
-        }
-    set method.Implementation=newImp
-    set sc=method.%Save() 
-    if $$$ISERR(sc) return sc
-    set sc=$System.OBJ.Compile(pClassName,"cuk")
-    return sc
 }
 
 }
