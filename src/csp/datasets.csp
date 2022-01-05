@@ -227,211 +227,282 @@
 				<div class="sidebar-content">
 					
 					<ul class="nav nav-primary">
-						<li class="nav-item">
-							<a data-toggle="collapse" href="#dashboard" class="collapsed" aria-expanded="false">
+					<li class="nav-item">
+							<a href="../widgets.html">
 								<i class="fas fa-home"></i>
 								<p>Dashboard</p>
-								<span class="caret"></span>
+								
 							</a>
-							<div class="collapse" id="dashboard">
-								<ul class="nav nav-collapse">
-									<li>
-										<a href="../../demo1/index.html">
-											<span class="sub-item">Dashboard 1</span>
-										</a>
-									</li>
-									<li>
-										<a href="../../demo2/index.html">
-											<span class="sub-item">Dashboard 2</span>
-										</a>
-									</li>
-								</ul>
-							</div>
 						</li>
-						<li class="nav-section">
-							<span class="sidebar-mini-icon">
-								<i class="fa fa-ellipsis-h"></i>
-							</span>
-							<h4 class="text-section">Components</h4>
+						<li class="nav-item active">
+							<a href="#tables">
+								<i class="fas fa-table"></i>
+								<p>DATASETS</p>	
+								<span class="badge badge-warning">9</span>							
+							</a>							
 						</li>
 						<li class="nav-item">
 							<a data-toggle="collapse" href="#base">
 								<i class="fas fa-layer-group"></i>
-								<p>Base</p>
+								<p>Synthetic Medical Data</p>
+								<span class="badge badge-info">11</span>
 								<span class="caret"></span>
 							</a>
 							<div class="collapse" id="base">
 								<ul class="nav nav-collapse">
 									<li>
 										<a href="../components/avatars.html">
-											<span class="sub-item">Avatars</span>
+											<span class="sub-item">All_prevalences</span>
+											<span class="badge badge-success">250</span>
 										</a>
 									</li>
 									<li>
 										<a href="../components/buttons.html">
-											<span class="sub-item">Buttons</span>
+											<span class="sub-item">Allergies</span>
+											<span class="badge badge-success">350</span>
 										</a>
 									</li>
 									<li>
 										<a href="../components/gridsystem.html">
-											<span class="sub-item">Grid System</span>
+											<span class="sub-item">Careplans</span>
+											<span class="badge badge-success">450</span>
 										</a>
 									</li>
 									<li>
 										<a href="../components/panels.html">
-											<span class="sub-item">Panels</span>
+											<span class="sub-item">Claims</span>
+											<span class="badge badge-success">750</span>
 										</a>
 									</li>
 									<li>
 										<a href="../components/notifications.html">
-											<span class="sub-item">Notifications</span>
+											<span class="sub-item">Conditions</span>
+											<span class="badge badge-success">850</span>
 										</a>
 									</li>
 									<li>
 										<a href="../components/sweetalert.html">
-											<span class="sub-item">Sweet Alert</span>
+											<span class="sub-item">Conditions</span>
+											<span class="badge badge-success">250</span>
 										</a>
 									</li>
 									<li>
 										<a href="../components/font-awesome-icons.html">
-											<span class="sub-item">Font Awesome Icons</span>
+											<span class="sub-item">Immunizations</span>
+											<span class="badge badge-success">700</span>
 										</a>
 									</li>
 									<li>
 										<a href="../components/simple-line-icons.html">
-											<span class="sub-item">Simple Line Icons</span>
+											<span class="sub-item">Medications</span>
+											<span class="badge badge-success">800</span>
 										</a>
 									</li>
 									<li>
 										<a href="../components/flaticons.html">
-											<span class="sub-item">Flaticons</span>
+											<span class="sub-item">Observations</span>
+											<span class="badge badge-success">650</span>
 										</a>
 									</li>
 									<li>
 										<a href="../components/typography.html">
-											<span class="sub-item">Typography</span>
+											<span class="sub-item">Patients</span>
+											<span class="badge badge-success">8000</span>
 										</a>
 									</li>
+									<li>
+										<a href="../components/typography.html">
+											<span class="sub-item">Procedures</span>
+											<span class="badge badge-success">2100</span>
+										</a>
+									</li>						
 								</ul>
 							</div>
 						</li>
+									
 						<li class="nav-item">
-							<a data-toggle="collapse" href="#sidebarLayouts">
-								<i class="fas fa-th-list"></i>
-								<p>Sidebar Layouts</p>
+							<a data-toggle="collapse" href="#base">
+								<i class="fas fa-layer-group"></i>
+								<p>Opioid Overdose Deaths</p>
+								<span class="badge badge-info">2</span>
 								<span class="caret"></span>
 							</a>
-							<div class="collapse" id="sidebarLayouts">
+							<div class="collapse" id="base">
 								<ul class="nav nav-collapse">
 									<li>
-										<a href="../sidebar-style-1.html">
-											<span class="sub-item">Sidebar Style 1</span>
+										<a href="../components/avatars.html">
+											<span class="sub-item">Multiple Cause of Death</span>
+											<span class="badge badge-success">250</span>
 										</a>
 									</li>
 									<li>
-										<a href="../overlay-sidebar.html">
-											<span class="sub-item">Overlay Sidebar</span>
+										<a href="../components/buttons.html">
+											<span class="sub-item">Multiple Cause of Death V1.1</span>
+											<span class="badge badge-success">350</span>
 										</a>
 									</li>
-									<li>
-										<a href="../compact-sidebar.html">
-											<span class="sub-item">Compact Sidebar</span>
-										</a>
-									</li>
-									<li>
-										<a href="../static-sidebar.html">
-											<span class="sub-item">Static Sidebar</span>
-										</a>
-									</li>
-									<li>
-										<a href="../icon-menu.html">
-											<span class="sub-item">Icon Menu</span>
-										</a>
-									</li>
+														
 								</ul>
 							</div>
 						</li>
-						<li class="nav-item">
-							<a data-toggle="collapse" href="#forms">
-								<i class="fas fa-pen-square"></i>
-								<p>Forms</p>
+							<li class="nav-item">
+							<a data-toggle="collapse" href="#base">
+								<i class="fas fa-layer-group"></i>
+								<p>Inpatient waiting times</p>
+								<span class="badge badge-info">3</span>
+								<span class="caret"></span>
+								
+							</a>
+							<div class="collapse" id="base">
+								<ul class="nav nav-collapse">
+									<li>
+										<a href="../components/avatars.html">
+											<span class="sub-item">Day case waiting times</span>
+											<span class="badge badge-success">250</span>
+										</a>
+									</li>
+									<li>
+										<a href="../components/buttons.html">
+											<span class="sub-item">Inpatient admission waiting times</span>
+											<span class="badge badge-success">350</span>
+										</a>
+									</li>
+									<li>
+										<a href="../components/buttons.html">
+											<span class="sub-item">Total admission waiting times</span>
+											<span class="badge badge-success">350</span>
+										</a>
+									</li>					
+								</ul>
+							</div>
+						</li>
+							<li class="nav-item">
+							<a data-toggle="collapse" href="#base">
+								<i class="fas fa-layer-group"></i>
+								<p>ICD-9 CM Procedure Codes</p>
+								<span class="badge badge-info">1</span>
 								<span class="caret"></span>
 							</a>
-							<div class="collapse" id="forms">
+							<div class="collapse" id="base">
 								<ul class="nav nav-collapse">
 									<li>
-										<a href="../forms/forms.html">
-											<span class="sub-item">Basic Form</span>
+										<a href="../components/avatars.html">
+											<span class="sub-item">MICD-9 CM Procedure Codes/span>
+											<span class="badge badge-success">250</span>
 										</a>
 									</li>
+									<li>
+										<a href="../components/buttons.html">
+											<span class="sub-item">Multiple Cause of Death V1.1</span>
+											<span class="badge badge-success">350</span>
+										</a>
+									</li>
+														
 								</ul>
 							</div>
 						</li>
-						<li class="nav-item active submenu">
-							<a data-toggle="collapse" href="#tables">
-								<i class="fas fa-table"></i>
-								<p>Tables</p>
+							<li class="nav-item">
+							<a data-toggle="collapse" href="#base">
+								<i class="fas fa-layer-group"></i>
+								<p>Multiple Cause of Death</p>
+								<span class="badge badge-info">2</span>
 								<span class="caret"></span>
 							</a>
-							<div class="collapse show" id="tables">
+							<div class="collapse" id="base">
 								<ul class="nav nav-collapse">
 									<li>
-										<a href="../tables/tables.html">
-											<span class="sub-item">Basic Table</span>
+										<a href="../components/avatars.html">
+											<span class="sub-item">Multiple Cause of Death</span>
+											<span class="badge badge-success">250</span>
 										</a>
 									</li>
-									<li class="active">
-										<a href="../tables/datatables.html">
-											<span class="sub-item">Datatables</span>
+									<li>
+										<a href="../components/buttons.html">
+											<span class="sub-item">Multiple Cause of Death V1.1</span>
+											<span class="badge badge-success">350</span>
 										</a>
 									</li>
+														
 								</ul>
 							</div>
 						</li>
-						<li class="nav-item">
-							<a data-toggle="collapse" href="#maps">
-								<i class="fas fa-map-marker-alt"></i>
-								<p>Maps</p>
+							<li class="nav-item">
+							<a data-toggle="collapse" href="#base">
+								<i class="fas fa-layer-group"></i>
+								<p>Multiple Cause of Death</p>
+								<span class="badge badge-info">2</span>
 								<span class="caret"></span>
 							</a>
-							<div class="collapse" id="maps">
+							<div class="collapse" id="base">
 								<ul class="nav nav-collapse">
 									<li>
-										<a href="../maps/jqvmap.html">
-											<span class="sub-item">JQVMap</span>
+										<a href="../components/avatars.html">
+											<span class="sub-item">Multiple Cause of Death</span>
+											<span class="badge badge-success">250</span>
 										</a>
 									</li>
+									<li>
+										<a href="../components/buttons.html">
+											<span class="sub-item">Multiple Cause of Death V1.1</span>
+											<span class="badge badge-success">350</span>
+										</a>
+									</li>
+														
 								</ul>
 							</div>
 						</li>
-						<li class="nav-item">
-							<a data-toggle="collapse" href="#charts">
-								<i class="far fa-chart-bar"></i>
-								<p>Charts</p>
+							<li class="nav-item">
+							<a data-toggle="collapse" href="#base">
+								<i class="fas fa-layer-group"></i>
+								<p>Multiple Cause of Death</p>
+								<span class="badge badge-info">2</span>
 								<span class="caret"></span>
 							</a>
-							<div class="collapse" id="charts">
+							<div class="collapse" id="base">
 								<ul class="nav nav-collapse">
 									<li>
-										<a href="../charts/charts.html">
-											<span class="sub-item">Chart Js</span>
+										<a href="../components/avatars.html">
+											<span class="sub-item">Multiple Cause of Death</span>
+											<span class="badge badge-success">250</span>
 										</a>
 									</li>
 									<li>
-										<a href="../charts/sparkline.html">
-											<span class="sub-item">Sparkline</span>
+										<a href="../components/buttons.html">
+											<span class="sub-item">Multiple Cause of Death V1.1</span>
+											<span class="badge badge-success">350</span>
 										</a>
 									</li>
+														
 								</ul>
 							</div>
 						</li>
-						<li class="nav-item">
-							<a href="../widgets.html">
-								<i class="fas fa-desktop"></i>
-								<p>Widgets</p>
-								<span class="badge badge-success">4</span>
+							<li class="nav-item">
+							<a data-toggle="collapse" href="#base">
+								<i class="fas fa-layer-group"></i>
+								<p>Multiple Cause of Death</p>
+								<span class="badge badge-info">2</span>
+								<span class="caret"></span>
 							</a>
+							<div class="collapse" id="base">
+								<ul class="nav nav-collapse">
+									<li>
+										<a href="../components/avatars.html">
+											<span class="sub-item">Multiple Cause of Death</span>
+											<span class="badge badge-success">250</span>
+										</a>
+									</li>
+									<li>
+										<a href="../components/buttons.html">
+											<span class="sub-item">Multiple Cause of Death V1.1</span>
+											<span class="badge badge-success">350</span>
+										</a>
+									</li>
+														
+								</ul>
+							</div>
 						</li>
+						
+						
 					</ul>
 				</div>
 			</div>
@@ -492,7 +563,7 @@
 											</tfoot>
 											<tbody>
 
-<script language="sql" name="rs" p1="#($Get(%request.Data("ID",1)))#"
+<script language="sql" name="rs" p1="#($Get(%request.Data("ID",1)))#" 
 mode="display">
 											SELECT 
 											patient, birthdate, deathdate, ssn, drivers, passport, prefix, firstname
