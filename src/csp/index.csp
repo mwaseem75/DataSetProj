@@ -535,125 +535,310 @@
 				</div>
 			</div>
 		</div>
-		<div class="main-panel">
+		<!-- Main Panel -->
+			<div class="main-panel">
 			<div class="content">
 				<div class="page-inner">
-					<div class="page-header">
-						<h4 class="page-title">DataTables.Net</h4>
-						<p>Runtime is: #($ztime($piece($h,",",2)))#</p>
-						<p>Compile-time is: ##($ztime($piece($h,",",2)))##</p>	
-						<script language="Cache" runat="Server">
-  set x = 3+25
-</script>
-<br>
-<p>#(x)# </P>.
-<csp:loop counter="i" from="1" to="10" step="1">
-  <csp:if condition="i#2=0">
-    <li>even</li>
-   <csp:else condition="i#2'=0">
-    <li>odd</li>
-   </csp:else>
-  </csp:if>
-</csp:loop>
-<script language="sql" name="rs" mode="display">	
-SELECT count(*) as total FROM dc_data_synthetic.patients	
-
-
-</script>
-<script language="Cache" runat="Server">
-</script>
-<csp:while condition="rs.Next()">
-<script language="Cache" runat="Server">
-set fd = rs.Data("total")
-</script>
-</csp:while>
-#(fd)#
-<csp:if condition="fd=1463">
-    <li>yees</li>
-   <csp:else condition="fd'=1463">
-    <li>No</li>
-   </csp:else>
-  </csp:if>
-
-						<ul class="breadcrumbs">
-							<li class="nav-home">
-								<a href="#">
-									<i class="flaticon-home"></i>
-								</a>
-							</li>
-							<li class="separator">
-								<i class="flaticon-right-arrow"></i>
-							</li>
-							<li class="nav-item">
-								<a href="#">Tables</a>
-							</li>
-							<li class="separator">
-								<i class="flaticon-right-arrow"></i>
-							</li>
-							<li class="nav-item">
-								<a href="#">Datatables</a>
-							</li>
-						</ul>
-					</div>
+					<!-- Card -->
+							
+					
 					<div class="row">
-						<div class="col-md-12">
-							<div class="card">
-								<div class="card-header">
-									<h4 class="card-title">Basic</h4>
-								</div>
+						<div class="col-sm-6 col-md-3">
+							<div class="card card-stats card-primary card-round">
 								<div class="card-body">
-									<div class="table-responsive">
-										<table id="basic-datatables" class="display table table-striped table-hover" >
-											<thead>
-												<tr>
-													<th>patient</th>
-													<th>birthdate</th>
-													<th>deathdate</th>
-													<th>passport</th>
-													<th>prefix</th>
-													<th>firstname</th>
-												</tr>
-											</thead>
-											<tfoot>
-												<tr>
-													<th>patient</th>
-													<th>birthdate</th>
-													<th>deathdate</th>
-													<th>passport</th>
-													<th>prefix</th>
-													<th>firstname</th>
-												</tr>
-											</tfoot>
-											<tbody>
-
-											<script language="sql" name="rs" mode="display">
-												SELECT patient, birthdate, deathdate, ssn,
-												       drivers, passport, prefix, firstname
-													FROM dc_data_synthetic.patients
-											</script>
-											<csp:while condition="rs.Next()">											
-												<tr>
-													<td>#(rs.Data("patient"))#</td>
-													<td>#(rs.Data("birthdate"))#</td>
-													<td>#(rs.Data("deathdate"))#</td>
-													<td>#(rs.Data("ssn"))#</td>
-													<td>#(rs.Data("passport"))#</td>
-													<td>#(rs.Data("prefix"))#
-											    </tr>
-											 </csp:while>
-											</tbody>
-										</table>
+									<div class="row">
+										<div class="col-5">
+											<div class="icon-big text-center">
+												<i class="flaticon-users"></i>
+											</div>
+										</div>
+										<div class="col-7 col-stats">
+											<div class="numbers">
+												<p class="card-category">Visitors</p>
+												<h4 class="card-title">1,294</h4>
+												
+													<a class="nav-link" data-toggle="dropdown" href="#" aria-expanded="false">
+														<i class="fas fa-layer-group"></i>
+													</a>
+													<div class="dropdown-menu quick-actions quick-actions-info animated fadeIn">
+														<div class="quick-actions-header">
+															<p><small class="text-muted"><i class="flaticon-message"></i> 11 hours ago via Twitter</small></p>
+														</div>
+														<div class="quick-actions-scroll scrollbar-outer">
+															<div class="quick-actions-items">
+																<div class="row m-0">
+																	<p>l;aksjdf al;ksdjf a;lsdkjf ;alsdkj f;alsdkj f;alskdjf a;lsdkf 
+																	l;aksdjf;laksdjf;alksdjf;alsdkjfa;sldkfja;sdljf;asdlj</p>																				
+																	
+																	
+																</div>
+															</div>
+														</div>
+													</div>
+												</li>
+											</div>
+										</div>
 									</div>
 								</div>
 							</div>
 						</div>
+						<div class="col-sm-6 col-md-3">
+							<div class="card card-stats card-info card-round">
+								<div class="card-body">
+									<div class="row">
+										<div class="col-5">
+											<div class="icon-big text-center">
+												<i class="flaticon-interface-6"></i>
+											</div>
+										</div>
+										<div class="col-7 col-stats">
+											<div class="numbers">
+												<p class="card-category">Subscribers</p>
+												<h4 class="card-title">1303</h4>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-6 col-md-3">
+							<div class="card card-stats card-success card-round">
+								<div class="card-body ">
+									<div class="row">
+										<div class="col-5">
+											<div class="icon-big text-center">
+												<i class="flaticon-analytics"></i>
+											</div>
+										</div>
+										<div class="col-7 col-stats">
+											<div class="numbers">
+												<p class="card-category">Sales</p>
+												<h4 class="card-title">$ 1,345</h4>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-6 col-md-3">
+							<div class="card card-stats card-secondary card-round">
+								<div class="card-body ">
+									<div class="row">
+										<div class="col-5">
+											<div class="icon-big text-center">
+												<i class="flaticon-success"></i>
+											</div>
+										</div>
+										<div class="col-7 col-stats">
+											<div class="numbers">
+												<p class="card-category">Order</p>
+												<h4 class="card-title">576</h4>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				
+					
+					<div class="row">
+						<div class="col-sm-6 col-md-3">
+							<div class="card-pricing2 card-success">
+								<div class="pricing-header">
+									<h3 class="fw-bold">Synthetic Medical Data</h3>
+									<span class="sub-title">Brenda Griffith</span>
+								</div>
+								<div class="price-value">
+									<div class="value">
+										<span class="currency"></span>
+										<span class="amount">11<span></span></span>
+										<span class="month">Tables</span>
+									</div>
+								</div>
+								<ul class="pricing-content">
+									<li>CREATED 3 years ago</li>
+									<li>TAGS public healt</li>
+									<li>LICENSE Public Domain</li>
+									<li>TABLES 11 </li>
+									<li>COLUMNS 84 </li>
+									
+								</ul>
+								<a href="#" class="btn btn-success btn-border btn-lg w-75 fw-bold mb-3">Sign up</a>
+							</div>
+						</div>
+						<div class="col-sm-6 col-md-3">
+							<div class="card-pricing2 card-primary">
+								<div class="pricing-header">
+									<h3 class="fw-bold">Business</h3>
+									<span class="sub-title">Lorem ipsum</span>
+								</div>
+								<div class="price-value">
+									<div class="value">
+										<span class="currency">$</span>
+										<span class="amount">20.<span>99</span></span>
+										<span class="month">/month</span>
+									</div>
+								</div>
+								<ul class="pricing-content">
+									<li>60GB Disk Space</li>
+									<li>60 Email Accounts</li>
+									<li>60GB Monthly Bandwidth</li>
+									<li>15 Subdomains</li>
+									<li class="disable">20 Domains</li>
+								</ul>
+								<a href="#" class="btn btn-primary btn-border btn-lg w-75 fw-bold mb-3">Sign up</a>
+							</div>
+						</div>
+						<div class="col-sm-6 col-md-3">
+							<div class="card-pricing2 card-secondary">
+								<div class="pricing-header">
+									<h3 class="fw-bold">Premium</h3>
+									<span class="sub-title">Lorem ipsum</span>
+								</div>
+								<div class="price-value">
+									<div class="value">
+										<span class="currency">$</span>
+										<span class="amount">30.<span>99</span></span>
+										<span class="month">/month</span>
+									</div>
+								</div>
+								<ul class="pricing-content">
+									<li>70GB Disk Space</li>
+									<li>70 Email Accounts</li>
+									<li>70GB Monthly Bandwidth</li>
+									<li>20 Subdomains</li>
+									<li>25 Domains</li>
+								</ul>
+								<a href="#" class="btn btn-secondary btn-border btn-lg w-75 fw-bold mb-3">Sign up</a>
+							</div>
+						</div>
+						<div class="col-sm-6 col-md-3">
+							<div class="card-pricing2 card-secondary">
+								<div class="pricing-header">
+									<h3 class="fw-bold">Premium</h3>
+									<span class="sub-title">Lorem ipsum</span>
+								</div>
+								<div class="price-value">
+									<div class="value">
+										<span class="currency">$</span>
+										<span class="amount">30.<span>99</span></span>
+										<span class="month">/month</span>
+									</div>
+								</div>
+								<ul class="pricing-content">
+									<li>70GB Disk Space</li>
+									<li>70 Email Accounts</li>
+									<li>70GB Monthly Bandwidth</li>
+									<li>20 Subdomains</li>
+									<li>25 Domains</li>
+								</ul>
+								<a href="#" class="btn btn-secondary btn-border btn-lg w-75 fw-bold mb-3">Sign up</a>
+							</div>
+						</div>
+					</div>
 
-						
-
-						
+					<!-- Customized Card -->
+					
+			<footer class="footer">
+				<div class="container-fluid">
+					<nav class="pull-left">
+						<ul class="nav">
+							<li class="nav-item">
+							
+									2022, Datasets
+							
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="#">
+								
+								</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="#">
+								
+								</a>
+							</li>
+						</ul>
+					</nav>
+					
+				</div>
+			</footer>
+		</div>
+		
+		<!-- Custom template | don't include it in your project! -->
+		<div class="custom-template">
+			<div class="title">Settings</div>
+			<div class="custom-content">
+				<div class="switcher">
+					<div class="switch-block">
+						<h4>Logo Header</h4>
+						<div class="btnSwitch">
+							<button type="button" class="changeLogoHeaderColor" data-color="dark"></button>
+							<button type="button" class="selected changeLogoHeaderColor" data-color="blue"></button>
+							<button type="button" class="changeLogoHeaderColor" data-color="purple"></button>
+							<button type="button" class="changeLogoHeaderColor" data-color="light-blue"></button>
+							<button type="button" class="changeLogoHeaderColor" data-color="green"></button>
+							<button type="button" class="changeLogoHeaderColor" data-color="orange"></button>
+							<button type="button" class="changeLogoHeaderColor" data-color="red"></button>
+							<button type="button" class="changeLogoHeaderColor" data-color="white"></button>
+							<br/>
+							<button type="button" class="changeLogoHeaderColor" data-color="dark2"></button>
+							<button type="button" class="changeLogoHeaderColor" data-color="blue2"></button>
+							<button type="button" class="changeLogoHeaderColor" data-color="purple2"></button>
+							<button type="button" class="changeLogoHeaderColor" data-color="light-blue2"></button>
+							<button type="button" class="changeLogoHeaderColor" data-color="green2"></button>
+							<button type="button" class="changeLogoHeaderColor" data-color="orange2"></button>
+							<button type="button" class="changeLogoHeaderColor" data-color="red2"></button>
+						</div>
+					</div>
+					<div class="switch-block">
+						<h4>Navbar Header</h4>
+						<div class="btnSwitch">
+							<button type="button" class="changeTopBarColor" data-color="dark"></button>
+							<button type="button" class="changeTopBarColor" data-color="blue"></button>
+							<button type="button" class="changeTopBarColor" data-color="purple"></button>
+							<button type="button" class="changeTopBarColor" data-color="light-blue"></button>
+							<button type="button" class="changeTopBarColor" data-color="green"></button>
+							<button type="button" class="changeTopBarColor" data-color="orange"></button>
+							<button type="button" class="changeTopBarColor" data-color="red"></button>
+							<button type="button" class="changeTopBarColor" data-color="white"></button>
+							<br/>
+							<button type="button" class="changeTopBarColor" data-color="dark2"></button>
+							<button type="button" class="selected changeTopBarColor" data-color="blue2"></button>
+							<button type="button" class="changeTopBarColor" data-color="purple2"></button>
+							<button type="button" class="changeTopBarColor" data-color="light-blue2"></button>
+							<button type="button" class="changeTopBarColor" data-color="green2"></button>
+							<button type="button" class="changeTopBarColor" data-color="orange2"></button>
+							<button type="button" class="changeTopBarColor" data-color="red2"></button>
+						</div>
+					</div>
+					<div class="switch-block">
+						<h4>Sidebar</h4>
+						<div class="btnSwitch">
+							<button type="button" class="selected changeSideBarColor" data-color="white"></button>
+							<button type="button" class="changeSideBarColor" data-color="dark"></button>
+							<button type="button" class="changeSideBarColor" data-color="dark2"></button>
+						</div>
+					</div>
+					<div class="switch-block">
+						<h4>Background</h4>
+						<div class="btnSwitch">
+							<button type="button" class="changeBackgroundColor" data-color="bg2"></button>
+							<button type="button" class="changeBackgroundColor selected" data-color="bg1"></button>
+							<button type="button" class="changeBackgroundColor" data-color="bg3"></button>
+							<button type="button" class="changeBackgroundColor" data-color="dark"></button>
+						</div>
 					</div>
 				</div>
 			</div>
+			<div class="custom-toggle">
+				<i class="flaticon-settings"></i>
+			</div>
+		</div>
+		<!-- End Custom template -->
+	</div>
+		<!-- Footer -->
 			<footer class="footer">
 				<div class="container-fluid">
 					<nav class="pull-left">
