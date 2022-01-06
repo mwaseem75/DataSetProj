@@ -1,24 +1,33 @@
 /// datasource from https://data.world/siyeh/synthetic-medical-data/workspace/project-summary?agentid=siyeh&datasetid=synthetic-medical-data
-Class dc.data.medical.Utility
+Class dc.data.medical.utility
 {
 
-ClassMethod RunDir()
+ClassMethod importDS(id As %Integer)
 {
-      Set mDir = "/irisdev/app/src/data/synthetic" 
-      set mFileSpec = "*.csv"
-      Set tRS=##class(%ResultSet).%New("%Library.File:FileSet")
 
-      Set tSC=tRS.Execute(mDir,mFileSpec)
+    SET ds = $CASE(id,1:"synthetic",2:"covid",3:"ood",4:"ps",5:"wdc",6:"hhcps",7:"bim",8:"brfv",:"Invalid")
+    IF ds = "Invlaid" 
+    {
+        Write "Invalid Option" 
+        QUIT
+    }    
+    SET mDir = "/irisdev/app/src/data/"_ds
+    SET mFileSpec = "*.csv"
+    //User %ResultSet to read all the files from dirctory
+    SET tRS=##class(%ResultSet).%New("%Library.File:FileSet")
 
-      While tRS.Next() {
-            set filename=tRS.Get("Name")
-            kill classname
-            kill coltype            
-            set classname=$REPLACE("dc_data_synthetic."_tRS.Get("ItemName"),".csv","")
-            set status=##class(dc.data.medical.Utility).Process(filename,,.classname,.coltype,.tResults)	     
-            //&sql( LOAD DATA FROM FILE %filename INTO %classname USING {"from":{"file":{"header":"1"}}})
+    SET tSC=tRS.Execute(mDir,mFileSpec)
 
-            set qry = "LOAD DATA FROM FILE  '"_filename_"' INTO "_classname_ " "_"USING {""from"":{""file"":{""header"":""1""}}}"
+    WHILE tRS.Next() {
+        SET filename=tRS.Get("Name")
+        Kill classname
+        kill coltype            
+        //SET classname=$REPLACE("dc_data_synthetic."_tRS.Get("ItemName"),".csv","")
+        SET classname=$REPLACE("dc_data_"_ds_"."_tRS.Get("ItemName"),".csv","")
+        SET status=##class(dc.data.medical.Utility).Process(filename,,.classname,.coltype,.tResults)	     
+        //&sql( LOAD DATA FROM FILE %filename INTO %classname USING {"from":{"file":{"header":"1"}}})
+
+          set qry = "LOAD DATA FROM FILE  '"_filename_"' INTO "_classname_ " "_"USING {""from"":{""file"":{""header"":""1""}}}"
             //set qry = "LOAD DATA FROM FILE %filename INTO %classname"
             w "query :"_qry,!
             SET myquery = qry 
