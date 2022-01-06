@@ -4,18 +4,14 @@ Class dc.data.medical.utility
 
 ClassMethod importDS(id As %Integer)
 {
-
+    if $DATA(id) '= 1 {WRITE "Invalid Parameter" QUIT}
     SET ds = $CASE(id,1:"synthetic",2:"covid",3:"ood",4:"ps",5:"wdc",6:"hhcps",7:"bim",8:"brfv",:"Invalid")
-    IF ds = "Invlaid" 
-    {
-        Write "Invalid Option" 
-        QUIT
-    }    
+    IF ds = "Invalid" { WRITE "Invalid Option"  QUIT  }    
     SET mDir = "/irisdev/app/src/data/"_ds
     SET mFileSpec = "*.csv"
     //User %ResultSet to read all the files from dirctory
     SET tRS=##class(%ResultSet).%New("%Library.File:FileSet")
-
+   
     SET tSC=tRS.Execute(mDir,mFileSpec)
 
     WHILE tRS.Next() {
@@ -24,7 +20,7 @@ ClassMethod importDS(id As %Integer)
         kill coltype            
         //SET classname=$REPLACE("dc_data_synthetic."_tRS.Get("ItemName"),".csv","")
         SET classname=$REPLACE("dc_data_"_ds_"."_tRS.Get("ItemName"),".csv","")
-        SET status=##class(dc.data.medical.Utility).Process(filename,,.classname,.coltype,.tResults)	     
+        SET status=##class(dc.data.medical.utility).Process(filename,,.classname,.coltype,.tResults)	     
         //&sql( LOAD DATA FROM FILE %filename INTO %classname USING {"from":{"file":{"header":"1"}}})
 
           set qry = "LOAD DATA FROM FILE  '"_filename_"' INTO "_classname_ " "_"USING {""from"":{""file"":{""header"":""1""}}}"
@@ -36,6 +32,7 @@ ClassMethod importDS(id As %Integer)
             IF qStatus'=1 {WRITE "%Prepare failed:" DO $System.Status.DisplayError(qStatus) QUIT}
             SET rset = tStatement.%Execute()
             w qStatus
+            RETURN "ok"
       }
 }
 
@@ -61,8 +58,8 @@ ClassMethod GetRowTypes(filenamecsv As %String, dlm As %String = ",", deep As %I
         for i=1:1:($Length(header,dlm)) {
             kill types
             //Get datatype of the column
-            do ##class(Utility).GetDataType($Piece(dataLine,dlm,i),.types)
-            set type=##class(Utility).Decide(.types) 
+            do ##class(utility).GetDataType($Piece(dataLine,dlm,i),.types)
+            set type=##class(utility).Decide(.types) 
             //Set 200 Varchar
             if type="VARCHAR" set type="VARCHAR(200)"
             set $Piece(rowtypes,dlm,i)=$TR($Piece(header,dlm,i)," ","")_" "_type
