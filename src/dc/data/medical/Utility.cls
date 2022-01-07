@@ -2,7 +2,7 @@
 Class dc.data.medical.utility
 {
 
-ClassMethod importDS(id As %Integer)
+ClassMethod ImportDS(id As %Integer)
 {
     // Check if parameter is defined
     IF $DATA(id) '= 1 
@@ -10,126 +10,115 @@ ClassMethod importDS(id As %Integer)
         WRITE "Invalid Parameter" 
         QUIT
     }
+    
+    //if id = 999 then run loop through all 12 folders
+    IF id = 999 
+    {SET start=1,end=12}
+    ELSE
+    {SET start = id, end = id}
+    
+    FOR counter=start:1:end
+    {
     // Get directory name based on parameter value
-    SET ds = $CASE(id,1:"synthetic",2:"analytics",3:"suicide",4:"covid",5:"deaths",6:"services",7:"ratings",
-                      8:"drug",9:"treatment",10:"diabetes",11:"kidney",12:"cholesterol",:"Invalid")
-    // Check if valid value is entered
+    Set ds = ..GetDSName(counter)
+  
+      // Check if valid value is entered
     IF ds = "Invalid" 
     { 
         WRITE "Invalid Option! Valid options are between 1 to 12"  
         QUIT  
-    }    
+    }   
+    
+    //Get Directory Name
     SET mDir = "/irisdev/app/src/data/"_ds
     SET mFileSpec = "*.csv"
     
     //User %ResultSet to read all the files from dirctory
     SET tRS=##class(%ResultSet).%New("%Library.File:FileSet")
     SET tSC=tRS.Execute(mDir,mFileSpec)
-    
+    WRITE "DATASET : "_ds,! 
     //Get all the files from directory 
     WHILE tRS.Next() {
         SET filename=tRS.Get("Name")
-        Kill classname
-        kill coltype            
-        //SET classname=$REPLACE("dc_data_synthetic."_tRS.Get("ItemName"),".csv","")
-        SET classname=$REPLACE("dc_data_"_ds_"."_tRS.Get("ItemName"),".csv","")
-        SET status=##class(dc.data.medical.utility).Process(filename,,.classname,.coltype,.tResults)	     
-        SET stc = ..CreateTbl(coltype,classname)
-        //&sql( LOAD DATA FROM FILE %filename INTO %classname USING {"from":{"file":{"header":"1"}}})
-
-        //Dynamically construct LOAD DATA statement
-        SET qry = "LOAD DATA FROM FILE  '"_filename_"' INTO "_classname_ " "_"USING {""from"":{""file"":{""header"":""1""}}}"
+        SET tableName=$REPLACE("dc_data_"_ds_"."_tRS.Get("ItemName"),".csv","")
+        Do ##class(dc.data.medical.utility).GetColTypes(filename,.coltype)	     
+        
+        //Dynamically create table based on tablename and column types
+        SET qry = "CREATE TABLE "_tableName_" ("_coltype_")"
         SET rset = ##class(%SQL.Statement).%ExecDirect(,qry)
+        
+        //Check if table created successfully
         IF rset.%SQLCODE
         {
-            WRITE "CLASSNAME :" _classname_" IMPORT FAILED: ",rset.%Message,!
-        } else
-        {
-            WRITE "CLASSNAME :" _classname_" - "_rset.%ROWCOUNT_" Rows Imported Successfully",!
+             WRITE "ERROR : ",rset.%Message,!          
         }
-            
-      }
-}
-
-ClassMethod Process(filenamecsv As %String, dlm As %String = ",", ByRef classname As %String, ByRef coltype As %String, Output recordsCount As %Integer, pverbose As %Boolean = 1, pappend As %Boolean = 0) As %Status
-{
-    SET sc=$$$OK
-    IF $g(coltype)="" {
-       SET coltype=..GetColTypes(filenamecsv,dlm)     
-    } 
-    //SET stc = ..CreateTbl(coltype,classname)
-    QUIT sc
-}
-
-ClassMethod GetColTypes(filenamecsv As %String, dlm As %String = ",") As %String
-{
-    SET rowtypes=""
-    SET stream=..GetStreamFromFile(filenamecsv)      
-        SET header=stream.ReadLine() // Get Header columns
-        //SET filename = stream.filename
-        SET header=$ZCONVERT(header,"L")
-        SET dataLine=stream.ReadLine() // Read First line of data
-        //SET dataLine =..RemoveDlm(dataLine,dlm) // check it later
-
-        //Read all the columns of header and add datatype against it        
-        for i=1:1:($Length(header,dlm)) {
-            kill types
-            //Get datatype of the column
-            do ##class(utility).GetDataType($Piece(dataLine,dlm,i),.types)
-            SET type=##class(utility).GetType(.types) 
-            //SET 200 Varchar
-            if type="VARCHAR" SET type="VARCHAR(200)"
-            SET $Piece(rowtypes,dlm,i)=$TR($Piece(header,dlm,i)," ","")_" "_type
+        ELSE
+        {
+            //Dynamically construct LOAD DATA statement
+            SET qry = "LOAD DATA FROM FILE  '"_filename_"' INTO "_tableName_ " "_"USING {""from"":{""file"":{""header"":""1""}}}"
+            SET rset = ##class(%SQL.Statement).%ExecDirect(,qry)
+            IF rset.%SQLCODE
+            {
+                WRITE "ERROR Table : " _tableName_" IMPORT FAILED: ",rset.%Message,!
+            } 
+            ELSE
+            {
+                WRITE "SUCCESS table : " _tableName_" created and "_rset.%ROWCOUNT_" Rows Imported Successfully",!
+            }
+        }   
     }
+   }
+}
 
-    SET rowtypes=$TR(rowtypes,dlm,",")
+ClassMethod GetColTypes(filenamecsv As %String, ByRef coltype As %String, dlm As %String = ",")
+{
+    SET coltype=""
+    SET stream=..GetStreamFromFile(filenamecsv)      
+    SET header=stream.ReadLine() // Get Header columns
+    SET header=$ZCONVERT(header,"L")
+    SET dataLine=stream.ReadLine() // Read First line of data
+        
+    //Read all the columns of header and add datatype against it        
+    FOR i=1:1:($Length(header,dlm)) {
+        kill types
+        //Get datatype of the column
+        DO ##class(utility).GetDataType($Piece(dataLine,dlm,i),.types)
+        SET type=##class(utility).GetType(.types) 
+
+        // if type is varchar then assign length 200
+        IF type="VARCHAR" SET type="VARCHAR(200)"
+        SET $Piece(coltype,dlm,i)=$TR($Piece(header,dlm,i)," ","")_" "_type
+    }
+    SET coltype=$TR(coltype,dlm,",")
     // change "." symbol in column names
-    SET rowtypes=$TR(rowtypes,".","_")
-    Return rowtypes
+    SET coltype=$TR(coltype,".","_")
 }
 
 ClassMethod GetStreamFromFile(filename As %String) As %Stream
 {
+    // create new stream and link to the file
     SET stream = ##Class(%Stream.FileCharacter).%New()
     SET stream.LineTerminator = $Char(13,10)
     $$$TOE(sc,stream.LinkToFile(filename))
-    //SET filename = stream.FileName
     RETURN stream
-}
-
-ClassMethod CreateTbl(tblSql As %String, pp As %String) As %Status
-{
- SET sc=$$$OK
- SET qry = "CREATE TABLE "_pp_" ("_tblSql_")"
- //SET myquery = qry 
- //SET tStatement = ##class(%SQL.Statement).%New()
- //SET qStatus = tStatement.%Prepare(myquery)
- //IF qStatus'=1 {WRITE "%Prepare failed:" DO $System.Status.DisplayError(qStatus) QUIT}
- //SET rset = tStatement.%Execute()
- //return sc
-
- SET rset = ##class(%SQL.Statement).%ExecDirect(,qry)
- IF rset.%SQLCODE
- {
-    WRITE "ERROR WHILE CREATING TABLE : ",rset.%Message,!
- } 
- RETURN sc
 }
 
 ClassMethod IsDate(pVar As %String = "") As %Boolean
 {
-    SET result=$$$YES
+    SET sts=$$$YES
     Try {
         If $ZDateH(pVar,5)
     }
     Catch e {
-        SET result=$$$NO
+        SET sts=$$$NO
     }
-    Quit result
+    Quit sts
 }
 
 ClassMethod GetDataType(value As %String, ByRef types) As %Status
 {
+  
+   //Get datatype based on the first column value 
    if $IsvalidDouble(value) {
        if $I(types("DOUBLE"))
        if $L(value,".")>1,$L($P(value,".",2))<10 if $I(types("MONEY"))
@@ -141,7 +130,6 @@ ClassMethod GetDataType(value As %String, ByRef types) As %Status
        Quit $$$OK 
    }
    if $I(types("VARCHAR"))
-
    return $$$OK
 }
 
@@ -157,6 +145,130 @@ ClassMethod GetType(ByRef types) As %String
     }
     if $D(typesI) return typesI($Order(typesI(""),-1))
     return "VARCHAR"
+}
+
+/// Description
+ClassMethod GetDSName(counter As %Integer) As %Status
+{
+    SET ds = $CASE(counter,1:"synthetic",2:"hcanalytics",3:"globalsuicide",4:"covidpolls",5:"cancerrates",6:"overdosedeaths",
+                           7:"hdprediction",8:"medicalservices",9:"hospitalratings",10:"patienttreatment",11:"diabetes",12:"kidneydisease",
+                            :"Invalid")
+    RETURN ds
+}
+
+// Remove particular Dataset or all datasets
+
+ClassMethod RemoveDS(id As %Integer)
+{
+    // Check if parameter is defined
+    IF $DATA(id) '= 1 
+    {
+        WRITE "Invalid Parameter" 
+        QUIT
+    }
+    
+    //if id = 999 then run loop through all 12 folders
+    IF id = 999 
+    {SET start=1,end=12}
+    ELSE
+    {SET start = id, end = id}
+    
+    FOR counter=start:1:end
+    {
+    // Get directory name based on parameter value
+    Set ds = ..GetDSName(counter)
+    
+    // Check if valid value is entered
+    IF ds = "Invalid" 
+    { 
+        WRITE "Invalid Option! Valid options are between 1 to 12"  
+        QUIT  
+    }    
+    
+    //Get Directory Name
+    SET mDir = "/irisdev/app/src/data/"_ds
+    SET mFileSpec = "*.csv"
+    
+    //User %ResultSet to read all the files from dirctory
+    SET tRS=##class(%ResultSet).%New("%Library.File:FileSet")
+    SET tSC=tRS.Execute(mDir,mFileSpec)
+    
+    WRITE "DATASET : "_ds,! 
+    //Get all the files from directory 
+    WHILE tRS.Next() {
+        SET filename=tRS.Get("Name")
+        SET tableName=$REPLACE("dc_data_"_ds_"."_tRS.Get("ItemName"),".csv","")
+        //Drop table 
+        SET qry = "DROP TABLE "_tableName
+        SET rset = ##class(%SQL.Statement).%ExecDirect(,qry)
+      
+        //Check if table deleted successfully
+        IF rset.%SQLCODE
+        {
+             WRITE "ERROR : ",rset.%Message,!          
+        } 
+        ELSE
+        {
+            WRITE "Table "_tableName_" deleted successfully",!
+        }
+      }
+   }
+}
+
+ClassMethod GetStatusDS(id As %Integer)
+{
+    // Check if parameter is defined
+    IF $DATA(id) '= 1 
+    {
+        WRITE "Invalid Parameter" 
+        QUIT
+    }
+    
+    //if id = 999 then run loop through all 12 folders
+    IF id = 999 
+    {SET start=1,end=12}
+    ELSE
+    {SET start = id, end = id}
+    
+    FOR counter=start:1:end
+    {
+    // Get directory name based on parameter value
+    Set ds = ..GetDSName(counter)
+    
+    // Check if valid value is entered
+    IF ds = "Invalid" 
+    { 
+        WRITE "Invalid Option! Valid options are between 1 to 12"  
+        QUIT  
+    }    
+    
+    //Get Directory Name
+    SET mDir = "/irisdev/app/src/data/"_ds
+    SET mFileSpec = "*.csv"
+    
+    //User %ResultSet to read all the files from dirctory
+    SET tRS=##class(%ResultSet).%New("%Library.File:FileSet")
+    SET tSC=tRS.Execute(mDir,mFileSpec)
+    
+    WRITE "DATASET : "_ds,! 
+    //Get all the files from directory 
+    WHILE tRS.Next() {
+        SET filename=tRS.Get("Name")
+        SET tableName=$REPLACE("dc_data_"_ds_"."_tRS.Get("ItemName"),".csv","")
+        //Get table Status 
+        SET sts = $SYSTEM.SQL.Schema.TableExists(tableName) 
+        
+        //Check if table deleted successfully
+        IF sts = 1
+        {
+             WRITE "Table "_tableName_" Exists",!       
+        } 
+        ELSE
+        {
+            WRITE "Table "_tableName_" not Exists",!
+        }
+      }
+   }
 }
 
 }
