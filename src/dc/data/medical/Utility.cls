@@ -11,11 +11,12 @@ ClassMethod importDS(id As %Integer)
         QUIT
     }
     // Get directory name based on parameter value
-    SET ds = $CASE(id,1:"synthetic",2:"covid",3:"ood",4:"ps",5:"wdc",6:"hhcps",7:"bim",8:"brfv",:"Invalid")
+    SET ds = $CASE(id,1:"synthetic",2:"analytics",3:"suicide",4:"covid",5:"deaths",6:"services",7:"ratings",
+                      8:"drug",9:"treatment",10:"diabetes",11:"kidney",12:"cholesterol",:"Invalid")
     // Check if valid value is entered
     IF ds = "Invalid" 
     { 
-        WRITE "Invalid Option"  
+        WRITE "Invalid Option! Valid options are between 1 to 12"  
         QUIT  
     }    
     SET mDir = "/irisdev/app/src/data/"_ds
@@ -33,21 +34,11 @@ ClassMethod importDS(id As %Integer)
         //SET classname=$REPLACE("dc_data_synthetic."_tRS.Get("ItemName"),".csv","")
         SET classname=$REPLACE("dc_data_"_ds_"."_tRS.Get("ItemName"),".csv","")
         SET status=##class(dc.data.medical.utility).Process(filename,,.classname,.coltype,.tResults)	     
+        SET stc = ..CreateTbl(coltype,classname)
         //&sql( LOAD DATA FROM FILE %filename INTO %classname USING {"from":{"file":{"header":"1"}}})
 
         //Dynamically construct LOAD DATA statement
         SET qry = "LOAD DATA FROM FILE  '"_filename_"' INTO "_classname_ " "_"USING {""from"":{""file"":{""header"":""1""}}}"
-        //set qry = "LOAD DATA FROM FILE %filename INTO %classname"
-        //SET myquery = qry 
-        //SET tStatement = ##class(%SQL.Statement).%New()
-        //SET qStatus = tStatement.%Prepare(myquery)
-        //IF qStatus'=1 
-        //{
-         //   WRITE "%Prepare failed:"
-          //  DO $System.Status.DisplayError(qStatus) 
-           // QUIT
-        //}
-        //SET rset = tStatement.%Execute()
         SET rset = ##class(%SQL.Statement).%ExecDirect(,qry)
         IF rset.%SQLCODE
         {
@@ -66,7 +57,7 @@ ClassMethod Process(filenamecsv As %String, dlm As %String = ",", ByRef classnam
     IF $g(coltype)="" {
        SET coltype=..GetColTypes(filenamecsv,dlm)     
     } 
-    SET stc = ..CreateTbl(coltype,classname)
+    //SET stc = ..CreateTbl(coltype,classname)
     QUIT sc
 }
 
