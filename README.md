@@ -5,7 +5,18 @@ Application to create tables dynamically based on the files in folder and Load d
 DataSet can be installed or removed by terminal or by using web application. Data can be view and copied by using Web application.
 
 ![image](https://user-images.githubusercontent.com/18219467/148703381-c1ca7868-0f23-4b65-bc11-1c38808ac666.png)
-
+* 1 - Synthetic Medical Data
+* 2 - Health Care Analytics - 1
+* 3 - Global Suicide Data
+* 4 - COVID-19 Polls
+* 5 - Cancer Rates by U.S. State
+* 6 - Opioid Overdose Deaths 
+* 7 - Heart Disease Prediction
+* 8 - Yellowpages medical services dataset
+* 9 - Hospital ratings
+* 10 -Patient Treatment Classification
+* 11 -Diabetes Dataset
+* 12 -Chronic Kidney Disease
 
 
 ## How to Run
