@@ -2,6 +2,10 @@
 
 This dataset contains the core data to be used in projects for the textbook Introduction to Biomedical Data Science edited by Robert Hoyt MD FACP ABPM-CI, and Robert Muenchen MS PSAT (2019).
 
+![Capture](https://user-images.githubusercontent.com/18219467/148702903-47b70d69-11c2-4777-8fb5-a04471147aa8.PNG)
+
+
+
 ## How to Run
 
 To start coding with this repo, you do the following:
