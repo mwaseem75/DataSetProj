@@ -31,12 +31,31 @@
 	<link rel="stylesheet" type="text/css" href="resources/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="resources/css/atlantis.min.css">
 	<link rel="stylesheet" type="text/css" href="resources/css/datatables.min.css">
+	<link rel="stylesheet" type="text/css" href="resources/css/buttons.dataTables.min.css">
+	<link rel="stylesheet" type="text/css" href="resources/css/jquery.dataTables.min.css">
+	
 	<script src="resources/js/jquery.min.js"></script>
 	<script src="resources/js/datatables.min.js"></script>
+	<script src="resources/js/dataTables.buttons.min.js"></script>
+	<script src="resources/js/jszip.min.js"></script>
+	<script src="resources/js/pdfmake.min.js"></script>
+	<script src="resources/js/vfs_fonts.js"></script>
+	<script src="resources/js/buttons.html5.min.js"></script>
+	
 	<script type="text/javascript">
-		$(document).ready(function() {
-		$('#basic-datatables').DataTable();
-		} );
+	
+	$(document).ready(function() {
+    $('#basic-datatables').DataTable( {
+        dom: 'Bfrtip',
+        buttons: [
+            'copyHtml5',
+            'excelHtml5',
+            'csvHtml5',
+            'pdfHtml5'
+        ]
+    } );
+} );
+
     </script>
 		<style>
 		.hidden {
