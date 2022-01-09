@@ -31,7 +31,14 @@
 	<link rel="stylesheet" type="text/css" href="resources/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="resources/css/atlantis.min.css">
 	<link rel="stylesheet" type="text/css" href="resources/css/datatables.min.css">
-	<style>
+	<script src="resources/js/jquery.min.js"></script>
+	<script src="resources/js/datatables.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+		$('#basic-datatables').DataTable();
+		} );
+    </script>
+		<style>
 		.hidden {
 			display: none;
 		}
@@ -43,24 +50,18 @@
 		#divMessagesDataGrid {
 			height: 500px;
     		width: 100%;
-		}
+		}		
 	</style>
-	<script src="resources/js/jquery.min.js"></script>
-	<script src="resources/js/datatables.min.js"></script>
-	<script type="text/javascript">
-		$(document).ready(function() {
-		$('#basic-datatables').DataTable();
-		} );
-    </script>
 </head>
 
 <body>
-	<div class="wrapper">
+<csp:class encoded=1 super="%CSP.Page,dc.data.medical.utility">
+  	<div class="wrapper">
 		<div class="main-header">
 			<!-- Logo Header -->
 			<div class="logo-header" data-background-color="blue">
 				
-				<a href="../index.html" class="logo">
+				<a href="#" class="logo">
 					<img src="resources/img/logo.jpg" alt="navbar brand" class="navbar-brand">
 				</a>
 				<button class="navbar-toggler sidenav-toggler ml-auto" type="button" data-toggle="collapse" data-target="collapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -76,91 +77,26 @@
 				</div>
 			</div>
 			<!-- End Logo Header -->
-
-			<!-- Navbar Header -->
+			<!-- NavBar -->
 			<nav class="navbar navbar-header navbar-expand-lg" data-background-color="blue2">
 				
 				<div class="container-fluid">
-					<div class="collapse" id="search-nav">
-						<form class="navbar-left navbar-form nav-search mr-md-3">
-							<div class="input-group">
-								<div class="input-group-prepend">
-									<button type="submit" class="btn btn-search pr-1">
-										<i class="fa fa-search search-icon"></i>
-									</button>
-								</div>
-								<input type="text" placeholder="Search ..." class="form-control">
-							</div>
-						</form>
-					</div>
-					<ul class="navbar-nav topbar-nav ml-md-auto align-items-center">
-						<li class="nav-item toggle-nav-search hidden-caret">
-							<a class="nav-link" data-toggle="collapse" href="#search-nav" role="button" aria-expanded="false" aria-controls="search-nav">
-								<i class="fa fa-search"></i>
-							</a>
+					<ul class="nav nav-pills nav-primary">
+						<li class="nav-item">
+							<a class="nav-link active" href="/csp/datasets/index.csp">Dashboard</a>
+						</li>
+							<li class="nav-item">
+							<a class="nav-link active" href="/csp/datasets/datasets.csp">View DataSets</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="/csp/sys/%25CSP.Portal.Home.zen" id="#" role="button">
-								<h5>Management Portal</h5>
-							</a>
-	
+							<a class="nav-link active" href="/csp/sys/%25CSP.Portal.Home.zen?$NAMESPACE=DATASETS">Management Portal</a>
 						</li>
-						<li class="nav-item dropdown hidden-caret">
-							<a class="nav-link dropdown-toggle" href="#" id="notifDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-								<i class="fa fa-bell"></i>
-								<span class="notification">4</span>
-							</a>
-							<ul class="dropdown-menu notif-box animated fadeIn" aria-labelledby="notifDropdown">
-								<li>
-									<div class="dropdown-title">You have 4 new notification</div>
-								</li>
-								<li>
-									<div class="notif-center">
-										<a href="#">
-											<div class="notif-icon notif-primary"> <i class="fa fa-user-plus"></i> </div>
-											<div class="notif-content">
-												<span class="block">
-													New user registered
-												</span>
-												<span class="time">5 minutes ago</span> 
-											</div>
-										</a>
-										<a href="#">
-											<div class="notif-icon notif-success"> <i class="fa fa-comment"></i> </div>
-											<div class="notif-content">
-												<span class="block">
-													Rahmad commented on Admin
-												</span>
-												<span class="time">12 minutes ago</span> 
-											</div>
-										</a>
-										<a href="#">
-											<div class="notif-img"> 
-												<img src="resources/img/profile2.jpg" alt="Img Profile">
-											</div>
-											<div class="notif-content">
-												<span class="block">
-													Reza send messages to you
-												</span>
-												<span class="time">12 minutes ago</span> 
-											</div>
-										</a>
-										<a href="#">
-											<div class="notif-icon notif-danger"> <i class="fa fa-heart"></i> </div>
-											<div class="notif-content">
-												<span class="block">
-													Farrah liked Admin
-												</span>
-												<span class="time">17 minutes ago</span> 
-											</div>
-										</a>
-									</div>
-								</li>
-								<li>
-									<a class="see-all" href="javascript:void(0);">See all notifications<i class="fa fa-angle-right"></i> </a>
-								</li>
-							</ul>
+						<li class="nav-item">
+							<a class="nav-link active" href="/csp/sys/exp/%25CSP.UI.Portal.SQL.Home.zen?$NAMESPACE=DATASETS">DataSets SQL</a>
 						</li>
+					
+					</ul>
+					<ul class="navbar-nav topbar-nav ml-md-auto align-items-center">						
 						<li class="nav-item dropdown hidden-caret">
 							<a class="nav-link" data-toggle="dropdown" href="#" aria-expanded="false">
 								<i class="fas fa-layer-group"></i>
@@ -173,42 +109,31 @@
 								<div class="quick-actions-scroll scrollbar-outer">
 									<div class="quick-actions-items">
 										<div class="row m-0">
-											<a class="col-6 col-md-4 p-0" href="#">
+											<a class="col-6 col-md-4 p-0" href="/csp/datasets/index.csp">
 												<div class="quick-actions-item">
 													<i class="flaticon-file-1"></i>
-													<span class="text">Generated Report</span>
+													<span class="text">Dashboard</span>
 												</div>
 											</a>
-											<a class="col-6 col-md-4 p-0" href="#">
-												<div class="quick-actions-item">
-													<i class="flaticon-database"></i>
-													<span class="text">Create New Database</span>
-												</div>
-											</a>
-											<a class="col-6 col-md-4 p-0" href="#">
+											<a class="col-6 col-md-4 p-0" href="/csp/datasets/datasets.csp">
 												<div class="quick-actions-item">
 													<i class="flaticon-pen"></i>
-													<span class="text">Create New Post</span>
+													<span class="text">View DataSet</span>
 												</div>
 											</a>
-											<a class="col-6 col-md-4 p-0" href="#">
+											<a class="col-6 col-md-4 p-0" href="/csp/sys/%25CSP.Portal.Home.zen?$NAMESPACE=DATASETS">
 												<div class="quick-actions-item">
-													<i class="flaticon-interface-1"></i>
-													<span class="text">Create New Task</span>
+													<i class="flaticon-database"></i>
+													<span class="text">Management Portal</span>
 												</div>
 											</a>
-											<a class="col-6 col-md-4 p-0" href="#">
+											<a class="col-6 col-md-4 p-0" href="/csp/sys/exp/%25CSP.UI.Portal.SQL.Home.zen?$NAMESPACE=DATASETS">
 												<div class="quick-actions-item">
-													<i class="flaticon-list"></i>
-													<span class="text">Completed Tasks</span>
+													<i class="flaticon-pen"></i>
+													<span class="text">DataSets SQL</span>
 												</div>
 											</a>
-											<a class="col-6 col-md-4 p-0" href="#">
-												<div class="quick-actions-item">
-													<i class="flaticon-file"></i>
-													<span class="text">Create New Invoice</span>
-												</div>
-											</a>
+											
 										</div>
 									</div>
 								</div>
@@ -221,55 +146,49 @@
 			<!-- End Navbar -->
 		</div>
 		<!-- Sidebar -->
-		<div class="sidebar sidebar-style-2">
-			
+		<div class="sidebar sidebar-style-2">			
 			<div class="sidebar-wrapper scrollbar scrollbar-inner">
-				<div class="sidebar-content">
-					
-					<ul class="nav nav-primary">
-					<li class="nav-item">
-							<a href="../widgets.html">
-								<i class="fas fa-home"></i>
-								<p>Dashboard</p>
-								
-							</a>
-					</li>
-					<li class="nav-item active">
-							<a href="#tables">
-								<i class="fas fa-table"></i>
-								<p>DATASETS</p>	
-								<span class="badge badge-warning">9</span>							
-							</a>							
-						</li>
-						<li class="nav-item">
-							<a data-toggle="collapse" href="#base">
-								<i class="fas fa-layer-group"></i>
-								<p>Synthetic Medical Data</p>
-								<span class="badge badge-info">11</span>
-								<span class="caret"></span>
-							</a>
+				<div class="sidebar-content">					
+				  <ul class="nav nav-primary">									
+						<li class="nav-item">							
+							<script language="Cache" runat="Server">
+								SET sts = $SYSTEM.SQL.Schema.TableExists("dc_data_synthetic.patients")
+							</script>
+							<csp:if condition="sts=1">
+								<a data-toggle="collapse" href="#base">
+									<i style="color:#007bff" class="fas fa-layer-group dscolor>Thest </p>"></i>
+									<p style="color:#007bff" class="dscolor">Synthetic Medical Data</p>
+									<span class="caret"></span>
+								</a>
+								<csp:else condition="sts'=1">
+								<a data-toggle="collapse disabled" href="">
+									<i class="fas fa-layer-group dscolor>Thest </p>"></i>
+									<p class="dscolor">Synthetic Medical Data</p>
+								</a>
+							</csp:if>
+														
 							<div class="collapse" id="base">
 								<ul class="nav nav-collapse">
 									<li>
-										<a href="../components/avatars.html">
+										<a href="/csp/datasets/datasets.csp?id=11">
 											<span class="sub-item">All_prevalences</span>
 											<span class="badge badge-success">250</span>
 										</a>
 									</li>
 									<li>
-										<a href="../components/buttons.html">
+										<a href="/csp/datasets/datasets.csp?id=12">
 											<span class="sub-item">Allergies</span>
 											<span class="badge badge-success">350</span>
 										</a>
 									</li>
 									<li>
-										<a href="../components/gridsystem.html">
+										<a href="/csp/datasets/datasets.csp?id=13">
 											<span class="sub-item">Careplans</span>
 											<span class="badge badge-success">450</span>
 										</a>
 									</li>
 									<li>
-										<a href="../components/panels.html">
+										<a href="/csp/datasets/datasets.csp?id=14">
 											<span class="sub-item">Claims</span>
 											<span class="badge badge-success">750</span>
 										</a>
@@ -320,23 +239,68 @@
 							</div>
 						</li>
 						<li class="nav-item">
-							<a data-toggle="collapse" href="#base1">
-								<i class="fas fa-layer-group"></i>
-								<p>Opioid Overdose Deaths</p>
-								<span class="badge badge-info">2</span>
-								<span class="caret"></span>
-							</a>
+							<script language="Cache" runat="Server">
+								SET sts = $SYSTEM.SQL.Schema.TableExists("dc_data_hcanalytics.AV_Train")
+							</script>
+							<csp:if condition="sts=1">
+								<a data-toggle="collapse" href="#base1">
+									<i style="color:#007bff" class="fas fa-layer-group dscolor>Thest </p>"></i>
+									<p style="color:#007bff" class="dscolor">Health Care Analytics 1</p>
+									<span class="caret"></span>
+								</a>
+								<csp:else condition="sts'=1">
+								<a data-toggle="collapse disabled">
+									<i class="fas fa-layer-group dscolor>Thest </p>"></i>
+									<p class="dscolor">Health Care Analytics 1</p>
+								</a>
+							</csp:if>
 							<div class="collapse" id="base1">
 								<ul class="nav nav-collapse">
 									<li>
 										<a href="../components/avatars.html">
-											<span class="sub-item">Multiple Cause of Death</span>
+											<span class="sub-item">First Health Camp Attended</span>
 											<span class="badge badge-success">250</span>
 										</a>
 									</li>
 									<li>
 										<a href="../components/buttons.html">
-											<span class="sub-item">Multiple Cause of Death V1.1</span>
+											<span class="sub-item">Health Camp Detail</span>
+											<span class="badge badge-success">350</span>
+										</a>
+									</li>
+									<li>
+										<a href="../components/buttons.html">
+											<span class="sub-item">Patient Profile</span>
+											<span class="badge badge-success">350</span>
+										</a>
+									</li>
+									<li>
+										<a href="../components/buttons.html">
+											<span class="sub-item">Sample Submmission</span>
+											<span class="badge badge-success">350</span>
+										</a>
+									</li>
+									<li>
+										<a href="../components/buttons.html">
+											<span class="sub-item">Second Health Camp Attendedn</span>
+											<span class="badge badge-success">350</span>
+										</a>
+									</li>
+									<li>
+										<a href="../components/buttons.html">
+											<span class="sub-item">AV Test</span>
+											<span class="badge badge-success">350</span>
+										</a>
+									</li>
+									<li>
+										<a href="../components/buttons.html">
+											<span class="sub-item">Third Health Camp Attended</span>
+											<span class="badge badge-success">350</span>
+										</a>
+									</li>
+									<li>
+										<a href="../components/buttons.html">
+											<span class="sub-item">AV Train</span>
 											<span class="badge badge-success">350</span>
 										</a>
 									</li>
@@ -345,30 +309,62 @@
 							</div>
 						</li>
 						<li class="nav-item">
-							<a data-toggle="collapse" href="#base2">
-								<i class="fas fa-layer-group"></i>
-								<p>Inpatient waiting times</p>
-								<span class="badge badge-info">3</span>
-								<span class="caret"></span>
-								
-							</a>
+							<script language="Cache" runat="Server">
+								SET sts = $SYSTEM.SQL.Schema.TableExists("dc_data_globalsuicide.MH_12")
+							</script>
+							<csp:if condition="sts=1">
+								<a data-toggle="collapse" href="#base2">
+									<i style="color:#007bff" class="fas fa-layer-group dscolor>Thest </p>"></i>
+									<p style="color:#007bff" class="dscolor">Global Suicide Data</p>
+									<span class="caret"></span>
+								</a>
+								<csp:else condition="sts'=1">
+								<a data-toggle="collapse disabled">
+									<i class="fas fa-layer-group dscolor>Thest </p>"></i>
+									<p class="dscolor">Global Suicide Data</p>
+								</a>
+							</csp:if>
 							<div class="collapse" id="base2">
 								<ul class="nav nav-collapse">
 									<li>
 										<a href="../components/avatars.html">
-											<span class="sub-item">Day case waiting times</span>
+											<span class="sub-item">Gender Rates</span>
 											<span class="badge badge-success">250</span>
 										</a>
 									</li>
 									<li>
 										<a href="../components/buttons.html">
-											<span class="sub-item">Inpatient admission waiting times</span>
+											<span class="sub-item">Male Femalte Ratio of Sucide Rates</span>
 											<span class="badge badge-success">350</span>
 										</a>
 									</li>
 									<li>
 										<a href="../components/buttons.html">
-											<span class="sub-item">Total admission waiting times</span>
+											<span class="sub-item">MH_12</span>
+											<span class="badge badge-success">350</span>
+										</a>
+									</li>	
+									<li>
+										<a href="../components/buttons.html">
+											<span class="sub-item">SDGSUICIDE</span>
+											<span class="badge badge-success">350</span>
+										</a>
+									</li>	
+									<li>
+										<a href="../components/buttons.html">
+											<span class="sub-item">Suicide By Age</span>
+											<span class="badge badge-success">350</span>
+										</a>
+									</li>	
+									<li>
+										<a href="../components/buttons.html">
+											<span class="sub-item">Suicide Death Rates</span>
+											<span class="badge badge-success">350</span>
+										</a>
+									</li>
+									<li>
+										<a href="../components/buttons.html">
+											<span class="sub-item">Suicide Rates By Country</span>
 											<span class="badge badge-success">350</span>
 										</a>
 									</li>					
@@ -376,162 +372,303 @@
 							</div>
 						</li>
 							<li class="nav-item">
-							<a data-toggle="collapse" href="#base3">
-								<i class="fas fa-layer-group"></i>
-								<p>Inpatient waiting times</p>
-								<span class="badge badge-info">3</span>
-								<span class="caret"></span>
-								
-							</a>
+							<script language="Cache" runat="Server">
+								SET sts = $SYSTEM.SQL.Schema.TableExists("dc_data_covidpolls.covid_approval_polls")
+							</script>
+							<csp:if condition="sts=1">
+								<a data-toggle="collapse" href="#base3">
+									<i style="color:#007bff" class="fas fa-layer-group dscolor>Thest </p>"></i>
+									<p style="color:#007bff" class="dscolor">COVID-19 Polls</p>
+									<span class="caret"></span>
+								</a>
+								<csp:else condition="sts'=1">
+								<a data-toggle="collapse disabled">
+									<i class="fas fa-layer-group dscolor>Thest </p>"></i>
+									<p class="dscolor">COVID-19 Polls</p>
+								</a>
+							</csp:if>
 							<div class="collapse" id="base3">
 								<ul class="nav nav-collapse">
 									<li>
 										<a href="../components/avatars.html">
-											<span class="sub-item">Day case waiting times</span>
+											<span class="sub-item">Covid Approval Polls Adjusted</span>
 											<span class="badge badge-success">250</span>
 										</a>
 									</li>
 									<li>
 										<a href="../components/buttons.html">
-											<span class="sub-item">Inpatient admission waiting times</span>
+											<span class="sub-item">Covid Approval Polls</span>
 											<span class="badge badge-success">350</span>
 										</a>
 									</li>
 									<li>
 										<a href="../components/buttons.html">
-											<span class="sub-item">Total admission waiting times</span>
+											<span class="sub-item">Covid Approval Toplines</span>
 											<span class="badge badge-success">350</span>
 										</a>
-									</li>					
+									</li>	
+									<li>
+										<a href="../components/avatars.html">
+											<span class="sub-item">Covid Concern Polls Adjusted</span>
+											<span class="badge badge-success">250</span>
+										</a>
+									</li>
+									<li>
+										<a href="../components/buttons.html">
+											<span class="sub-item">Covid Concern Polls</span>
+											<span class="badge badge-success">350</span>
+										</a>
+									</li>
+									<li>
+										<a href="../components/buttons.html">
+											<span class="sub-item">Covid Concern Toplines</span>
+											<span class="badge badge-success">350</span>
+										</a>
+									</li>	
+									<li>
+										<a href="../components/buttons.html">
+											<span class="sub-item">Data Dictionary Covid9 Polls</span>
+											<span class="badge badge-success">350</span>
+										</a>
+									</li>				
 								</ul>
 							</div>
 						</li>	
 							<li class="nav-item">
-							<a data-toggle="collapse" href="#base4">
-								<i class="fas fa-layer-group"></i>
-								<p>Inpatient waiting times</p>
-								<span class="badge badge-info">3</span>
-								<span class="caret"></span>
-								
-							</a>
+							<script language="Cache" runat="Server">
+								SET sts = $SYSTEM.SQL.Schema.TableExists("dc_data_cancerrates.uscs_map_death_all")
+							</script>
+							<csp:if condition="sts=1">
+								<a data-toggle="collapse" href="#base4">
+									<i style="color:#007bff" class="fas fa-layer-group dscolor>Thest </p>"></i>
+									<p style="color:#007bff" class="dscolor">Cancer Rates by U.S. State</p>
+									<span class="caret"></span>
+								</a>
+								<csp:else condition="sts'=1">
+								<a data-toggle="collapse disabled">
+									<i class="fas fa-layer-group dscolor>Thest </p>"></i>
+									<p class="dscolor">Cancer Rates by U.S. State</p>
+								</a>
+							</csp:if>
 							<div class="collapse" id="base4">
 								<ul class="nav nav-collapse">
 									<li>
 										<a href="../components/avatars.html">
-											<span class="sub-item">Day case waiting times</span>
+											<span class="sub-item">USCS Map Death All</span>
 											<span class="badge badge-success">250</span>
 										</a>
 									</li>
 									<li>
 										<a href="../components/buttons.html">
-											<span class="sub-item">Inpatient admission waiting times</span>
+											<span class="sub-item">USCS Map Incidence All</span>
 											<span class="badge badge-success">350</span>
 										</a>
 									</li>
-									<li>
-										<a href="../components/buttons.html">
-											<span class="sub-item">Total admission waiting times</span>
-											<span class="badge badge-success">350</span>
-										</a>
-									</li>					
 								</ul>
 							</div>
 						</li>
 							<li class="nav-item">
-							<a data-toggle="collapse" href="#base5">
-								<i class="fas fa-layer-group"></i>
-								<p>Inpatient waiting times</p>
-								<span class="badge badge-info">3</span>
-								<span class="caret"></span>
-								
-							</a>
+							<script language="Cache" runat="Server">
+								SET sts = $SYSTEM.SQL.Schema.TableExists("dc_data_overdosedeaths.Multiple_Cause_of_Death_1999_2014_v1")
+							</script>
+							<csp:if condition="sts=1">
+								<a data-toggle="collapse" href="#base5">
+									<i style="color:#007bff" class="fas fa-layer-group dscolor>Thest </p>"></i>
+									<p style="color:#007bff" class="dscolor">Opioid Overdose Deaths</p>
+									<span class="caret"></span>
+								</a>
+								<csp:else condition="sts'=1">
+								<a data-toggle="collapse disabled">
+									<i class="fas fa-layer-group dscolor>Thest </p>"></i>
+									<p class="dscolor">Opioid Overdose Deaths</p>
+								</a>
+							</csp:if>
 							<div class="collapse" id="base5">
 								<ul class="nav nav-collapse">
 									<li>
 										<a href="../components/avatars.html">
-											<span class="sub-item">Day case waiting times</span>
+											<span class="sub-item">Multiple Cause of Death 1999_2014</span>
 											<span class="badge badge-success">250</span>
 										</a>
 									</li>
 									<li>
 										<a href="../components/buttons.html">
-											<span class="sub-item">Inpatient admission waiting times</span>
+											<span class="sub-item">Multiple Cause of Death 1999_2014_v1</span>
 											<span class="badge badge-success">350</span>
 										</a>
-									</li>
-									<li>
-										<a href="../components/buttons.html">
-											<span class="sub-item">Total admission waiting times</span>
-											<span class="badge badge-success">350</span>
-										</a>
-									</li>					
+									</li>								
 								</ul>
 							</div>
 						</li>
 						</li>
 							<li class="nav-item">
-							<a data-toggle="collapse" href="#base5">
-								<i class="fas fa-layer-group"></i>
-								<p>Inpatient waiting times</p>
-								<span class="badge badge-info">3</span>
-								<span class="caret"></span>
-								
-							</a>
-							<div class="collapse" id="base5">
+							<script language="Cache" runat="Server">
+								SET sts = $SYSTEM.SQL.Schema.TableExists("dc_data_hdprediction.Heart_Disease_Prediction")
+							</script>
+							<csp:if condition="sts=1">
+								<a data-toggle="collapse" href="#base6">
+									<i style="color:#007bff" class="fas fa-layer-group dscolor>Thest </p>"></i>
+									<p style="color:#007bff" class="dscolor">Heart Disease Prediction</p>
+									<span class="caret"></span>
+								</a>
+								<csp:else condition="sts'=1">
+								<a data-toggle="collapse disabled">
+									<i class="fas fa-layer-group dscolor>Thest </p>"></i>
+									<p class="dscolor">Heart Disease Prediction</p>
+								</a>
+							</csp:if>
+							<div class="collapse" id="base6">
 								<ul class="nav nav-collapse">
 									<li>
 										<a href="../components/avatars.html">
-											<span class="sub-item">Day case waiting times</span>
+											<span class="sub-item">Heart Disease Prediction</span>
 											<span class="badge badge-success">250</span>
 										</a>
-									</li>
-									<li>
-										<a href="../components/buttons.html">
-											<span class="sub-item">Inpatient admission waiting times</span>
-											<span class="badge badge-success">350</span>
-										</a>
-									</li>
-									<li>
-										<a href="../components/buttons.html">
-											<span class="sub-item">Total admission waiting times</span>
-											<span class="badge badge-success">350</span>
-										</a>
-									</li>					
+									</li>										
 								</ul>
 							</div>
 						</li>
-							</li>
+						</li>
 							<li class="nav-item">
-							<a data-toggle="collapse" href="#base5">
-								<i class="fas fa-layer-group"></i>
-								<p>Inpatient waiting times</p>
-								<span class="badge badge-info">3</span>
-								<span class="caret"></span>
-								
-							</a>
-							<div class="collapse" id="base5">
+							<script language="Cache" runat="Server">
+								SET sts = $SYSTEM.SQL.Schema.TableExists("dc_data_medicalservices.medical_services")
+							</script>
+							<csp:if condition="sts=1">
+								<a data-toggle="collapse" href="#base7">
+									<i style="color:#007bff" class="fas fa-layer-group dscolor>Thest </p>"></i>
+									<p style="color:#007bff" class="dscolor">Medical Services</p>
+									<span class="caret"></span>
+								</a>
+								<csp:else condition="sts'=1">
+								<a data-toggle="collapse disabled">
+									<i class="fas fa-layer-group dscolor>Thest </p>"></i>
+									<p class="dscolor">Medical Services</p>
+								</a>
+							</csp:if>
+							<div class="collapse" id="base7">
 								<ul class="nav nav-collapse">
 									<li>
 										<a href="../components/avatars.html">
-											<span class="sub-item">Day case waiting times</span>
+											<span class="sub-item">Medical Services</span>
 											<span class="badge badge-success">250</span>
 										</a>
-									</li>
-									<li>
-										<a href="../components/buttons.html">
-											<span class="sub-item">Inpatient admission waiting times</span>
-											<span class="badge badge-success">350</span>
-										</a>
-									</li>
-									<li>
-										<a href="../components/buttons.html">
-											<span class="sub-item">Total admission waiting times</span>
-											<span class="badge badge-success">350</span>
-										</a>
-									</li>					
+									</li>										
 								</ul>
 							</div>
 						</li>
+						</li>
+							<li class="nav-item">
+							<script language="Cache" runat="Server">
+								SET sts = $SYSTEM.SQL.Schema.TableExists("dc_data_hospitalratings.Hospital_General_Information")
+							</script>
+							<csp:if condition="sts=1">
+								<a data-toggle="collapse" href="#base8">
+									<i style="color:#007bff" class="fas fa-layer-group dscolor>Thest </p>"></i>
+									<p style="color:#007bff" class="dscolor">Hospital Ratings</p>
+									<span class="caret"></span>
+								</a>
+								<csp:else condition="sts'=1">
+								<a data-toggle="collapse disabled">
+									<i class="fas fa-layer-group dscolor>Thest </p>"></i>
+									<p class="dscolor">Hospital Ratings</p>
+								</a>
+							</csp:if>
+							<div class="collapse" id="base8">
+								<ul class="nav nav-collapse">
+									<li>
+										<a href="../components/avatars.html">
+											<span class="sub-item">Hospital General Information</span>
+											<span class="badge badge-success">250</span>
+										</a>
+									</li>										
+								</ul>
+							</div>
+						</li>
+						</li>
+							<li class="nav-item">
+							<script language="Cache" runat="Server">
+								SET sts = $SYSTEM.SQL.Schema.TableExists("dc_data_patienttreatment.training_set")
+							</script>
+							<csp:if condition="sts=1">
+								<a data-toggle="collapse" href="#base9">
+									<i style="color:#007bff" class="fas fa-layer-group dscolor>Thest </p>"></i>
+									<p style="color:#007bff" class="dscolor">Patient Treatment</p>
+									<span class="caret"></span>
+								</a>
+								<csp:else condition="sts'=1">
+								<a data-toggle="collapse disabled">
+									<i class="fas fa-layer-group dscolor>Thest </p>"></i>
+									<p class="dscolor">Patient Treatment</p>
+								</a>
+							</csp:if>
+							<div class="collapse" id="base9">
+								<ul class="nav nav-collapse">
+									<li>
+										<a href="../components/avatars.html">
+											<span class="sub-item">Training Set</span>
+											<span class="badge badge-success">250</span>
+										</a>
+									</li>										
+								</ul>
+							</div>
+						</li>
+						</li>
+							<li class="nav-item">
+							<script language="Cache" runat="Server">
+								SET sts = $SYSTEM.SQL.Schema.TableExists("dc_data_diabetes.Diabetes_Dataset")
+							</script>
+							<csp:if condition="sts=1">
+								<a data-toggle="collapse" href="#base10">
+									<i style="color:#007bff" class="fas fa-layer-group dscolor>Thest </p>"></i>
+									<p style="color:#007bff" class="dscolor">Diabetes Dataset</p>
+									<span class="caret"></span>
+								</a>
+								<csp:else condition="sts'=1">
+								<a data-toggle="collapse disabled">
+									<i class="fas fa-layer-group dscolor>Thest </p>"></i>
+									<p class="dscolor">Diabetes Dataset</p>
+								</a>
+							</csp:if>
+							<div class="collapse" id="base10">
+								<ul class="nav nav-collapse">
+									<li>
+										<a href="../components/avatars.html">
+											<span class="sub-item">Diabetes</span>
+											<span class="badge badge-success">250</span>
+										</a>
+									</li>										
+								</ul>
+							</div>
+						</li>
+						</li>
+							<li class="nav-item">
+							<script language="Cache" runat="Server">
+								SET sts = $SYSTEM.SQL.Schema.TableExists("dc_data_kidneydisease.new_model")
+							</script>
+							<csp:if condition="sts=1">
+								<a data-toggle="collapse" href="#base11">
+									<i style="color:#007bff" class="fas fa-layer-group dscolor>Thest </p>"></i>
+									<p style="color:#007bff" class="dscolor">Chronic Kidney Disease</p>
+									<span class="caret"></span>
+								</a>
+								<csp:else condition="sts'=1">
+								<a data-toggle="collapse disabled">
+									<i class="fas fa-layer-group dscolor>Thest </p>"></i>
+									<p class="dscolor">Chronic Kidney Disease</p>
+								</a>
+							</csp:if>
+							<div class="collapse" id="base11">
+								<ul class="nav nav-collapse">
+									<li>
+										<a href="../components/avatars.html">
+											<span class="sub-item">New Model</span>
+											<span class="badge badge-success">250</span>
+										</a>
+									</li>										
+								</ul>
+							</div>
+						</li>
+					</ul>	
 				</div>
 			</div>
 		</div>
@@ -539,220 +676,50 @@
 			<div class="content">
 				<div class="page-inner">
 					<div class="page-header">
-						<h4 class="page-title">DataTables.Net</h4>
-						<p>Runtime is: #($ztime($piece($h,",",2)))#</p>
-						<p>Compile-time is: ##($ztime($piece($h,",",2)))##</p>	
+						<h4 class="page-title">View DataSets</h4>
 						<script language="Cache" runat="Server">
-  set x = 3+25
-</script>
-<br>
-<p>#(x)# </P>.
-<csp:loop counter="i" from="1" to="10" step="1">
-  <csp:if condition="i#2=0">
-    <li>even</li>
-   <csp:else condition="i#2'=0">
-    <li>odd</li>
-   </csp:else>
-  </csp:if>
-</csp:loop>
-<script language="sql" name="rs" mode="display">	
-SELECT count(*) as total FROM dc_data_synthetic.patients	
-
-
-</script>
-<script language="Cache" runat="Server">
-</script>
-<csp:while condition="rs.Next()">
-<script language="Cache" runat="Server">
-set fd = rs.Data("total")
-</script>
-</csp:while>
-#(fd)#
-<csp:if condition="fd=1463">
-    <li>yees</li>
-   <csp:else condition="fd'=1463">
-    <li>No</li>
-   </csp:else>
-  </csp:if>
-
-						<ul class="breadcrumbs">
-							<li class="nav-home">
-								<a href="#">
-									<i class="flaticon-home"></i>
-								</a>
-							</li>
-							<li class="separator">
-								<i class="flaticon-right-arrow"></i>
-							</li>
-							<li class="nav-item">
-								<a href="#">Tables</a>
-							</li>
-							<li class="separator">
-								<i class="flaticon-right-arrow"></i>
-							</li>
-							<li class="nav-item">
-								<a href="#">Datatables</a>
-							</li>
-						</ul>
+    					    Set dsid = $Get(%request.Data("id",1))   
+						</script>						
 					</div>
 					<div class="row">
 						<div class="col-md-12">
 							<div class="card">
 								<div class="card-header">
-									<h4 class="card-title">Basic</h4>
+									<script language="Cache" runat="Server">
+									  set DSName = ..GetDSTableName(dsid)
+									  set ColNames = ..GetDSColNamesTH(dsid)
+									 </script>
+									<h4 class="card-title">#(DSName)#</h4>
 								</div>
 								<div class="card-body">
 									<div class="table-responsive">
 										<table id="basic-datatables" class="display table table-striped table-hover" >
 											<thead>
 												<tr>
-													<th>patient</th>
-													<th>birthdate</th>
-													<th>deathdate</th>
-													<th>passport</th>
-													<th>prefix</th>
-													<th>firstname</th>
+													#(ColNames)#													
 												</tr>
 											</thead>
-											<tfoot>
-												<tr>
-													<th>patient</th>
-													<th>birthdate</th>
-													<th>deathdate</th>
-													<th>passport</th>
-													<th>prefix</th>
-													<th>firstname</th>
-												</tr>
-											</tfoot>
 											<tbody>
-
-											<script language="sql" name="rs" mode="display">
-												SELECT patient, birthdate, deathdate, ssn,
-												       drivers, passport, prefix, firstname
-													FROM dc_data_synthetic.patients
-											</script>
-											<csp:while condition="rs.Next()">											
-												<tr>
-													<td>#(rs.Data("patient"))#</td>
-													<td>#(rs.Data("birthdate"))#</td>
-													<td>#(rs.Data("deathdate"))#</td>
-													<td>#(rs.Data("ssn"))#</td>
-													<td>#(rs.Data("passport"))#</td>
-													<td>#(rs.Data("prefix"))#
-											    </tr>
-											 </csp:while>
+											     #(..GetDSRows(dsid))#																						
 											</tbody>
 										</table>
 									</div>
 								</div>
 							</div>
 						</div>
-
-						
-
-						
 					</div>
 				</div>
 			</div>
 			<footer class="footer">
 				<div class="container-fluid">
-					<nav class="pull-left">
-						<ul class="nav">
-							<li class="nav-item">
-								<a class="nav-link" href="https://www.themekita.com">
-									ThemeKita
-								</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link" href="#">
-									Help
-								</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link" href="#">
-									Licenses
-								</a>
-							</li>
-						</ul>
-					</nav>
 					<div class="copyright ml-auto">
-						2018, made with <i class="fa fa-heart heart text-danger"></i> by <a href="https://www.themekita.com">ThemeKita</a>
+						<p>2022, Datasets</p>
 					</div>				
 				</div>
 			</footer>
 		</div>
 		
-		<!-- Custom template | don't include it in your project! -->
-		<div class="custom-template">
-			<div class="title">Settings</div>
-			<div class="custom-content">
-				<div class="switcher">
-					<div class="switch-block">
-						<h4>Logo Header</h4>
-						<div class="btnSwitch">
-							<button type="button" class="changeLogoHeaderColor" data-color="dark"></button>
-							<button type="button" class="selected changeLogoHeaderColor" data-color="blue"></button>
-							<button type="button" class="changeLogoHeaderColor" data-color="purple"></button>
-							<button type="button" class="changeLogoHeaderColor" data-color="light-blue"></button>
-							<button type="button" class="changeLogoHeaderColor" data-color="green"></button>
-							<button type="button" class="changeLogoHeaderColor" data-color="orange"></button>
-							<button type="button" class="changeLogoHeaderColor" data-color="red"></button>
-							<button type="button" class="changeLogoHeaderColor" data-color="white"></button>
-							<br/>
-							<button type="button" class="changeLogoHeaderColor" data-color="dark2"></button>
-							<button type="button" class="changeLogoHeaderColor" data-color="blue2"></button>
-							<button type="button" class="changeLogoHeaderColor" data-color="purple2"></button>
-							<button type="button" class="changeLogoHeaderColor" data-color="light-blue2"></button>
-							<button type="button" class="changeLogoHeaderColor" data-color="green2"></button>
-							<button type="button" class="changeLogoHeaderColor" data-color="orange2"></button>
-							<button type="button" class="changeLogoHeaderColor" data-color="red2"></button>
-						</div>
-					</div>
-					<div class="switch-block">
-						<h4>Navbar Header</h4>
-						<div class="btnSwitch">
-							<button type="button" class="changeTopBarColor" data-color="dark"></button>
-							<button type="button" class="changeTopBarColor" data-color="blue"></button>
-							<button type="button" class="changeTopBarColor" data-color="purple"></button>
-							<button type="button" class="changeTopBarColor" data-color="light-blue"></button>
-							<button type="button" class="changeTopBarColor" data-color="green"></button>
-							<button type="button" class="changeTopBarColor" data-color="orange"></button>
-							<button type="button" class="changeTopBarColor" data-color="red"></button>
-							<button type="button" class="changeTopBarColor" data-color="white"></button>
-							<br/>
-							<button type="button" class="changeTopBarColor" data-color="dark2"></button>
-							<button type="button" class="selected changeTopBarColor" data-color="blue2"></button>
-							<button type="button" class="changeTopBarColor" data-color="purple2"></button>
-							<button type="button" class="changeTopBarColor" data-color="light-blue2"></button>
-							<button type="button" class="changeTopBarColor" data-color="green2"></button>
-							<button type="button" class="changeTopBarColor" data-color="orange2"></button>
-							<button type="button" class="changeTopBarColor" data-color="red2"></button>
-						</div>
-					</div>
-					<div class="switch-block">
-						<h4>Sidebar</h4>
-						<div class="btnSwitch">
-							<button type="button" class="selected changeSideBarColor" data-color="white"></button>
-							<button type="button" class="changeSideBarColor" data-color="dark"></button>
-							<button type="button" class="changeSideBarColor" data-color="dark2"></button>
-						</div>
-					</div>
-					<div class="switch-block">
-						<h4>Background</h4>
-						<div class="btnSwitch">
-							<button type="button" class="changeBackgroundColor" data-color="bg2"></button>
-							<button type="button" class="changeBackgroundColor selected" data-color="bg1"></button>
-							<button type="button" class="changeBackgroundColor" data-color="bg3"></button>
-							<button type="button" class="changeBackgroundColor" data-color="dark"></button>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="custom-toggle">
-				<i class="flaticon-settings"></i>
-			</div>
-		</div>
-		<!-- End Custom template -->
+		
 	</div>
 	<!--   Core JS Files   -->
 	<!-- <script src="resources/plugins/atlantis-lite/assets/js/core/jquery.3.2.1.min.js"></script> -->

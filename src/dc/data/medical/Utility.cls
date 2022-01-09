@@ -271,4 +271,112 @@ ClassMethod GetStatusDS(id As %Integer)
    }
 }
 
+ClassMethod GetDSTableName(id As %Integer) As %String
+{
+    SET ds = $CASE(id,11:"dc_data_synthetic.patients",12:"dc_data_synthetic.allergies",13:"dc_data_synthetic.careplans",4:"covidpolls",5:"cancerrates",6:"overdosedeaths",
+                           7:"hdprediction",8:"medicalservices",9:"hospitalratings",10:"patienttreatment",11:"diabetes",12:"kidneydisease",
+                            :"Invalid")
+    RETURN ds
+}
+
+ClassMethod GetDSColNamesTH(id As %Integer) As %String
+{
+    set tblName = ..GetDSTableName(id)
+    set myquery = "SELECT * FROM "_tblName
+    SET tStatement = ##class(%SQL.Statement).%New(0)
+    SET tStatement.%ObjectSelectMode=1
+    SET qStatus = tStatement.%Prepare(myquery)
+    IF qStatus'=1 {WRITE "%Prepare failed:" DO $System.Status.DisplayError(qStatus) QUIT}
+    SET rset = tStatement.%Execute()
+    IF rset.%SQLCODE=0 {
+        SET rsmeta=rset.%GetMetadata()
+        SET x=rsmeta.columns.Count()
+        SET dtbl = ""
+        SET x=1
+         WHILE rsmeta.columns.GetAt(x) {
+            SET column=rsmeta.columns.GetAt(x)
+            SET dt = column.colName
+            SET dtbl = dtbl_"<th>"_dt_"</th>"
+            SET x=x+1 }           
+     }
+     ELSE { WRITE !,"SQLCODE=",rset.%SQLCODE," ",rset.%Message }
+     return dtbl
+}
+
+/// Description
+ClassMethod GetDSRows(id As %Integer) As %String
+{
+    
+  //SET tblName = ..GetDSTableName(id)
+  //SET myquery = "SELECT * FROM "_tblName
+    SET myquery = "SELECT * FROM dc_data_synthetic.patients WHERE ID = 1"
+  SET tStatement = ##class(%SQL.Statement).%New(0)
+  SET tStatement.%ObjectSelectMode=1
+  SET qStatus = tStatement.%Prepare(myquery)
+  IF qStatus'=1 {WRITE "%Prepare failed:" DO $System.Status.DisplayError(qStatus) QUIT}
+  SET rset = tStatement.%Execute()
+  ///////////////////////
+  IF rset.%SQLCODE=0 {
+  SET rsmeta=rset.%GetMetadata()
+  SET x=rsmeta.columns.Count()
+  SET dtbl = ""
+  // Main loop
+  WHILE rset.%Next() {
+        SET x=1
+        set dtbl = dtbl_"<tr>"
+        // Inner loop for columns
+        WHILE rsmeta.columns.GetAt(x) {
+            SET column=rsmeta.columns.GetAt(x)
+            SET dt = rset.%GetData(x)
+            if column.ODBCType = 9 { set dt = $ZDATE(dt,3)}
+            set dtbl = dtbl_"<td>"_dt_"</td>"
+            SET x=x+1 }
+            set dtbl = dtbl_"</tr>"          
+    }
+  }
+  ELSE { WRITE !,"SQLCODE=",rset.%SQLCODE," ",rset.%Message }
+  return dtbl
+  //////////////////////  
+ /*
+  WHILE rset.%Next() {
+     WRITE "Row count ",rset.%ROWCOUNT,!
+     WRITE rset.%GetData(1)
+     WRITE rset.%GetData(2)
+       }
+  WRITE !,"End of data"
+  WRITE !,"Total row count=",rset.%ROWCOUNT
+ */
+
+ /*
+  Set result=##class(%ResultSet).%New("%DynamicQuery:SQL")  
+  Set sc=result.Prepare("SELECT * FROM dc_data_synthetic.patients where id = 1")
+  If $$$ISERR(sc) Do DisplayError^%apiOBJ(sc) Quit
+  Set sc=result.Execute(10000) If $$$ISERR(sc) Do DisplayError^%apiOBJ(sc) Quit
+  While result.Next(.sc) {
+  	If $$$ISERR(sc) Quit
+    Write result.%GetData(2),!
+  	Write result.Data("patient"),$ZDATE(result.Data("birthdate"),3),!
+  }
+  If $$$ISERR(sc) Do DisplayError^%apiOBJ(sc) Quit
+  */  
+  /*
+  SET myquery="SELECT * FROM dc_data_synthetic.patients"
+  SET tStatement = ##class(%SQL.Statement).%New()
+  SET qStatus = tStatement.%Prepare(.myquery)
+  IF qStatus'=1 {WRITE "%Prepare failed:" DO $System.Status.DisplayError(qStatus) QUIT}
+  SET rset = tStatement.%Execute()
+  IF rset.%SQLCODE=0 {
+  SET rsmeta=rset.%GetMetadata()
+  SET x=rsmeta.columns.Count()
+  SET x=1
+  WHILE rsmeta.columns.GetAt(x) {
+    SET column=rsmeta.columns.GetAt(x)
+    WRITE !,x," ",column.colName," is data type ",column.ODBCType
+    WRITE " with a size of ",column.precision," and scale = ",column.scale
+    SET x=x+1 }
+  }
+  ELSE { WRITE !,"SQLCODE=",rset.%SQLCODE," ",rset.%Message }
+ */
+}
+
 }
