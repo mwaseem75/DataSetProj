@@ -156,7 +156,7 @@ ClassMethod GetDSName(counter As %Integer) As %Status
     RETURN ds
 }
 
-// Remove particular Dataset or all datasets
+// Function to Remove particular Dataset
 
 ClassMethod RemoveDS(id As %Integer)
 {
@@ -215,6 +215,8 @@ ClassMethod RemoveDS(id As %Integer)
    }
 }
 
+// Function to check if particular dataset is imported or not 
+
 ClassMethod GetStatusDS(id As %Integer)
 {
     // Check if parameter is defined
@@ -271,13 +273,79 @@ ClassMethod GetStatusDS(id As %Integer)
    }
 }
 
+// Used in web allication to get DataSet table name based on the ID
+
 ClassMethod GetDSTableName(id As %Integer) As %String
 {
-    SET ds = $CASE(id,11:"dc_data_synthetic.patients",12:"dc_data_synthetic.allergies",13:"dc_data_synthetic.careplans",4:"covidpolls",5:"cancerrates",6:"overdosedeaths",
-                           7:"hdprediction",8:"medicalservices",9:"hospitalratings",10:"patienttreatment",11:"diabetes",12:"kidneydisease",
-                            :"Invalid")
+    SET ds = $CASE(id,111:"dc_data_synthetic.all_prevalences",
+                      112:"dc_data_synthetic.allergies",
+                      113:"dc_data_synthetic.careplans",
+                      114:"dc_data_synthetic.claims",
+                      115:"dc_data_synthetic.conditions",
+                      116:"dc_data_synthetic.encounters",
+                      117:"dc_data_synthetic.immunizations",
+                      118:"dc_data_synthetic.medications",
+                      119:"dc_data_synthetic.observations",
+                      120:"dc_data_synthetic.patients",
+                      121:"dc_data_synthetic.procedures",
+                      211:"dc_data_hcanalytics.AV_First_Health_Camp_Attended",
+                      212:"dc_data_hcanalytics.AV_Health_Camp_Detail",
+                      213:"dc_data_hcanalytics.AV_Patient_Profile",
+                      214:"dc_data_hcanalytics.AV_sample_submmission",
+                      215:"dc_data_hcanalytics.AV_Second_Health_Camp_Attended",
+                      216:"dc_data_hcanalytics.AV_Test",
+                      217:"dc_data_hcanalytics.AV_Third_Health_Camp_Attended",
+                      218:"dc_data_hcanalytics.AV_Train",    
+                      311:"dc_data_globalsuicide.gender_rates",
+                      312:"dc_data_globalsuicide.Male_Female_Ratio_of_Suicide_Rates",
+                      313:"dc_data_globalsuicide.MH_12",
+                      314:"dc_data_globalsuicide.SDGSUICIDE",
+                      315:"dc_data_globalsuicide.suicide_by_age",
+                      316:"dc_data_globalsuicide.suicide_death_rates",
+                      317 :"dc_data_globalsuicide.suicide_rates_by_country",    
+                      411 :"dc_data_covidpolls.covid_approval_polls_adjusted",
+                      412 :"dc_data_covidpolls.covid_approval_polls",
+                      413 :"dc_data_covidpolls.covid_approval_toplines",
+                      414 :"dc_data_covidpolls.covid_concern_polls_adjusted",
+                      415 :"dc_data_covidpolls.covid_concern_polls",
+                      416 :"dc_data_covidpolls.covid_concern_toplines",
+                      417 :"dc_data_covidpolls.data_dictionary_covid19_polls",  
+                      511 :"dc_data_cancerrates.uscs_map_death_all",
+                      512 :"dc_data_cancerrates.uscs_map_incidence_all",  
+                      611 :"dc_data_overdosedeaths.Multiple_Cause_of_Death_1999_2014",
+                      612 :"dc_data_overdosedeaths.Multiple_Cause_of_Death_1999_2014_v1", 
+                      711 :"dc_data_hdprediction.Heart_Disease_Prediction", 
+                      811 :"dc_data_medicalservices.medical_services",
+                      911 :"dc_data_hospitalratings.Hospital_General_Information",
+                      1011 :"dc_data_patienttreatment.training_set",
+                      1111 :"dc_data_diabetes.Diabetes_Dataset",
+                      1211 :"dc_data_kidneydisease.new_model",
+                      :"Invalid")
     RETURN ds
 }
+
+// Function get DataSet Name to be used in datatable Header
+
+ClassMethod GetDSTitleName(id As %Integer) As %String
+{
+    set dsName = ""
+    if ((id>=111)&&(id<=121)){SET dsName = "Synthetic Medical Data"}
+    if ((id>=211)&&(id<=218)){SET dsName = "Health Care Analytics - 1"}
+    if ((id>=311)&&(id<=317)){SET dsName = "Global Suicide Data"}
+    if ((id>=411)&&(id<=417)){SET dsName = "COVID-19 Polls"}
+    if ((id>=511)&&(id<=512)){SET dsName = "Cancer Rates by U.S. State"}
+    if ((id>=611)&&(id<=612)){SET dsName = "Opioid Overdose Deaths"}
+    if (id=711){SET dsName = "Yellowpages medical services dataset"}
+    if (id=811){SET dsName = "Heart Disease Prediction"}
+    if (id=911){SET dsName = "Hospital ratings"}
+    if (id=1011){SET dsName = "Patient Treatment Classification"}
+    if (id=1111){SET dsName = "Diabetes Dataset"}
+    if (id=1211){SET dsName = "Chronic Kidney Disease"}
+
+    RETURN dsName
+}
+
+// Function get tables columns based on the table ID to be used in datatable Header Row
 
 ClassMethod GetDSColNamesTH(id As %Integer) As %String
 {
@@ -286,7 +354,8 @@ ClassMethod GetDSColNamesTH(id As %Integer) As %String
     SET tStatement = ##class(%SQL.Statement).%New(0)
     SET tStatement.%ObjectSelectMode=1
     SET qStatus = tStatement.%Prepare(myquery)
-    IF qStatus'=1 {WRITE "%Prepare failed:" DO $System.Status.DisplayError(qStatus) QUIT}
+    //IF qStatus'=1 {WRITE "%Prepare failed:" DO $System.Status.DisplayError(qStatus) QUIT}
+    IF qStatus'=1 {RETURN ""}
     SET rset = tStatement.%Execute()
     IF rset.%SQLCODE=0 {
         SET rsmeta=rset.%GetMetadata()
@@ -305,7 +374,8 @@ ClassMethod GetDSColNamesTH(id As %Integer) As %String
      return dtbl
 }
 
-/// Description
+// Function get tables rows daynamically to be used in datatable
+
 ClassMethod GetDSRows(id As %Integer) As %String
 {
   SET tblName = ..GetDSTableName(id)
@@ -313,7 +383,8 @@ ClassMethod GetDSRows(id As %Integer) As %String
   SET tStatement = ##class(%SQL.Statement).%New(0)
   SET tStatement.%ObjectSelectMode=1
   SET qStatus = tStatement.%Prepare(myquery)
-  IF qStatus'=1 {WRITE "%Prepare failed:" DO $System.Status.DisplayError(qStatus) QUIT}
+  //IF qStatus'=1 {WRITE "%Prepare failed:" DO $System.Status.DisplayError(qStatus) QUIT}
+  IF qStatus'=1 {RETURN ""}
   SET rset = tStatement.%Execute()
   ///////////////////////
   IF rset.%SQLCODE=0 {
@@ -340,19 +411,21 @@ ClassMethod GetDSRows(id As %Integer) As %String
   RETURN dtbl
 }
 
+// Function used in web application to get Table total records based on the ID
+
 ClassMethod GetTotalRecords(id As %Integer) As %String
 {
   SET tblName = ..GetDSTableName(id)
-  SET myquery = "SELECT COUNT(*) as total FROM "_tblName
-  SET tStatement = ##class(%SQL.Statement).%New(0)
-  SET qStatus = tStatement.%Prepare(myquery)
-  IF qStatus'=1 {WRITE "%Prepare failed:" DO $System.Status.DisplayError(qStatus) QUIT}
+  if tblName = "Invalid" {RETURN ""}
+  SET qry = "SELECT COUNT(*) As total FROM "_tblName
+  SET tStatement = ##class(%SQL.Statement).%New()
+  SET qStatus = tStatement.%Prepare(.qry)
+  IF qStatus'=1 {RETURN ""}
   SET rset = tStatement.%Execute()
-  ///////////////////////
-  IF rset.%SQLCODE=0 {
-  DO rset.%Next() 
-  RETURN rset.%GetData("total")
-  }
+  //DO rset.%Display()
+  WHILE rset.%Next() {
+    RETURN rset.%GetData(1)
+    }
   RETURN ""
 }
 

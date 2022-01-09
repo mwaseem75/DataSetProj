@@ -187,65 +187,65 @@
 										</a>
 									</li>
 									<li>
-										<a href="/csp/datasets/datasets.csp?id=12">
+										<a href="/csp/datasets/datasets.csp?id=112">
 											<span class="sub-item">Allergies</span>
-											<span class="badge badge-success">350</span>
+											<span class="badge badge-success">#(..GetTotalRecords(112))#</span>
 										</a>
 									</li>
 									<li>
-										<a href="/csp/datasets/datasets.csp?id=13">
+										<a href="/csp/datasets/datasets.csp?id=113">
 											<span class="sub-item">Careplans</span>
-											<span class="badge badge-success">450</span>
+											<span class="badge badge-success">#(..GetTotalRecords(113))#</span>
 										</a>
 									</li>
 									<li>
-										<a href="/csp/datasets/datasets.csp?id=14">
+										<a href="/csp/datasets/datasets.csp?id=114">
 											<span class="sub-item">Claims</span>
-											<span class="badge badge-success">750</span>
+											<span class="badge badge-success">#(..GetTotalRecords(114))#</span>
 										</a>
 									</li>
 									<li>
-										<a href="../components/notifications.html">
+										<a href="/csp/datasets/datasets.csp?id=115">
 											<span class="sub-item">Conditions</span>
-											<span class="badge badge-success">850</span>
+											<span class="badge badge-success">#(..GetTotalRecords(115))#</span>
 										</a>
 									</li>
 									<li>
-										<a href="../components/sweetalert.html">
-											<span class="sub-item">Conditions</span>
-											<span class="badge badge-success">250</span>
+										<a href="/csp/datasets/datasets.csp?id=116">
+											<span class="sub-item">Encounters</span>
+											<span class="badge badge-success">#(..GetTotalRecords(116))#</span>
 										</a>
 									</li>
 									<li>
-										<a href="../components/font-awesome-icons.html">
+										<a href="/csp/datasets/datasets.csp?id=117">
 											<span class="sub-item">Immunizations</span>
-											<span class="badge badge-success">700</span>
+											<span class="badge badge-success">#(..GetTotalRecords(117))#</span>
 										</a>
 									</li>
 									<li>
-										<a href="../components/simple-line-icons.html">
+										<a href="/csp/datasets/datasets.csp?id=118">
 											<span class="sub-item">Medications</span>
-											<span class="badge badge-success">800</span>
+											<span class="badge badge-success">#(..GetTotalRecords(118))#</span>
 										</a>
 									</li>
 									<li>
-										<a href="../components/flaticons.html">
+										<a href="/csp/datasets/datasets.csp?id=119">
 											<span class="sub-item">Observations</span>
-											<span class="badge badge-success">650</span>
+											<span class="badge badge-success">#(..GetTotalRecords(119))#</span>
 										</a>
 									</li>
 									<li>
-										<a href="../components/typography.html">
+										<a href="/csp/datasets/datasets.csp?id=120">
 											<span class="sub-item">Patients</span>
-											<span class="badge badge-success">8000</span>
+											<span class="badge badge-success">#(..GetTotalRecords(120))#</span>
 										</a>
 									</li>
 									<li>
-										<a href="../components/typography.html">
+										<a href="/csp/datasets/datasets.csp?id=121">
 											<span class="sub-item">Procedures</span>
-											<span class="badge badge-success">2100</span>
+											<span class="badge badge-success">#(..GetTotalRecords(121))#</span>
 										</a>
-									</li>						
+									</li>				
 								</ul>
 							</div>
 						</li>
@@ -267,52 +267,53 @@
 							</csp:if>
 							<div class="collapse" id="base1">
 								<ul class="nav nav-collapse">
+								
 									<li>
-										<a href="../components/avatars.html">
+										<a href="/csp/datasets/datasets.csp?id=211">
 											<span class="sub-item">First Health Camp Attended</span>
-											<span class="badge badge-success">250</span>
+											<span class="badge badge-success">#(..GetTotalRecords(211))#</span>
 										</a>
 									</li>
 									<li>
-										<a href="../components/buttons.html">
+										<a href="/csp/datasets/datasets.csp?id=212">
 											<span class="sub-item">Health Camp Detail</span>
-											<span class="badge badge-success">350</span>
+											<span class="badge badge-success">#(..GetTotalRecords(212))#</span>
 										</a>
 									</li>
 									<li>
-										<a href="../components/buttons.html">
+										<a href="/csp/datasets/datasets.csp?id=213">
 											<span class="sub-item">Patient Profile</span>
-											<span class="badge badge-success">350</span>
+											<span class="badge badge-success">#(..GetTotalRecords(213))#</span>
 										</a>
 									</li>
 									<li>
-										<a href="../components/buttons.html">
+										<a href="/csp/datasets/datasets.csp?id=214">
 											<span class="sub-item">Sample Submmission</span>
-											<span class="badge badge-success">350</span>
+											<span class="badge badge-success">#(..GetTotalRecords(214))#</span>
 										</a>
 									</li>
 									<li>
-										<a href="../components/buttons.html">
+										<a href="/csp/datasets/datasets.csp?id=215">
 											<span class="sub-item">Second Health Camp Attendedn</span>
-											<span class="badge badge-success">350</span>
+											<span class="badge badge-success">#(..GetTotalRecords(215))#</span>
 										</a>
 									</li>
 									<li>
-										<a href="../components/buttons.html">
+										<a href="/csp/datasets/datasets.csp?id=216">
 											<span class="sub-item">AV Test</span>
-											<span class="badge badge-success">350</span>
+											<span class="badge badge-success">#(..GetTotalRecords(216))#</span>
 										</a>
 									</li>
 									<li>
-										<a href="../components/buttons.html">
+										<a href="/csp/datasets/datasets.csp?id=217">
 											<span class="sub-item">Third Health Camp Attended</span>
-											<span class="badge badge-success">350</span>
+											<span class="badge badge-success">#(..GetTotalRecords(217))#</span>
 										</a>
 									</li>
 									<li>
-										<a href="../components/buttons.html">
+										<a href="/csp/datasets/datasets.csp?id=218">
 											<span class="sub-item">AV Train</span>
-											<span class="badge badge-success">350</span>
+											<span class="badge badge-success">#(..GetTotalRecords(218))#</span>
 										</a>
 									</li>
 														
@@ -338,45 +339,45 @@
 							<div class="collapse" id="base2">
 								<ul class="nav nav-collapse">
 									<li>
-										<a href="../components/avatars.html">
+										<a href="/csp/datasets/datasets.csp?id=311">
 											<span class="sub-item">Gender Rates</span>
-											<span class="badge badge-success">250</span>
+											<span class="badge badge-success">#(..GetTotalRecords(311))#</span>
 										</a>
 									</li>
 									<li>
-										<a href="../components/buttons.html">
+										<a href="/csp/datasets/datasets.csp?id=312">
 											<span class="sub-item">Male Femalte Ratio of Sucide Rates</span>
-											<span class="badge badge-success">350</span>
+											<span class="badge badge-success">#(..GetTotalRecords(312))#</span>
 										</a>
 									</li>
 									<li>
-										<a href="../components/buttons.html">
+										<a href="/csp/datasets/datasets.csp?id=313">
 											<span class="sub-item">MH_12</span>
-											<span class="badge badge-success">350</span>
+											<span class="badge badge-success">#(..GetTotalRecords(313))#</span>
 										</a>
 									</li>	
 									<li>
-										<a href="../components/buttons.html">
+										<a href="/csp/datasets/datasets.csp?id=314">
 											<span class="sub-item">SDGSUICIDE</span>
-											<span class="badge badge-success">350</span>
+											<span class="badge badge-success">#(..GetTotalRecords(314))#</span>
 										</a>
 									</li>	
 									<li>
-										<a href="../components/buttons.html">
+										<a href="/csp/datasets/datasets.csp?id=315">
 											<span class="sub-item">Suicide By Age</span>
-											<span class="badge badge-success">350</span>
+											<span class="badge badge-success">#(..GetTotalRecords(315))#0</span>
 										</a>
 									</li>	
 									<li>
-										<a href="../components/buttons.html">
+										<a href="/csp/datasets/datasets.csp?id=316">
 											<span class="sub-item">Suicide Death Rates</span>
-											<span class="badge badge-success">350</span>
+											<span class="badge badge-success">#(..GetTotalRecords(316))#</span>
 										</a>
 									</li>
 									<li>
-										<a href="../components/buttons.html">
+										<a href="/csp/datasets/datasets.csp?id=317">
 											<span class="sub-item">Suicide Rates By Country</span>
-											<span class="badge badge-success">350</span>
+											<span class="badge badge-success">#(..GetTotalRecords(317))#</span>
 										</a>
 									</li>					
 								</ul>
@@ -401,45 +402,45 @@
 							<div class="collapse" id="base3">
 								<ul class="nav nav-collapse">
 									<li>
-										<a href="../components/avatars.html">
+										<a href="/csp/datasets/datasets.csp?id=411">
 											<span class="sub-item">Covid Approval Polls Adjusted</span>
-											<span class="badge badge-success">250</span>
+											<span class="badge badge-success">#(..GetTotalRecords(411))#</span>
 										</a>
 									</li>
 									<li>
-										<a href="../components/buttons.html">
+										<a href="/csp/datasets/datasets.csp?id=412">
 											<span class="sub-item">Covid Approval Polls</span>
-											<span class="badge badge-success">350</span>
+											<span class="badge badge-success">#(..GetTotalRecords(412))#</span>
 										</a>
 									</li>
 									<li>
-										<a href="../components/buttons.html">
+										<a href="/csp/datasets/datasets.csp?id=413">
 											<span class="sub-item">Covid Approval Toplines</span>
-											<span class="badge badge-success">350</span>
+											<span class="badge badge-success">#(..GetTotalRecords(413))#</span>
 										</a>
 									</li>	
 									<li>
-										<a href="../components/avatars.html">
+										<a href="/csp/datasets/datasets.csp?id=414">
 											<span class="sub-item">Covid Concern Polls Adjusted</span>
-											<span class="badge badge-success">250</span>
+											<span class="badge badge-success">#(..GetTotalRecords(414))#</span>
 										</a>
 									</li>
 									<li>
-										<a href="../components/buttons.html">
+										<a href="/csp/datasets/datasets.csp?id=415">
 											<span class="sub-item">Covid Concern Polls</span>
-											<span class="badge badge-success">350</span>
+											<span class="badge badge-success">#(..GetTotalRecords(415))#</span>
 										</a>
 									</li>
 									<li>
-										<a href="../components/buttons.html">
+										<a href="/csp/datasets/datasets.csp?id=416">
 											<span class="sub-item">Covid Concern Toplines</span>
-											<span class="badge badge-success">350</span>
+											<span class="badge badge-success">#(..GetTotalRecords(416))#</span>
 										</a>
 									</li>	
 									<li>
-										<a href="../components/buttons.html">
+										<a href="/csp/datasets/datasets.csp?id=417">
 											<span class="sub-item">Data Dictionary Covid9 Polls</span>
-											<span class="badge badge-success">350</span>
+											<span class="badge badge-success">#(..GetTotalRecords(417))#</span>
 										</a>
 									</li>				
 								</ul>
@@ -464,15 +465,15 @@
 							<div class="collapse" id="base4">
 								<ul class="nav nav-collapse">
 									<li>
-										<a href="../components/avatars.html">
+										<a href="/csp/datasets/datasets.csp?id=511">
 											<span class="sub-item">USCS Map Death All</span>
-											<span class="badge badge-success">250</span>
+											<span class="badge badge-success">#(..GetTotalRecords(511))#</span>
 										</a>
 									</li>
 									<li>
-										<a href="../components/buttons.html">
+										<a href="/csp/datasets/datasets.csp?id=512">
 											<span class="sub-item">USCS Map Incidence All</span>
-											<span class="badge badge-success">350</span>
+											<span class="badge badge-success">#(..GetTotalRecords(512))#</span>
 										</a>
 									</li>
 								</ul>
@@ -497,15 +498,15 @@
 							<div class="collapse" id="base5">
 								<ul class="nav nav-collapse">
 									<li>
-										<a href="../components/avatars.html">
+										<a href="/csp/datasets/datasets.csp?id=611">
 											<span class="sub-item">Multiple Cause of Death 1999_2014</span>
-											<span class="badge badge-success">250</span>
+											<span class="badge badge-success">#(..GetTotalRecords(611))#</span>
 										</a>
 									</li>
 									<li>
-										<a href="../components/buttons.html">
+										<a href="/csp/datasets/datasets.csp?id=612">
 											<span class="sub-item">Multiple Cause of Death 1999_2014_v1</span>
-											<span class="badge badge-success">350</span>
+											<span class="badge badge-success">#(..GetTotalRecords(612))#</span>
 										</a>
 									</li>								
 								</ul>
@@ -531,9 +532,9 @@
 							<div class="collapse" id="base6">
 								<ul class="nav nav-collapse">
 									<li>
-										<a href="../components/avatars.html">
+										<a href="/csp/datasets/datasets.csp?id=711">
 											<span class="sub-item">Heart Disease Prediction</span>
-											<span class="badge badge-success">250</span>
+											<span class="badge badge-success">#(..GetTotalRecords(711))#</span>
 										</a>
 									</li>										
 								</ul>
@@ -559,9 +560,9 @@
 							<div class="collapse" id="base7">
 								<ul class="nav nav-collapse">
 									<li>
-										<a href="../components/avatars.html">
+										<a href="/csp/datasets/datasets.csp?id=811">
 											<span class="sub-item">Medical Services</span>
-											<span class="badge badge-success">250</span>
+											<span class="badge badge-success">#(..GetTotalRecords(811))#</span>
 										</a>
 									</li>										
 								</ul>
@@ -587,9 +588,9 @@
 							<div class="collapse" id="base8">
 								<ul class="nav nav-collapse">
 									<li>
-										<a href="../components/avatars.html">
+											<a href="/csp/datasets/datasets.csp?id=911">
 											<span class="sub-item">Hospital General Information</span>
-											<span class="badge badge-success">250</span>
+											<span class="badge badge-success">#(..GetTotalRecords(911))#</span>
 										</a>
 									</li>										
 								</ul>
@@ -615,9 +616,9 @@
 							<div class="collapse" id="base9">
 								<ul class="nav nav-collapse">
 									<li>
-										<a href="../components/avatars.html">
+										<a href="/csp/datasets/datasets.csp?id=1011">
 											<span class="sub-item">Training Set</span>
-											<span class="badge badge-success">250</span>
+											<span class="badge badge-success">#(..GetTotalRecords(1011))#</span>
 										</a>
 									</li>										
 								</ul>
@@ -643,9 +644,9 @@
 							<div class="collapse" id="base10">
 								<ul class="nav nav-collapse">
 									<li>
-										<a href="../components/avatars.html">
+										<a href="/csp/datasets/datasets.csp?id=1111">
 											<span class="sub-item">Diabetes</span>
-											<span class="badge badge-success">250</span>
+											<span class="badge badge-success">#(..GetTotalRecords(1111))#</span>
 										</a>
 									</li>										
 								</ul>
@@ -671,9 +672,9 @@
 							<div class="collapse" id="base11">
 								<ul class="nav nav-collapse">
 									<li>
-										<a href="../components/avatars.html">
+											<a href="/csp/datasets/datasets.csp?id=1211">
 											<span class="sub-item">New Model</span>
-											<span class="badge badge-success">250</span>
+											<span class="badge badge-success">#(..GetTotalRecords(1211))#</span>
 										</a>
 									</li>										
 								</ul>
@@ -687,20 +688,24 @@
 			<div class="content">
 				<div class="page-inner">
 					<div class="page-header">
-						<h4 class="page-title">View DataSets</h4>
+						
 						<script language="Cache" runat="Server">
-    					    Set dsid = $Get(%request.Data("id",1))   
+    					    set dsid = $Get(%request.Data("id",1),0)  
+							set DSName = ..GetDSTitleName(dsid) 
+							set DSTableName = ..GetDSTableName(dsid)							
 						</script>						
 					</div>
-					<div class="row">
+				<CSP:IF CONDITION='DSTableName="Invalid"'>
+						<h1>Please select table from side menu</h1>
+				<CSP:ELSE>
+						<div class="row">
 						<div class="col-md-12">
 							<div class="card">
 								<div class="card-header">
 									<script language="Cache" runat="Server">
-									  set DSName = ..GetDSTableName(dsid)
-									  set ColNames = ..GetDSColNamesTH(dsid)
+									    set ColNames = ..GetDSColNamesTH(dsid)
 									 </script>
-									<h4 class="card-title">#(DSName)#</h4>
+									<h4 style="color:#007bff" class="card-title"> DATASET (#(DSName)#) TABLE NAME (#(DSTableName)#)</h4>
 								</div>
 								<div class="card-body">
 									<div class="table-responsive">
@@ -719,6 +724,8 @@
 							</div>
 						</div>
 					</div>
+				</CSP:IF>
+			
 				</div>
 			</div>
 			<footer class="footer">
