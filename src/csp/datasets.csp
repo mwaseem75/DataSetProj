@@ -94,6 +94,11 @@
 						<li class="nav-item">
 							<a class="nav-link active" href="/csp/sys/exp/%25CSP.UI.Portal.SQL.Home.zen?$NAMESPACE=DATASETS">DataSets SQL</a>
 						</li>
+						<li class="nav-item">
+							<a class="nav-link active" href="https://irisdocs.intersystems.com/iris20212/csp/docbook/DocBook.UI.Page.cls?KEY=RSQL_loaddata">Load Data Docs</a>
+						</li>			
+
+						
 					
 					</ul>
 					<ul class="navbar-nav topbar-nav ml-md-auto align-items-center">						
@@ -133,6 +138,12 @@
 													<span class="text">DataSets SQL</span>
 												</div>
 											</a>
+											<a class="col-6 col-md-4 p-0" href="https://irisdocs.intersystems.com/iris20212/csp/docbook/DocBook.UI.Page.cls?KEY=RSQL_loaddata">
+												<div class="quick-actions-item">
+													<i class="flaticon-pen"></i>
+													<span class="text">LOAD DATA (SQL)</span>
+												</div>
+											</a>
 											
 										</div>
 									</div>
@@ -170,9 +181,9 @@
 							<div class="collapse" id="base">
 								<ul class="nav nav-collapse">
 									<li>
-										<a href="/csp/datasets/datasets.csp?id=11">
+										<a href="/csp/datasets/datasets.csp?id=111">
 											<span class="sub-item">All_prevalences</span>
-											<span class="badge badge-success">250</span>
+											<span class="badge badge-success">#(..GetTotalRecords(111))#</span>
 										</a>
 									</li>
 									<li>

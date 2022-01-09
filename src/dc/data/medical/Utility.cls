@@ -299,17 +299,17 @@ ClassMethod GetDSColNamesTH(id As %Integer) As %String
             SET dtbl = dtbl_"<th>"_dt_"</th>"
             SET x=x+1 }           
      }
-     ELSE { WRITE !,"SQLCODE=",rset.%SQLCODE," ",rset.%Message }
+     ELSE { 
+         WRITE !,"SQLCODE=",rset.%SQLCODE," ",rset.%Message 
+         return ""}
      return dtbl
 }
 
 /// Description
 ClassMethod GetDSRows(id As %Integer) As %String
 {
-    
-  //SET tblName = ..GetDSTableName(id)
-  //SET myquery = "SELECT * FROM "_tblName
-    SET myquery = "SELECT * FROM dc_data_synthetic.patients WHERE ID = 1"
+  SET tblName = ..GetDSTableName(id)
+  SET myquery = "SELECT * FROM "_tblName
   SET tStatement = ##class(%SQL.Statement).%New(0)
   SET tStatement.%ObjectSelectMode=1
   SET qStatus = tStatement.%Prepare(myquery)
@@ -334,49 +334,32 @@ ClassMethod GetDSRows(id As %Integer) As %String
             set dtbl = dtbl_"</tr>"          
     }
   }
-  ELSE { WRITE !,"SQLCODE=",rset.%SQLCODE," ",rset.%Message }
-  return dtbl
-  //////////////////////  
- /*
-  WHILE rset.%Next() {
-     WRITE "Row count ",rset.%ROWCOUNT,!
-     WRITE rset.%GetData(1)
-     WRITE rset.%GetData(2)
-       }
-  WRITE !,"End of data"
-  WRITE !,"Total row count=",rset.%ROWCOUNT
- */
+  ELSE {
+       WRITE !,"SQLCODE=",rset.%SQLCODE," ",rset.%Message 
+       RETURN ""}
+  RETURN dtbl
+}
 
- /*
-  Set result=##class(%ResultSet).%New("%DynamicQuery:SQL")  
-  Set sc=result.Prepare("SELECT * FROM dc_data_synthetic.patients where id = 1")
-  If $$$ISERR(sc) Do DisplayError^%apiOBJ(sc) Quit
-  Set sc=result.Execute(10000) If $$$ISERR(sc) Do DisplayError^%apiOBJ(sc) Quit
-  While result.Next(.sc) {
-  	If $$$ISERR(sc) Quit
-    Write result.%GetData(2),!
-  	Write result.Data("patient"),$ZDATE(result.Data("birthdate"),3),!
-  }
-  If $$$ISERR(sc) Do DisplayError^%apiOBJ(sc) Quit
-  */  
-  /*
-  SET myquery="SELECT * FROM dc_data_synthetic.patients"
-  SET tStatement = ##class(%SQL.Statement).%New()
-  SET qStatus = tStatement.%Prepare(.myquery)
+ClassMethod GetTotalRecords(id As %Integer) As %String
+{
+  SET id = 111
+  SET tblName = ..GetDSTableName(id)
+  SET myquery = "SELECT COUNT(*) FROM "_tblName
+  SET tStatement = ##class(%SQL.Statement).%New(0)
+  SET tStatement.%ObjectSelectMode=1
+  SET qStatus = tStatement.%Prepare(myquery)
   IF qStatus'=1 {WRITE "%Prepare failed:" DO $System.Status.DisplayError(qStatus) QUIT}
   SET rset = tStatement.%Execute()
+  ///////////////////////
   IF rset.%SQLCODE=0 {
   SET rsmeta=rset.%GetMetadata()
   SET x=rsmeta.columns.Count()
-  SET x=1
-  WHILE rsmeta.columns.GetAt(x) {
-    SET column=rsmeta.columns.GetAt(x)
-    WRITE !,x," ",column.colName," is data type ",column.ODBCType
-    WRITE " with a size of ",column.precision," and scale = ",column.scale
-    SET x=x+1 }
+  SET dtbl = ""
+  // Main loop
+  DO rset.%Next() 
+  RETURN "33"
   }
-  ELSE { WRITE !,"SQLCODE=",rset.%SQLCODE," ",rset.%Message }
- */
+  RETURN ""
 }
 
 }
