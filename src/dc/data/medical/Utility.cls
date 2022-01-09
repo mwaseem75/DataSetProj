@@ -342,22 +342,16 @@ ClassMethod GetDSRows(id As %Integer) As %String
 
 ClassMethod GetTotalRecords(id As %Integer) As %String
 {
-  SET id = 111
   SET tblName = ..GetDSTableName(id)
-  SET myquery = "SELECT COUNT(*) FROM "_tblName
+  SET myquery = "SELECT COUNT(*) as total FROM "_tblName
   SET tStatement = ##class(%SQL.Statement).%New(0)
-  SET tStatement.%ObjectSelectMode=1
   SET qStatus = tStatement.%Prepare(myquery)
   IF qStatus'=1 {WRITE "%Prepare failed:" DO $System.Status.DisplayError(qStatus) QUIT}
   SET rset = tStatement.%Execute()
   ///////////////////////
   IF rset.%SQLCODE=0 {
-  SET rsmeta=rset.%GetMetadata()
-  SET x=rsmeta.columns.Count()
-  SET dtbl = ""
-  // Main loop
   DO rset.%Next() 
-  RETURN "33"
+  RETURN rset.%GetData("total")
   }
   RETURN ""
 }
