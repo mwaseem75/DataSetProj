@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-	<title>Dataset Repo</title>
+	<title>Medical Datasets</title>
 	<meta content="width=device-width, initial-scale=1.0, shrink-to-fit=no" name="viewport" />
 	<link rel="icon" href="resources/img/icon.ico" type="image/x-icon" />
 
@@ -600,25 +600,25 @@
 						</li>
 							<li class="nav-item">
 							<script language="Cache" runat="Server">
-								SET sts = $SYSTEM.SQL.Schema.TableExists("dc_data_patienttreatment.training_set")
+								SET sts = $SYSTEM.SQL.Schema.TableExists("dc_data_hfprediction.heart_failure_clinical_records_dataset")
 							</script>
 							<csp:if condition="sts=1">
 								<a data-toggle="collapse" href="#base9">
 									<i style="color:#007bff" class="fas fa-layer-group dscolor>Thest </p>"></i>
-									<p style="color:#007bff" class="dscolor">Patient Treatment</p>
+									<p style="color:#007bff" class="dscolor">Heart Failure Prediction</p>
 									<span class="caret"></span>
 								</a>
 								<csp:else condition="sts'=1">
 								<a data-toggle="collapse disabled">
 									<i class="fas fa-layer-group dscolor>Thest </p>"></i>
-									<p class="dscolor">Patient Treatment</p>
+									<p class="dscolor">Heart Failure Prediction</p>
 								</a>
 							</csp:if>
 							<div class="collapse" id="base9">
 								<ul class="nav nav-collapse">
 									<li>
 										<a href="/csp/datasets/datasets.csp?id=1011">
-											<span class="sub-item">Training Set</span>
+											<span class="sub-item">Heart Failure clinical Records</span>
 											<span class="badge badge-success">#(..GetTotalRecords(1011))#</span>
 										</a>
 									</li>										
@@ -991,7 +991,7 @@
 						<div class="col-sm-6 col-md-3">
 							<div class="card-pricing2 card-success">
 								<div class="pricing-header">
-									<h3 class="fw-bold">Patient Treatment Classification</h3>	
+									<h3 class="fw-bold">Heart Failure Prediction</h3>	
 									<span class="sub-title">DataSet ID =  10</span>
 								</div>
 								<div class="price-value">
@@ -1001,10 +1001,10 @@
 									</div>
 								</div>
 								<ul class="pricing-content">								
-									<li>LICENSE : <a href="https://docs.data.world/en/59261-59714-2--Common-license-types-for-datasets.html" class="card-link">Public Domain</li></a>
+									<li>LICENSE : <a href="https://www.kaggle.com/andrewmvd/heart-failure-clinical-data" class="card-link">CC By 4.0</li></a>
 									<li>SOURCE : <a href="https://data.world/siyeh/synthetic-medical-data" class="card-link">data.world</a></li> 
 									<script language="Cache" runat="Server">
-										SET sts = $SYSTEM.SQL.Schema.TableExists("dc_data_patienttreatment.training_set")
+										SET sts = $SYSTEM.SQL.Schema.TableExists("dc_data_hfprediction.heart_failure_clinical_records_dataset")
 									</script>
 									<csp:if condition="sts=1">
 										<li>INSTALLED</li>

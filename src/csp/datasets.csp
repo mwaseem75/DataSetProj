@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-	<title>Dataset Repo</title>
+	<title>Medical Datasets</title>
 	<meta content="width=device-width, initial-scale=1.0, shrink-to-fit=no" name="viewport" />
 	<link rel="icon" href="resources/img/icon.ico" type="image/x-icon" />
 
@@ -618,25 +618,25 @@
 						</li>
 							<li class="nav-item">
 							<script language="Cache" runat="Server">
-								SET sts = $SYSTEM.SQL.Schema.TableExists("dc_data_patienttreatment.training_set")
+								SET sts = $SYSTEM.SQL.Schema.TableExists("dc_data_hdprediction.Heart_Disease_Prediction")
 							</script>
 							<csp:if condition="sts=1">
 								<a data-toggle="collapse" href="#base9">
 									<i style="color:#007bff" class="fas fa-layer-group dscolor>Thest </p>"></i>
-									<p style="color:#007bff" class="dscolor">Patient Treatment</p>
+									<p style="color:#007bff" class="dscolor">Heart Failure Prediction</p>
 									<span class="caret"></span>
 								</a>
 								<csp:else condition="sts'=1">
 								<a data-toggle="collapse disabled">
 									<i class="fas fa-layer-group dscolor>Thest </p>"></i>
-									<p class="dscolor">Patient Treatment</p>
+									<p class="dscolor">Heart Failure Prediction</p>
 								</a>
 							</csp:if>
 							<div class="collapse" id="base9">
 								<ul class="nav nav-collapse">
 									<li>
 										<a href="/csp/datasets/datasets.csp?id=1011">
-											<span class="sub-item">Training Set</span>
+											<span class="sub-item">Heart Failure clinical Records</span>
 											<span class="badge badge-success">#(..GetTotalRecords(1011))#</span>
 										</a>
 									</li>										

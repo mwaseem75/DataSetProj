@@ -70,6 +70,8 @@ ClassMethod ImportDS(id As %Integer)
    }
 }
 
+// Get column lists based on the Header Row of CSV File
+
 ClassMethod GetColTypes(filenamecsv As %String, ByRef coltype As %String, dlm As %String = ",")
 {
     SET coltype=""
@@ -94,6 +96,8 @@ ClassMethod GetColTypes(filenamecsv As %String, ByRef coltype As %String, dlm As
     SET coltype=$TR(coltype,".","_")
 }
 
+// Open CSV File to read
+
 ClassMethod GetStreamFromFile(filename As %String) As %Stream
 {
     // create new stream and link to the file
@@ -102,6 +106,8 @@ ClassMethod GetStreamFromFile(filename As %String) As %Stream
     $$$TOE(sc,stream.LinkToFile(filename))
     RETURN stream
 }
+
+// Check if the data is valid date in order to figure out column data type
 
 ClassMethod IsDate(pVar As %String = "") As %Boolean
 {
@@ -114,6 +120,8 @@ ClassMethod IsDate(pVar As %String = "") As %Boolean
     }
     Quit sts
 }
+
+// Get column data type based on the first record in CSV file
 
 ClassMethod GetDataType(value As %String, ByRef types) As %Status
 {
@@ -133,6 +141,8 @@ ClassMethod GetDataType(value As %String, ByRef types) As %Status
    return $$$OK
 }
 
+// Get data type based on the each column of first row after header row
+
 ClassMethod GetType(ByRef types) As %String
 {
     If $D(types("MONEY")),$D(types("DOUBLE")) {
@@ -147,11 +157,11 @@ ClassMethod GetType(ByRef types) As %String
     return "VARCHAR"
 }
 
-/// Description
+/// Get the folder against the dataset ID
 ClassMethod GetDSName(counter As %Integer) As %Status
 {
     SET ds = $CASE(counter,1:"synthetic",2:"hcanalytics",3:"globalsuicide",4:"covidpolls",5:"cancerrates",6:"overdosedeaths",
-                           7:"hdprediction",8:"medicalservices",9:"hospitalratings",10:"patienttreatment",11:"diabetes",12:"kidneydisease",
+                           7:"hdprediction",8:"medicalservices",9:"hospitalratings",10:"hfprediction",11:"diabetes",12:"kidneydisease",
                             :"Invalid")
     RETURN ds
 }
@@ -317,7 +327,7 @@ ClassMethod GetDSTableName(id As %Integer) As %String
                       711 :"dc_data_hdprediction.Heart_Disease_Prediction", 
                       811 :"dc_data_medicalservices.medical_services",
                       911 :"dc_data_hospitalratings.Hospital_General_Information",
-                      1011 :"dc_data_patienttreatment.training_set",
+                      1011 :"dc_data_hfprediction.heart_failure_clinical_records_dataset",
                       1111 :"dc_data_diabetes.Diabetes_Dataset",
                       1211 :"dc_data_kidneydisease.new_model",
                       :"Invalid")
@@ -338,7 +348,7 @@ ClassMethod GetDSTitleName(id As %Integer) As %String
     if (id=711){SET dsName = "Yellowpages medical services dataset"}
     if (id=811){SET dsName = "Heart Disease Prediction"}
     if (id=911){SET dsName = "Hospital ratings"}
-    if (id=1011){SET dsName = "Patient Treatment Classification"}
+    if (id=1011){SET dsName = "Heart Failure Prediction"}
     if (id=1111){SET dsName = "Diabetes Dataset"}
     if (id=1211){SET dsName = "Chronic Kidney Disease"}
 
