@@ -209,7 +209,6 @@ ClassMethod RemoveDS(id As %Integer)
     WRITE "DATASET : "_ds,! 
     //Get all the files from directory 
     WHILE tRS.Next() {
-        SET filename=tRS.Get("Name")
         SET tableName=$REPLACE("dc_data_"_ds_"."_tRS.Get("ItemName"),".csv","")
         //Drop table 
         SET qry = "DROP TABLE "_tableName
@@ -268,7 +267,6 @@ ClassMethod GetStatusDS(id As %Integer)
     WRITE "DATASET : "_ds,! 
     //Get all the files from directory 
     WHILE tRS.Next() {
-        SET filename=tRS.Get("Name")
         SET tableName=$REPLACE("dc_data_"_ds_"."_tRS.Get("ItemName"),".csv","")
         //Get table Status 
         SET sts = $SYSTEM.SQL.Schema.TableExists(tableName) 
