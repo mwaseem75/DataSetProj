@@ -39,8 +39,11 @@ ClassMethod ImportDS(id As %Integer)
     WRITE "DATASET : "_ds,! 
     //Get all the files from directory 
     WHILE tRS.Next() {
+        //Get file name
         SET filename=tRS.Get("Name")
+        //Remove .csv from the file name
         SET tableName=$REPLACE("dc_data_"_ds_"."_tRS.Get("ItemName"),".csv","")
+        //Get columns based on the header row of csv file
         Do ##class(dc.data.medical.utility).GetColTypes(filename,.coltype)	     
         
         //Dynamically create table based on tablename and column types
