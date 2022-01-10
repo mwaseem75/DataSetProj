@@ -131,6 +131,7 @@ do ##class(dc.data.medical.utility).GetStatusDS(999)
 ```
 
 ## Other information
-Template used in web application is from [Bootstrap 4 Admin Dashboard](https://github.com/themekita/Atlantis-Lite) and it is free to use and to develop non-commercial applications.
+Template used in web application is from [Bootstrap 4 Admin Dashboard](https://github.com/themekita/Atlantis-Lite) and it is free to use to develop non-commercial applications.
 
-Thanks
+
+## Thanks
