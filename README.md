@@ -21,10 +21,10 @@ DataSet can be installed or removed by terminal or by using web application. Dat
 
 ## Features
 * Dynamically creation of table based on the CSV file data.
-* Import dataset by using LOAD DATA funtionality by Terminal or by web applicaton.
-* Remove dataset programatically by terminal or by Web Application.
-* Dynamcially view Imported Data from Web Application.
-* Funtionality to Import data into CSV, Excel or PDF Format. 
+* Import dataset by using LOAD DATA functionality by Terminal or by web application.
+* Remove dataset programmatically by terminal or by Web Application.
+* Dynamically view Imported Data from Web Application.
+* Functionality to Import data into CSV, Excel or PDF Format.
 * Responsive web application to view the status of Dataset.
 * All datasets can be imported or removed by single command.
 
