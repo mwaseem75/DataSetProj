@@ -1132,7 +1132,7 @@
 	<!-- Atlantis JS -->
 	<script src="resources/js/atlantis.min.js"></script>
 	<!-- Atlantis DEMO methods, don't include it in your project! -->
-	<script src="resources/plugins/atlantis-lite/assets/js/setting-demo2.js"></script>
+	<script src="resources//js/setting-demo2.js"></script>
 	
 <script language="javascript">
 
