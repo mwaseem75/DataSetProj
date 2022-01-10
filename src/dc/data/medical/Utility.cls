@@ -3,7 +3,7 @@ Class dc.data.medical.utility
 
 ClassMethod ImportDS(id As %Integer)
 {
-    // Check if the parameter is defined 
+    // Check if parameter is defined
     IF $DATA(id) '= 1 
     {
         WRITE "Invalid Parameter" 
@@ -34,7 +34,8 @@ ClassMethod ImportDS(id As %Integer)
     
     //User %ResultSet to read all the files from dirctory
     SET tRS=##class(%ResultSet).%New("%Library.File:FileSet")
-    SET tSC=tRS.Execute(mDir,mFileSpec)
+    DO tRS.Execute(mDir,mFileSpec)
+    //WRITE "SQL CODE VALUE"_tSC.%SQLCODE
     WRITE "DATASET : "_ds,! 
     //Get all the files from directory 
     WHILE tRS.Next() {
@@ -203,7 +204,7 @@ ClassMethod RemoveDS(id As %Integer)
     
     //User %ResultSet to read all the files from dirctory
     SET tRS=##class(%ResultSet).%New("%Library.File:FileSet")
-    SET tSC=tRS.Execute(mDir,mFileSpec)
+    DO tRS.Execute(mDir,mFileSpec)
     
     WRITE "DATASET : "_ds,! 
     //Get all the files from directory 
@@ -262,7 +263,7 @@ ClassMethod GetStatusDS(id As %Integer)
     
     //User %ResultSet to read all the files from dirctory
     SET tRS=##class(%ResultSet).%New("%Library.File:FileSet")
-    SET tSC=tRS.Execute(mDir,mFileSpec)
+    DO tRS.Execute(mDir,mFileSpec)
     
     WRITE "DATASET : "_ds,! 
     //Get all the files from directory 
