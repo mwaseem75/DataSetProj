@@ -3,7 +3,7 @@ Class dc.data.medical.utility
 
 ClassMethod ImportDS(id As %Integer)
 {
-    // Check if parameter is defined
+    // Check if the parameter is defined 
     IF $DATA(id) '= 1 
     {
         WRITE "Invalid Parameter" 
