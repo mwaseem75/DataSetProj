@@ -3,6 +3,7 @@ Class dc.data.medical.utility
 
 ClassMethod ImportDS(id As %Integer)
 {
+    ZN "DATASETS"
     // Check if parameter is defined
     IF $DATA(id) '= 1 
     {
@@ -179,7 +180,7 @@ ClassMethod RemoveDS(id As %Integer)
         WRITE "Invalid Parameter" 
         QUIT
     }
-    
+    ZN "DATASETS"
     //if id = 999 then run loop through all 12 folders
     IF id = 999 
     {SET start=1,end=12}
@@ -237,7 +238,7 @@ ClassMethod GetStatusDS(id As %Integer)
         WRITE "Invalid Parameter" 
         QUIT
     }
-    
+    ZN "DATASETS"
     //if id = 999 then run loop through all 12 folders
     IF id = 999 
     {SET start=1,end=12}
