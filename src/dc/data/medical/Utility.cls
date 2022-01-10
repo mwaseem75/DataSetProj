@@ -11,7 +11,7 @@ ClassMethod ImportDS(id As %Integer)
         QUIT
     }
     
-    //if id = 999 then run loop through all 12 folders
+    //if id = 999 then install all the files by looping through all 12 folders
     IF id = 999 
     {SET start=1,end=12}
     ELSE
