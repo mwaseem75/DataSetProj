@@ -10,14 +10,14 @@ DataSet can be installed or removed by terminal or by using web application. Dat
 * **2 - Health Care Analytics - 1** : Part of Janatahack Hackathon in Analytics Vidhya [LICENCE:Public Domain](https://www.kaggle.com/abisheksudarshan/health-care-analytics)
 * **3 - Global Suicide Data** : World Health Organization (WHO) dataset [LICENCE:Public Domain](https://www.kaggle.com/sathutr/global-suicide-data?select=suicide_by_age.csv)
 * **4 - COVID-19 Polls** : Survey data to understand how Americans view the coronavirus pandemic and the president's response [LICENCE:CC-BY](https://data.world/fivethirtyeight/covid-19-polls)
-* **5 - Cancer Rates by U.S. State**
-* **6 - Opioid Overdose Deaths **
-* **7 - Heart Disease Prediction**
-* **8 - Yellowpages medical services dataset**
-* **9 - Hospital ratings**
+* **5 - Cancer Rates by U.S. State** : The rates are the numbers out of 100,000 people who developed or died from cancer each year. [LICENCE:Public Domain](https://data.world/adamhelsinger/cancer-rates-by-u-s-state)
+* **6 - Opioid Overdose Deaths** : Opioid addiction and death rates in the U.S. and abroad have reached "epidemic" levels. The CDC's data reflects the incredible spike in overdoses caused by drugs containing opioids. [LICENCE:Public Domain](https://data.world/health/opioid-overdose-deaths)
+* **7 - Heart Disease Prediction** : This data set came from the University of California Irvine data repository and is used to predict heart disease [LICENCE:Public Domain](https://data.world/informatics-edu/heart-disease-prediction)
+* **8 - Yellowpages medical services dataset** : Yellowpages dataset with more than 400K+ records from Crawl Feeds. [LICENCE:Public Domain](https://data.world/crawlfeeds/yellowpages-medical-services-dataset)
+* **9 - Hospital ratings** : This are the official datasets used on the Medicare.gov Hospital Compare Website provided by the Centers for Medicare & Medicaid Services. These data allow you to compare the quality of care at over 4,000 Medicare-certified hospitals across the country.  [LICENCE:Public Domain](https://www.kaggle.com/center-for-medicare-and-medicaid/hospital-ratings)
 * **10 -Patient Treatment Classification**
-* **11 -Diabetes Dataset**
-* **12 -Chronic Kidney Disease**
+* **11 -Diabetes Dataset** : This dataset is originally from the National Institute of Diabetes and Digestive and Kidney Diseases. The objective is to predict based on diagnostic measurements whether a patient has diabetes. [LICENCE:Public Domain](https://www.kaggle.com/mathchi/diabetes-data-set)
+* **12 -Chronic Kidney Disease** : This dataset is originally from UCI Machine Learning Repository. The objective of the dataset is to diagnostically predict whether a patient is having chronic kidney disease or not, based on certain diagnostic measurements included in the dataset.  [LICENCE:Public Domain](https://www.kaggle.com/mathchi/diabetes-data-set)
 
 ## Features
 * Dynamically creation of table based on the CSV file data.
