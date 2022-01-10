@@ -13,15 +13,14 @@ XData setup
   <Default Name="CSPURL" Value="/csp/datasets" /> 
   <Default Name="RESOURCE" Value="%DB_${DBNAME}" /> 
 
-  <Resource Name="%DB_${DBNAME}" Description="Resource for Message Viewer application" Permission="RW"/>
+  <Resource Name="%DB_${DBNAME}" Description="Medical Dataset Application" Permission="RW"/>
 
   <Namespace Name="${NAMESPACE}" Code="${DBNAME}" Data="${DBNAME}" Create="yes" Ensemble="1">
     <Configuration>
       <Database Name="${DBNAME}" Dir="${APPPATH}data" Create="yes" Resource="${RESOURCE}" MountAtStartup="true"/>
     </Configuration>
     <CSPApplication Url="${CSPURL}" Directory="${APPPATH}csp/" ServeFiles="1" Recurse="1" Grant="%DB_${NAMESPACE},%SQL" AuthenticationMethods="32" />
-    <Import File="${SOURCESPATH}/cls" Recurse="1"/>
-   </Namespace>
+  </Namespace>
 
 </Manifest>
 }
