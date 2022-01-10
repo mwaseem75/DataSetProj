@@ -1,4 +1,3 @@
-/// datasource from https://data.world/siyeh/synthetic-medical-data/workspace/project-summary?agentid=siyeh&datasetid=synthetic-medical-data
 Class dc.data.medical.utility
 {
 
