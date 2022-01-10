@@ -1,5 +1,5 @@
 ## Summary
-14 DataSets containg 43 tables based on datasets from data.world and kaggle.com 
+14 DataSets containing 43 tables based on datasets from data.world and kaggle.com 
 Application to create tables dynamically based on the files in folder and Load data by using all-new LOAD DATA InterSystems IRIS 2021.2 Preview functionality.
 DataSet can be installed or removed by terminal or by using web application. Data can be view and copied by using Web application.
 
