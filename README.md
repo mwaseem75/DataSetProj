@@ -1,10 +1,10 @@
 ## Summary
-14 DataSets containg 43 tables based on datasets from data.world and kaggle.com 
+14 DataSets containing 43 tables based on datasets from data.world and kaggle.com 
 Application to create tables dynamically based on the files in folder and Load data by using all-new LOAD DATA InterSystems IRIS 2021.2 Preview functionality.
 DataSet can be installed or removed by terminal or by using web application. Data can be view and copied by using Web application.
 
 ## Application Layout
-![image](https://user-images.githubusercontent.com/18219467/148703381-c1ca7868-0f23-4b65-bc11-1c38808ac666.png)
+![image](https://user-images.githubusercontent.com/18219467/148711350-34e9e161-0d05-4949-bd7a-dfae3003abf0.png)
 ## Datasets List
 * **1 - Synthetic Medical Data** : Synthetic medical record data for Introduction to Biomedical Data Science. [LICENCE:Public Domain](https://data.world/siyeh/synthetic-medical-data)
 * **2 - Health Care Analytics - 1** : Part of Janatahack Hackathon in Analytics Vidhya [LICENCE:Public Domain](https://www.kaggle.com/abisheksudarshan/health-care-analytics)
@@ -21,10 +21,10 @@ DataSet can be installed or removed by terminal or by using web application. Dat
 
 ## Features
 * Dynamically creation of table based on the CSV file data.
-* Import dataset by using LOAD DATA funtionality by Terminal or by web applicaton.
-* Remove dataset programatically by terminal or by Web Application.
-* Dynamcially view Imported Data from Web Application.
-* Funtionality to Import data into CSV, Excel or PDF Format. 
+* Import dataset by using LOAD DATA functionality by Terminal or by web application.
+* Remove dataset programmatically by terminal or by Web Application.
+* Dynamically view Imported Data from Web Application.
+* Functionality to Import data into CSV, Excel or PDF Format.
 * Responsive web application to view the status of Dataset.
 * All datasets can be imported or removed by single command.
 
@@ -65,20 +65,73 @@ docker-compose up -d
 * Get the latest InterSystems IRIS for Health image for use in the Dockerfile: https://hub.docker.com/_/intersystems-iris-for-health  
 
 ## Getting Started 
-## Importing DataSet
-###### Run below command to import particular dataset by providing dataset ID (From Terminal)
+## Importing DataSet from Terminal
+###### Run below command to import Synthetic Medical Data dataset by passing dataset ID(1) 
 ```
-do ##class(dc.
+do ##class(dc.data.medical.utility).ImportDS(1)
+```
+![image](https://user-images.githubusercontent.com/18219467/148710870-99cb8174-22c5-4a38-bbee-4af2713c2ff3.png)
+System will import 14 tables belongs to this dataset
+
+## Importing DataSet from Web Application
+###### Navigate to [http://localhost:52773/csp/datasets/index.csp](http://localhost:52773/csp/datasets/index.csp) and press Install DataSet button
+![image](https://user-images.githubusercontent.com/18219467/148712707-f4dc38ec-d86b-4df2-8b8c-2ea2235a57c7.png)
+![image](https://user-images.githubusercontent.com/18219467/148711619-c01c3207-b30f-45c9-9c42-a861ea008062.png)
+###### Dataset is imported successfully
+![image](https://user-images.githubusercontent.com/18219467/148711723-21bd863e-a0a0-4fa6-a49e-a0ce080afc8a.png)
+
+## View Data from Web Application
+###### Navigate to [http://localhost:52773/csp/datasets/index.csp](http://localhost:52773/csp/datasets/index.csp) and click any table from sidebar
+![image](https://user-images.githubusercontent.com/18219467/148712249-b6b2fbd9-2170-467a-8388-3e3e6eba5bfa.png)
+
+## Export Data from Web Application
+###### Navigate to View Datasets and select particular dataset, click Excel,CSV or PDF button to export data
+![image](https://user-images.githubusercontent.com/18219467/148712475-6a672123-4ed0-410c-8d67-c01aeb644f61.png)
+
+
+## Removing DataSet from Terminal
+###### Run below command to Remove Synthetic Medical Data dataset by passing dataset ID(1) 
+```
+do ##class(dc.data.medical.utility).RemoveDS(1)
+```
+![image](https://user-images.githubusercontent.com/18219467/148712878-7737f908-e6ac-4d01-ab24-db62394f7f10.png)
+
+## Removing DataSet from Web Application
+###### Navigate to [http://localhost:52773/csp/datasets/index.csp](http://localhost:52773/csp/datasets/index.csp) and press Remove DataSet button
+![image](https://user-images.githubusercontent.com/18219467/148713154-009dac5d-3f7d-4e57-bbc2-72ba7f1589ba.png)
+###### Dataset is removed successfully
+![image](https://user-images.githubusercontent.com/18219467/148713212-d094cf64-7b8e-4879-aaf8-30cb65ce49d0.png)
+
+
+## Importing all DataSets at once
+###### Run below command to Import all datasets by passing ID 999 
+```
+do ##class(dc.data.medical.utility).ImportDS(999)
+```
+![image](https://user-images.githubusercontent.com/18219467/148715361-9ffc5517-f579-4e16-931f-a3b9a170f4e9.png)
+
+
+## Removing all DataSets at once
+###### Run below command to Remove all datasets by passing ID 999 
+```
+do ##class(dc.data.medical.utility).RemoveDS(999)
+```
+![image](https://user-images.githubusercontent.com/18219467/148715463-4318a20b-16b6-473f-86b5-b458a2916da6.png)
+
+
+## Check Status of DataSet
+###### Run below command to check the status of particular DataSet by passing DataSet ID, 
+```
+do ##class(dc.data.medical.utility).GetStatusDS(1)
+```
+![image](https://user-images.githubusercontent.com/18219467/148715890-6942031a-bd8d-4e96-a20a-4580910eb394.png)
+###### Run below command to check the status of all Datasets
+```
+do ##class(dc.data.medical.utility).GetStatusDS(999)
 ```
 
-
-Change name space to "DATASETS"
-zn "DATASETS"
-
-Start SQL Shell
-DO $SYSTEM.SQL.Shell()
-
-Select loaded Records from patients table
-SELECT * FROM dc_data_health.Patients
+## Other information
+Template used in web application is from [Bootstrap 4 Admin Dashboard](https://github.com/themekita/Atlantis-Lite) and it is free to use to develop non-commercial applications.
 
 
+## Thanks
