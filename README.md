@@ -54,7 +54,10 @@ docker-compose build
 ```shell
 docker-compose up -d
 ```
-
+## Installation with ZPM
+```
+zpm "install dataset-medical"
+```
 ## Repo Contents   
 * Dockerfile, docker-compose.yml, and Installer.cls to create container
 * iris.script, contains script to execute during container initialization 
@@ -97,7 +100,7 @@ SELECT * FROM %SQL_Diag.Message WHERE severity = 'error' and diagResult = 5
 System is displaying details of **140** errors. Please note that we are passing same %SQL_Diag.Result ID to diagResulg column 
 
 ## Importing DataSet from Web Application
-###### Navigate to [http://localhost:52773/csp/datasets/index.csp](http://localhost:52773/csp/datasets/index.csp) and press Install DataSet button
+Navigate to [http://localhost:52773/csp/datasets/index.csp](http://localhost:52773/csp/datasets/index.csp) and press Install DataSet button
 ![image](https://user-images.githubusercontent.com/18219467/148712707-f4dc38ec-d86b-4df2-8b8c-2ea2235a57c7.png)
 ![image](https://user-images.githubusercontent.com/18219467/148711619-c01c3207-b30f-45c9-9c42-a861ea008062.png)
 ###### Dataset is imported successfully
