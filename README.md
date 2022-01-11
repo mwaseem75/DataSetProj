@@ -27,6 +27,7 @@ DataSet can be installed or removed by terminal or by using web application. Dat
 * Functionality to Import data into CSV, Excel or PDF Format.
 * Responsive web application to view the status of Dataset.
 * All datasets can be imported or removed by single command.
+* Use of %SQL_Diag.Result and %SQL_Diag.Message tables with LOAD DATA
 
 ## Recommendation 
  * Read related documentations [LOAD DATA (SQL)](https://irisdocs.intersystems.com/iris20212/csp/docbook/DocBook.UI.Page.cls?KEY=RSQL_loaddata).
@@ -66,6 +67,14 @@ docker-compose up -d
 
 ## Getting Started 
 ## Importing DataSet from Terminal
+###### Connect to IRIS Terminal
+```
+docker-compose exec iris iris session iris
+```
+###### Change Namespace to DATASETS
+```
+ZN "DATASETS"
+```
 ###### Run below command to import Synthetic Medical Data dataset by passing dataset ID(1) 
 ```
 do ##class(dc.data.medical.utility).ImportDS(1)
