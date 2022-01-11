@@ -8,7 +8,7 @@ ClassMethod ImportDS(id As %Integer)
     IF $DATA(id) '= 1 
     {
         WRITE "Invalid Parameter" 
-        QUIT
+        QUIT        
     }
     
     //if id = 999 then install all the files by looping through all 12 folders
@@ -67,7 +67,20 @@ ClassMethod ImportDS(id As %Integer)
             } 
             ELSE
             {
-                WRITE "SUCCESS table : " _tableName_" created and "_rset.%ROWCOUNT_" Rows Imported Successfully",!
+                //Check %SQL_Diag.Result table
+                 SET qry = "SELECT id,errorcount FROM %SQL_Diag.Result WHERE ID = (SELECT MAX(ID) FROM %SQL_Diag.Result )"
+                 SET tStatement = ##class(%SQL.Statement).%New()
+                 SET qStatus = tStatement.%Prepare(.qry)
+                 IF qStatus =1 {
+                     SET rsetD = tStatement.%Execute()
+                     //DO rset.%Display()
+                    WHILE rsetD.%Next() {
+                        SET diagID = rsetD.%GetData(1)
+                        SET errors = rsetD.%GetData(2)
+                       
+                                   }
+                 }
+                WRITE "Table : "_tableName_",", ?45," LoadedRows="_rset.%ROWCOUNT_"", ?65," ErrorCount="_errors_"", ?85," DiagID="_diagID,!
             }
         }   
     }

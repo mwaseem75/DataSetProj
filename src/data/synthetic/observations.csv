@@ -1,4 +1,5 @@
 tdate,patient,encounter,code,description,value,units
+2013-04-16,96b24072-e1fe-49cd-a22a-6dfb92c3994c,b16c1596-0e1e-4f16-9ca6-aa8527c1dcd4,76690-7,Sexual orientation,heterosexual,{nominal}
 2008-03-11,71949668-1c2e-43ae-ab0a-64654608defb,5114a5b4-64b8-47b2-82a6-0ce24aae0943,8302-2,Body Height,166.03,cm
 2008-03-11,71949668-1c2e-43ae-ab0a-64654608defb,5114a5b4-64b8-47b2-82a6-0ce24aae0943,29463-7,Body Weight,54.42,kg
 2008-03-11,71949668-1c2e-43ae-ab0a-64654608defb,5114a5b4-64b8-47b2-82a6-0ce24aae0943,39156-5,Body Mass Index,19.74,kg/m2
@@ -152,7 +153,6 @@ tdate,patient,encounter,code,description,value,units
 2012-10-31,96b24072-e1fe-49cd-a22a-6dfb92c3994c,9ec681cd-bebe-4230-a43c-43557d71fd25,2085-9,High Density Lipoprotein Cholesterol,75,mg/dL
 2012-10-31,96b24072-e1fe-49cd-a22a-6dfb92c3994c,9ec681cd-bebe-4230-a43c-43557d71fd25,14959-1,Microalbumin Creatinine Ratio,8,mg/g
 2012-10-31,96b24072-e1fe-49cd-a22a-6dfb92c3994c,9ec681cd-bebe-4230-a43c-43557d71fd25,33914-3,Estimated Glomerular Filtration Rate,56,mL/min/{1.73_m2}
-2013-04-16,96b24072-e1fe-49cd-a22a-6dfb92c3994c,b16c1596-0e1e-4f16-9ca6-aa8527c1dcd4,76690-7,Sexual orientation,heterosexual,{nominal}
 2013-04-16,96b24072-e1fe-49cd-a22a-6dfb92c3994c,b16c1596-0e1e-4f16-9ca6-aa8527c1dcd4,55277-8,HIV status,not HIV positive,{nominal}
 2013-04-16,96b24072-e1fe-49cd-a22a-6dfb92c3994c,b16c1596-0e1e-4f16-9ca6-aa8527c1dcd4,28245-9,Abuse Status [OMAHA],No signs/symptoms,{nominal}
 2013-04-16,96b24072-e1fe-49cd-a22a-6dfb92c3994c,b16c1596-0e1e-4f16-9ca6-aa8527c1dcd4,71802-3,Housing status,Patient is homeless,{nominal}

@@ -1,5 +1,5 @@
 id,start,stop,patient,encounter,code,description,reasoncode,reasondescription
-e031962d-d13d-4ede-a449-040417d5e4fb,2009-01-11,2009-04-07,71949668-1c2e-43ae-ab0a-64654608defb,4d451e22-a354-40c9-8b33-b6126158666d,53950000,Respiratory therapy,10509002,Acute bronchitis (disorder)
+e031962d-d13d-4ede-a449-040417d5e4fb,2009-01-11,2009-04-07,71949668-1c2e-43ae-ab0a-64654608defb,4d451e22-a354-40c9-8b33-b6126158666d,5E3950000,Respiratory therapy,1E0509002,Acute bronchitis (disorder)
 e031962d-d13d-4ede-a449-040417d5e4fb,2009-01-11,2009-04-07,71949668-1c2e-43ae-ab0a-64654608defb,4d451e22-a354-40c9-8b33-b6126158666d,304510005,Recommendation to avoid exercise,10509002,Acute bronchitis (disorder)
 e031962d-d13d-4ede-a449-040417d5e4fb,2009-01-11,2009-04-07,71949668-1c2e-43ae-ab0a-64654608defb,4d451e22-a354-40c9-8b33-b6126158666d,371605008,Deep breathing and coughing exercises,10509002,Acute bronchitis (disorder)
 26b879b7-0066-4bd6-b59c-099909720155,2010-10-16,2010-10-23,71949668-1c2e-43ae-ab0a-64654608defb,bed7ecff-b41c-422b-beac-ea00c8b02837,869761000000107,Urinary tract infection care,38822007,Cystitis
