@@ -26,7 +26,7 @@ DataSet can be installed or removed by terminal or by using web application. Dat
 * Dynamically view Imported Data from Web Application.
 * Functionality to Import data into CSV, Excel or PDF Format.
 * Responsive web application to view the status of Dataset.
-* All datasets can be imported or removed by single command.
+* All the datasets can be imported or removed by single command.
 * Use of %SQL_Diag.Result and %SQL_Diag.Message tables with LOAD DATA
 
 ## Recommendation 
