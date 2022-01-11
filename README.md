@@ -1,5 +1,5 @@
 ## Summary
-14 DataSets containing 43 tables based on datasets from data.world and kaggle.com 
+12 DataSets containing 43 tables based on datasets from data.world and kaggle.com 
 Application to create tables dynamically based on the files in folder and Load data by using all-new LOAD DATA InterSystems IRIS 2021.2 Preview functionality.
 DataSet can be installed or removed by terminal or by using web application. Data can be view and copied by using Web application.
 
@@ -79,8 +79,22 @@ ZN "DATASETS"
 ```
 do ##class(dc.data.medical.utility).ImportDS(1)
 ```
-![image](https://user-images.githubusercontent.com/18219467/148710870-99cb8174-22c5-4a38-bbee-4af2713c2ff3.png)
-System will import 14 tables belongs to this dataset
+![image](https://user-images.githubusercontent.com/18219467/148869158-7392a958-d813-410e-ad7e-82dd49513c37.png)
+**11** Tables are created, **83,341** Records Loaded successfully, **140** errors Reported
+## Use of %SQL_Diag.Result and %SQL_Diag.Message to check errors
+As you noticed previous LOAD DATA returns **140** errors. To check the error details we will use %SQL_Diag.Result and %SQL_Diag.Message tables. We need diag ID to check detail which in our case is **5** (Last column in previous snapshot)
+###### We will use Management Portal SQL to check the details
+Open Management Portal SQL and type below SQL command to check details in %SQL_Diag.Result table against Diag ID
+```
+SELECT * FROM %SQL_Diag.Result WHERE ID = 5
+```
+![image](https://user-images.githubusercontent.com/18219467/148871787-d1cf2c02-1028-4523-947d-3f85b65480ad.png)
+and to check the details of 140 errors type below SQL command
+```
+SELECT * FROM %SQL_Diag.Message WHERE severity = 'error' and diagResult = 5
+```
+![image](https://user-images.githubusercontent.com/18219467/148872183-61cb2c2d-d708-4d3e-87e4-e0e9a7727079.png)
+System is displaying details of **140** errors. Please note that we are passing same %SQL_Diag.Result ID to diagResulg column 
 
 ## Importing DataSet from Web Application
 ###### Navigate to [http://localhost:52773/csp/datasets/index.csp](http://localhost:52773/csp/datasets/index.csp) and press Install DataSet button
