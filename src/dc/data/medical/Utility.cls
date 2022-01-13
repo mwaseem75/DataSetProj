@@ -3,7 +3,7 @@ Class dc.data.medical.utility
 
 ClassMethod ImportDS(id As %Integer)
 {
-    ZN "DATASETS"
+    //ZN "DATASETS"
     // Check if parameter is defined
     IF $DATA(id) '= 1 
     {
@@ -16,7 +16,7 @@ ClassMethod ImportDS(id As %Integer)
     {SET start=1,end=12}
     ELSE
     {SET start = id, end = id}
-    
+
     FOR counter=start:1:end
     {
     // Get directory name based on parameter value
@@ -45,7 +45,7 @@ ClassMethod ImportDS(id As %Integer)
         //Remove .csv from the file name
         SET tableName=$REPLACE("dc_data_"_ds_"."_tRS.Get("ItemName"),".csv","")
         //Get columns based on the header row of csv file
-        Do ##class(dc.data.medical.utility).GetColTypes(filename,.coltype)	     
+        Do ..GetColTypes(filename,.coltype)	     
         
         //Dynamically create table based on tablename and column types
         SET qry = "CREATE TABLE "_tableName_" ("_coltype_")"
@@ -101,8 +101,8 @@ ClassMethod GetColTypes(filenamecsv As %String, ByRef coltype As %String, dlm As
     FOR i=1:1:($Length(header,dlm)) {
         kill types
         //Get datatype of the column
-        DO ##class(utility).GetDataType($Piece(dataLine,dlm,i),.types)
-        SET type=##class(utility).GetType(.types) 
+        DO ..GetDataType($Piece(dataLine,dlm,i),.types)
+        SET type=..GetType(.types) 
 
         // if type is varchar then assign length 200
         IF type="VARCHAR" SET type="VARCHAR(200)"
@@ -193,7 +193,7 @@ ClassMethod RemoveDS(id As %Integer)
         WRITE "Invalid Parameter" 
         QUIT
     }
-    ZN "DATASETS"
+    //ZN "DATASETS"
     //if id = 999 then run loop through all 12 folders
     IF id = 999 
     {SET start=1,end=12}
@@ -251,7 +251,7 @@ ClassMethod GetStatusDS(id As %Integer)
         WRITE "Invalid Parameter" 
         QUIT
     }
-    ZN "DATASETS"
+    //ZN "DATASETS"
     //if id = 999 then run loop through all 12 folders
     IF id = 999 
     {SET start=1,end=12}
@@ -452,6 +452,69 @@ ClassMethod GetTotalRecords(id As %Integer) As %String
     RETURN rset.%GetData(1)
     }
   RETURN ""
+}
+
+// Install 1 dataset by defualt
+
+ClassMethod InitDS()
+{
+   
+    SET tableName(1) = "dc_data_synthetic.all_prevalences"
+    SET tableName(2) = "dc_data_synthetic.allergies"
+    SET tableName(3) = "dc_data_synthetic.careplans"
+    SET tableName(4) = "dc_data_synthetic.claims"
+    SET tableName(5) = "dc_data_synthetic.conditions"
+    SET tableName(6) = "dc_data_synthetic.encounters"
+    SET tableName(7) = "dc_data_synthetic.immunizations"
+    SET tableName(8) = "dc_data_synthetic.medications"
+    SET tableName(9) = "dc_data_synthetic.observations"
+    SET tableName(10) = "dc_data_synthetic.patients"
+    SET tableName(11) = "dc_data_synthetic.procedures"
+    SET fileName(1) = "/opt/irisapp/src/data/synthetic/all_prevalences.csv"
+    SET fileName(2) = "/opt/irisapp/src/data/synthetic/allergies.csv"
+    SET fileName(3) = "/opt/irisapp/src/data/synthetic/careplans.csv"
+    SET fileName(4) = "/opt/irisapp/src/data/synthetic/claims.csv"
+    SET fileName(5) = "/opt/irisapp/src/data/synthetic/conditions.csv"
+    SET fileName(6) = "/opt/irisapp/src/data/synthetic/encounters.csv"
+    SET fileName(7) = "/opt/irisapp/src/data/synthetic/immunizations.csv"
+    SET fileName(8) = "/opt/irisapp/src/data/synthetic/medications.csv"
+    SET fileName(9) = "/opt/irisapp/src/data/synthetic/observations.csv"
+    SET fileName(10) = "/opt/irisapp/src/data/synthetic/patients.csv"
+    SET fileName(11) = "/opt/irisapp/src/data/synthetic/procedures.csv"    
+   
+        FOR i=1:1:11
+        {
+        do ..InitDSDtl(tableName(i),fileName(i))
+        }
+}
+
+ClassMethod InitDSDtl(tableName As %String, fileName As %String)
+{
+    //ZN "DATASETS"
+  
+    Do ..GetColTypes(fileName,.coltype)	     
+      //Dynamically create table based on tablename and column types
+    SET qry = "CREATE TABLE "_tableName_" ("_coltype_")"
+    SET rset = ##class(%SQL.Statement).%ExecDirect(,qry)
+        //Check if table created successfully
+        IF rset.%SQLCODE
+        {
+             WRITE "ERROR : ",rset.%Message,!          
+        }
+        ELSE
+        {
+            //Dynamically construct LOAD DATA statement
+            SET qry = "LOAD DATA FROM FILE  '"_fileName_"' INTO "_tableName_ " "_"USING {""from"":{""file"":{""header"":""1""}}}"
+            SET rset = ##class(%SQL.Statement).%ExecDirect(,qry)
+            IF rset.%SQLCODE
+            {
+                WRITE "ERROR Table : " _tableName_" IMPORT FAILED: ",rset.%Message,!
+            } 
+            ELSE
+            {
+               WRITE "Table : "_tableName_",", ?45," LoadedRows="_rset.%ROWCOUNT,!
+            }
+        }
 }
 
 }
