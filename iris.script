@@ -5,18 +5,7 @@
 
  zn "DATASETS"
  do $System.OBJ.LoadDir("/opt/irisapp/src","ck",,1)
- do ##class(dc.data.medical.utility).InitDS(1)
- do ##class(dc.data.medical.utility).InitDS(2)
- do ##class(dc.data.medical.utility).InitDS(3)
- do ##class(dc.data.medical.utility).InitDS(4)
- do ##class(dc.data.medical.utility).InitDS(5)
- do ##class(dc.data.medical.utility).InitDS(6)
- do ##class(dc.data.medical.utility).InitDS(7)
- do ##class(dc.data.medical.utility).InitDS(8)
- do ##class(dc.data.medical.utility).InitDS(9)
- do ##class(dc.data.medical.utility).InitDS(10)
- do ##class(dc.data.medical.utility).InitDS(11)
- do ##class(dc.data.medical.utility).InitDS(12)
+ do ##class(dc.data.medical.utility).InitDS()
  zn "%SYS"
  Do ##class(Security.Users).UnExpireUserPasswords("*")
  
