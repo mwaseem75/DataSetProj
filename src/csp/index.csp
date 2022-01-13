@@ -718,10 +718,10 @@
 									</csp:if>								
 								</ul>
 									<csp:if condition="sts=1">
-										<a href=. onClick="#server(..RemoveDS(1))#;;window.location.reload();return false;" class="btn btn-primary btn-border btn-lg w-75 fw-bold mb-3">Remove DataSet</a> -->
+										<a href=. onClick="#server(..RemoveWDS(1))#;;window.location.reload();return false;" class="btn btn-primary btn-border btn-lg w-75 fw-bold mb-3">Remove DataSet</a> -->
 									<csp:else condition="sts'=1">
-										<!-- <a href=. onClick="var res = #server(..ImportDS(1))#;alert(res);return false;" class="btn btn-success btn-border btn-lg w-75 fw-bold mb-3">Install DataSet</a> -->
-										<a href=. onClick="#server(..ImportDS(1))#;;window.location.reload();return false;" class="btn btn-primary btn-border btn-lg w-75 fw-bold mb-3">Install DataSet</a> -->
+										<!-- <a href=. onClick="var res = #server(..InitDS(1))#;alert(res);return false;" class="btn btn-success btn-border btn-lg w-75 fw-bold mb-3">Install DataSet</a> -->
+										<a href=. onClick="#server(..InitDS(1))#;;window.location.reload();return false;" class="btn btn-primary btn-border btn-lg w-75 fw-bold mb-3">Install DataSet</a> -->
 									</csp:if>								
 							</div>
 						</div>
@@ -750,10 +750,10 @@
 									</csp:if>								
 								</ul>
 									<csp:if condition="sts=1">
-										<a href=. onClick="#server(..RemoveDS(2))#;;window.location.reload();return false;" class="btn btn-info btn-border btn-lg w-75 fw-bold mb-3">Remove DataSet</a> -->
+										<a href=. onClick="#server(..RemoveWDS(2))#;;window.location.reload();return false;" class="btn btn-info btn-border btn-lg w-75 fw-bold mb-3">Remove DataSet</a> -->
 									<csp:else condition="sts'=1">
-										<!-- <a href=. onClick="var res = #server(..ImportDS(1))#;alert(res);return false;" class="btn btn-success btn-border btn-lg w-75 fw-bold mb-3">Install DataSet</a> -->
-										<a href=. onClick="#server(..ImportDS(2))#;;window.location.reload();return false;" class="btn btn-info btn-border btn-lg w-75 fw-bold mb-3">Install DataSet</a> -->
+										<!-- <a href=. onClick="var res = #server(..InitDS(1))#;alert(res);return false;" class="btn btn-success btn-border btn-lg w-75 fw-bold mb-3">Install DataSet</a> -->
+										<a href=. onClick="#server(..InitDS(2))#;;window.location.reload();return false;" class="btn btn-info btn-border btn-lg w-75 fw-bold mb-3">Install DataSet</a> -->
 									</csp:if>								
 							</div>
 						</div>
@@ -782,10 +782,10 @@
 									</csp:if>								
 								</ul>
 									<csp:if condition="sts=1">
-										<a href=. onClick="#server(..RemoveDS(3))#;;window.location.reload();return false;" class="btn btn-success btn-border btn-lg w-75 fw-bold mb-3">Remove DataSet</a> -->
+										<a href=. onClick="#server(..RemoveWDS(3))#;;window.location.reload();return false;" class="btn btn-success btn-border btn-lg w-75 fw-bold mb-3">Remove DataSet</a> -->
 									<csp:else condition="sts'=1">
-										<!-- <a href=. onClick="var res = #server(..ImportDS(1))#;alert(res);return false;" class="btn btn-success btn-border btn-lg w-75 fw-bold mb-3">Install DataSet</a> -->
-										<a href=. onClick="#server(..ImportDS(3))#;;window.location.reload();return false;" class="btn btn-success btn-border btn-lg w-75 fw-bold mb-3">Install DataSet</a> -->
+										<!-- <a href=. onClick="var res = #server(..InitDS(1))#;alert(res);return false;" class="btn btn-success btn-border btn-lg w-75 fw-bold mb-3">Install DataSet</a> -->
+										<a href=. onClick="#server(..InitDS(3))#;;window.location.reload();return false;" class="btn btn-success btn-border btn-lg w-75 fw-bold mb-3">Install DataSet</a> -->
 									</csp:if>								
 							</div>
 						</div>
@@ -814,10 +814,10 @@
 									</csp:if>								
 								</ul>
 									<csp:if condition="sts=1">
-										<a href=. onClick="#server(..RemoveDS(4))#;window.location.reload();return false;" class="btn btn-secondary btn-border btn-lg w-75 fw-bold mb-3">Remove DataSet</a> -->
+										<a href=. onClick="#server(..RemoveWDS(4))#;window.location.reload();return false;" class="btn btn-secondary btn-border btn-lg w-75 fw-bold mb-3">Remove DataSet</a> -->
 									<csp:else condition="sts'=1">
-										<!-- <a href=. onClick="var res = #server(..ImportDS(1))#;alert(res);return false;" class="btn btn-success btn-border btn-lg w-75 fw-bold mb-3">Install DataSet</a> -->
-										<a href=. onClick="#server(..ImportDS(4))#;window.location.reload();return false;" class="btn btn-secondary btn-border btn-lg w-75 fw-bold mb-3">Install DataSet</a> -->
+										<!-- <a href=. onClick="var res = #server(..InitDS(1))#;alert(res);return false;" class="btn btn-success btn-border btn-lg w-75 fw-bold mb-3">Install DataSet</a> -->
+										<a href=. onClick="#server(..InitDS(4))#;window.location.reload();return false;" class="btn btn-secondary btn-border btn-lg w-75 fw-bold mb-3">Install DataSet</a> -->
 									</csp:if>								
 							</div>
 						</div>
@@ -849,10 +849,10 @@
 									</csp:if>								
 								</ul>
 									<csp:if condition="sts=1">
-										<a href=. onClick="#server(..RemoveDS(5))#;;window.location.reload();return false;" class="btn btn-success btn-border btn-lg w-75 fw-bold mb-3">Remove DataSet</a> -->
+										<a href=. onClick="#server(..RemoveWDS(5))#;;window.location.reload();return false;" class="btn btn-success btn-border btn-lg w-75 fw-bold mb-3">Remove DataSet</a> -->
 									<csp:else condition="sts'=1">
-										<!-- <a href=. onClick="var res = #server(..ImportDS(1))#;alert(res);return false;" class="btn btn-success btn-border btn-lg w-75 fw-bold mb-3">Install DataSet</a> -->
-										<a href=. onClick="#server(..ImportDS(5))#;;window.location.reload();return false;" class="btn btn-success btn-border btn-lg w-75 fw-bold mb-3">Install DataSet</a> -->
+										<!-- <a href=. onClick="var res = #server(..InitDS(1))#;alert(res);return false;" class="btn btn-success btn-border btn-lg w-75 fw-bold mb-3">Install DataSet</a> -->
+										<a href=. onClick="#server(..InitDS(5))#;;window.location.reload();return false;" class="btn btn-success btn-border btn-lg w-75 fw-bold mb-3">Install DataSet</a> -->
 									</csp:if>								
 							</div>
 						</div>
@@ -881,10 +881,10 @@
 									</csp:if>								
 								</ul>
 									<csp:if condition="sts=1">
-										<a href=. onClick="#server(..RemoveDS(6))#;;window.location.reload();return false;" class="btn btn-primary btn-border btn-lg w-75 fw-bold mb-3">Remove DataSet</a> -->
+										<a href=. onClick="#server(..RemoveWDS(6))#;;window.location.reload();return false;" class="btn btn-primary btn-border btn-lg w-75 fw-bold mb-3">Remove DataSet</a> -->
 									<csp:else condition="sts'=1">
-										<!-- <a href=. onClick="var res = #server(..ImportDS(1))#;alert(res);return false;" class="btn btn-success btn-border btn-lg w-75 fw-bold mb-3">Install DataSet</a> -->
-										<a href=. onClick="#server(..ImportDS(6))#;;window.location.reload();return false;" class="btn btn-primary btn-border btn-lg w-75 fw-bold mb-3">Install DataSet</a> -->
+										<!-- <a href=. onClick="var res = #server(..InitDS(1))#;alert(res);return false;" class="btn btn-success btn-border btn-lg w-75 fw-bold mb-3">Install DataSet</a> -->
+										<a href=. onClick="#server(..InitDS(6))#;;window.location.reload();return false;" class="btn btn-primary btn-border btn-lg w-75 fw-bold mb-3">Install DataSet</a> -->
 									</csp:if>								
 							</div>
 						</div>
@@ -913,10 +913,10 @@
 									</csp:if>								
 								</ul>
 									<csp:if condition="sts=1">
-										<a href=. onClick="#server(..RemoveDS(7))#;;window.location.reload();return false;" class="btn btn-secondary btn-border btn-lg w-75 fw-bold mb-3">Remove DataSet</a> -->
+										<a href=. onClick="#server(..RemoveWDS(7))#;;window.location.reload();return false;" class="btn btn-secondary btn-border btn-lg w-75 fw-bold mb-3">Remove DataSet</a> -->
 									<csp:else condition="sts'=1">
-										<!-- <a href=. onClick="var res = #server(..ImportDS(1))#;alert(res);return false;" class="btn btn-success btn-border btn-lg w-75 fw-bold mb-3">Install DataSet</a> -->
-										<a href=. onClick="#server(..ImportDS(7))#;;window.location.reload();return false;" class="btn btn-secondary btn-border btn-lg w-75 fw-bold mb-3">Install DataSet</a> -->
+										<!-- <a href=. onClick="var res = #server(..InitDS(1))#;alert(res);return false;" class="btn btn-success btn-border btn-lg w-75 fw-bold mb-3">Install DataSet</a> -->
+										<a href=. onClick="#server(..InitDS(7))#;;window.location.reload();return false;" class="btn btn-secondary btn-border btn-lg w-75 fw-bold mb-3">Install DataSet</a> -->
 									</csp:if>								
 							</div>
 						</div>
@@ -945,10 +945,10 @@
 									</csp:if>								
 								</ul>
 									<csp:if condition="sts=1">
-										<a href=. onClick="#server(..RemoveDS(8))#;;window.location.reload();return false;" class="btn btn-info btn-border btn-lg w-75 fw-bold mb-3">Remove DataSet</a> -->
+										<a href=. onClick="#server(..RemoveWDS(8))#;;window.location.reload();return false;" class="btn btn-info btn-border btn-lg w-75 fw-bold mb-3">Remove DataSet</a> -->
 									<csp:else condition="sts'=1">
-										<!-- <a href=. onClick="var res = #server(..ImportDS(1))#;alert(res);return false;" class="btn btn-success btn-border btn-lg w-75 fw-bold mb-3">Install DataSet</a> -->
-										<a href=. onClick="#server(..ImportDS(8))#;;window.location.reload();return false;" class="btn btn-info btn-border btn-lg w-75 fw-bold mb-3">Install DataSet</a> -->
+										<!-- <a href=. onClick="var res = #server(..InitDS(1))#;alert(res);return false;" class="btn btn-success btn-border btn-lg w-75 fw-bold mb-3">Install DataSet</a> -->
+										<a href=. onClick="#server(..InitDS(8))#;;window.location.reload();return false;" class="btn btn-info btn-border btn-lg w-75 fw-bold mb-3">Install DataSet</a> -->
 									</csp:if>								
 							</div>
 						</div>
@@ -980,10 +980,10 @@
 									</csp:if>								
 								</ul>
 									<csp:if condition="sts=1">
-										<a href=. onClick="#server(..RemoveDS(9))#;;window.location.reload();return false;" class="btn btn-info btn-border btn-lg w-75 fw-bold mb-3">Remove DataSet</a> -->
+										<a href=. onClick="#server(..RemoveWDS(9))#;;window.location.reload();return false;" class="btn btn-info btn-border btn-lg w-75 fw-bold mb-3">Remove DataSet</a> -->
 									<csp:else condition="sts'=1">
-										<!-- <a href=. onClick="var res = #server(..ImportDS(1))#;alert(res);return false;" class="btn btn-success btn-border btn-lg w-75 fw-bold mb-3">Install DataSet</a> -->
-										<a href=. onClick="#server(..ImportDS(9))#;;window.location.reload();return false;" class="btn btn-info btn-border btn-lg w-75 fw-bold mb-3">Install DataSet</a> -->
+										<!-- <a href=. onClick="var res = #server(..InitDS(1))#;alert(res);return false;" class="btn btn-success btn-border btn-lg w-75 fw-bold mb-3">Install DataSet</a> -->
+										<a href=. onClick="#server(..InitDS(9))#;;window.location.reload();return false;" class="btn btn-info btn-border btn-lg w-75 fw-bold mb-3">Install DataSet</a> -->
 									</csp:if>								
 							</div>
 						</div>
@@ -1013,10 +1013,10 @@
 									</csp:if>								
 								</ul>
 									<csp:if condition="sts=1">
-										<a href=. onClick="#server(..RemoveDS(10))#;;window.location.reload();return false;" class="btn btn-success btn-border btn-lg w-75 fw-bold mb-3">Remove DataSet</a> -->
+										<a href=. onClick="#server(..RemoveWDS(10))#;;window.location.reload();return false;" class="btn btn-success btn-border btn-lg w-75 fw-bold mb-3">Remove DataSet</a> -->
 									<csp:else condition="sts'=1">
-										<!-- <a href=. onClick="var res = #server(..ImportDS(1))#;alert(res);return false;" class="btn btn-success btn-border btn-lg w-75 fw-bold mb-3">Install DataSet</a> -->
-										<a href=. onClick="#server(..ImportDS(10))#;;window.location.reload();return false;" class="btn btn-success btn-border btn-lg w-75 fw-bold mb-3">Install DataSet</a> -->
+										<!-- <a href=. onClick="var res = #server(..InitDS(1))#;alert(res);return false;" class="btn btn-success btn-border btn-lg w-75 fw-bold mb-3">Install DataSet</a> -->
+										<a href=. onClick="#server(..InitDS(10))#;;window.location.reload();return false;" class="btn btn-success btn-border btn-lg w-75 fw-bold mb-3">Install DataSet</a> -->
 									</csp:if>								
 							</div>
 						</div>
@@ -1045,10 +1045,10 @@
 									</csp:if>								
 								</ul>
 									<csp:if condition="sts=1">
-										<a href=. onClick="#server(..RemoveDS(11))#;;window.location.reload();return false;" class="btn btn-primary btn-border btn-lg w-75 fw-bold mb-3">Remove DataSet</a> -->
+										<a href=. onClick="#server(..RemoveWDS(11))#;;window.location.reload();return false;" class="btn btn-primary btn-border btn-lg w-75 fw-bold mb-3">Remove DataSet</a> -->
 									<csp:else condition="sts'=1">
-										<!-- <a href=. onClick="var res = #server(..ImportDS(1))#;alert(res);return false;" class="btn btn-success btn-border btn-lg w-75 fw-bold mb-3">Install DataSet</a> -->
-										<a href=. onClick="#server(..ImportDS(11))#;;window.location.reload();return false;" class="btn btn-primary btn-border btn-lg w-75 fw-bold mb-3">Install DataSet</a> -->
+										<!-- <a href=. onClick="var res = #server(..InitDS(1))#;alert(res);return false;" class="btn btn-success btn-border btn-lg w-75 fw-bold mb-3">Install DataSet</a> -->
+										<a href=. onClick="#server(..InitDS(11))#;;window.location.reload();return false;" class="btn btn-primary btn-border btn-lg w-75 fw-bold mb-3">Install DataSet</a> -->
 									</csp:if>								
 							</div>
 						</div>
@@ -1077,10 +1077,10 @@
 									</csp:if>								
 								</ul>
 									<csp:if condition="sts=1">
-										<a href=. onClick="#server(..RemoveDS(12))#;;window.location.reload();return false;" class="btn btn-secondary btn-border btn-lg w-75 fw-bold mb-3">Remove DataSet</a> -->
+										<a href=. onClick="#server(..RemoveWDS(12))#;;window.location.reload();return false;" class="btn btn-secondary btn-border btn-lg w-75 fw-bold mb-3">Remove DataSet</a> -->
 									<csp:else condition="sts'=1">
-										<!-- <a href=. onClick="var res = #server(..ImportDS(1))#;alert(res);return false;" class="btn btn-success btn-border btn-lg w-75 fw-bold mb-3">Install DataSet</a> -->
-										<a href=. onClick="#server(..ImportDS(12))#;;window.location.reload();return false;" class="btn btn-secondary btn-border btn-lg w-75 fw-bold mb-3">Install DataSet</a> -->
+										<!-- <a href=. onClick="var res = #server(..InitDS(1))#;alert(res);return false;" class="btn btn-success btn-border btn-lg w-75 fw-bold mb-3">Install DataSet</a> -->
+										<a href=. onClick="#server(..InitDS(12))#;;window.location.reload();return false;" class="btn btn-secondary btn-border btn-lg w-75 fw-bold mb-3">Install DataSet</a> -->
 									</csp:if>								
 							</div>
 						</div>

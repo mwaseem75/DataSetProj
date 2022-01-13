@@ -8,9 +8,9 @@ on:
 
 env:
   # Change this section according to your needs
-  IMAGE_NAME:   medicaldatasets1-image
-  SERVICE:      medicaldatasets1
-  DOMAIN_NAME:  medicaldatasets1.demo.community.intersystems.com
+  IMAGE_NAME:   medicaldatasets-image
+  SERVICE:      medicaldatasets
+  DOMAIN_NAME:  medicaldatasets.demo.community.intersystems.com
 # Leave this section untouched
   PROJECT_ID:   iris-community-demos
   CLUSTER_NAME: demo

@@ -456,9 +456,11 @@ ClassMethod GetTotalRecords(id As %Integer) As %String
 
 // Install 1 dataset by defualt
 
-ClassMethod InitDS()
+ClassMethod InitDS(id As %Integer)
 {
-   
+    
+  
+   if id=1 {
     SET tableName(1) = "dc_data_synthetic.all_prevalences"
     SET tableName(2) = "dc_data_synthetic.allergies"
     SET tableName(3) = "dc_data_synthetic.careplans"
@@ -486,6 +488,293 @@ ClassMethod InitDS()
         {
         do ..InitDSDtl(tableName(i),fileName(i))
         }
+    }
+    //2
+    if id=2 {
+    SET tableName(1) = "dc_data_hcanalytics.AV_First_Health_Camp_Attended"
+    SET tableName(2) = "dc_data_hcanalytics.AV_Health_Camp_Detail"
+    SET tableName(3) = "dc_data_hcanalytics.AV_Patient_Profile"
+    SET tableName(4) = "dc_data_hcanalytics.AV_sample_submmission"
+    SET tableName(5) = "dc_data_hcanalytics.AV_Second_Health_Camp_Attended"
+    SET tableName(6) = "dc_data_hcanalytics.AV_Test"
+    SET tableName(7) = "dc_data_hcanalytics.AV_Third_Health_Camp_Attended"
+    SET tableName(8) = "dc_data_hcanalytics.AV_Train"
+   
+    SET fileName(1) = "/opt/irisapp/src/data/hcanalytics/AV_First_Health_Camp_Attended.csv"
+    SET fileName(2) = "/opt/irisapp/src/data/hcanalytics/AV_Health_Camp_Detail.csv"
+    SET fileName(3) = "/opt/irisapp/src/data/hcanalytics/AV_Patient_Profile.csv"
+    SET fileName(4) = "/opt/irisapp/src/data/hcanalytics/AV_sample_submmission.csv"
+    SET fileName(5) = "/opt/irisapp/src/data/hcanalytics/AV_Second_Health_Camp_Attended.csv"
+    SET fileName(6) = "/opt/irisapp/src/data/hcanalytics/AV_Test.csv"
+    SET fileName(7) = "/opt/irisapp/src/data/hcanalytics/AV_Third_Health_Camp_Attended.csv"
+    SET fileName(8) = "/opt/irisapp/src/data/hcanalytics/AV_Train.csv"
+ 
+        FOR i=1:1:8
+        {
+        do ..InitDSDtl(tableName(i),fileName(i))
+        }
+    }
+    //3
+    if id=3 {
+    SET tableName(1) = "dc_data_globalsuicide.gender_rates"
+    SET tableName(2) = "dc_data_globalsuicide.Male_Female_Ratio_of_Suicide_Rates"
+    SET tableName(3) = "dc_data_globalsuicide.MH_12"
+    SET tableName(4) = "dc_data_globalsuicide.SDGSUICIDE"
+    SET tableName(5) = "dc_data_globalsuicide.suicide_by_age"
+    SET tableName(6) = "dc_data_globalsuicide.suicide_death_rates"
+    SET tableName(7) = "dc_data_globalsuicide.suicide_rates_by_country"
+       
+    SET fileName(1) = "/opt/irisapp/src/data/globalsuicide/gender_rates.csv"
+    SET fileName(2) = "/opt/irisapp/src/data/globalsuicide/Male_Female_Ratio_of_Suicide_Rates.csv"
+    SET fileName(3) = "/opt/irisapp/src/data/globalsuicide/MH_12.csv"
+    SET fileName(4) = "/opt/irisapp/src/data/globalsuicide/SDGSUICIDE.csv"
+    SET fileName(5) = "/opt/irisapp/src/data/globalsuicide/suicide_by_age.csv"
+    SET fileName(6) = "/opt/irisapp/src/data/globalsuicide/suicide_death_rates.csv"
+    SET fileName(7) = "/opt/irisapp/src/data/globalsuicide/suicide_rates_by_country.csv"
+    FOR i=1:1:7
+        {
+        do ..InitDSDtl(tableName(i),fileName(i))
+        }
+    }
+    //4
+    if id=4 {
+
+    SET tableName(1) = "dc_data_covidpolls.covid_approval_polls_adjusted"
+    SET tableName(2) = "dc_data_covidpolls.covid_approval_polls"
+    SET tableName(3) = "dc_data_covidpolls.covid_approval_toplines"
+    SET tableName(4) = "dc_data_covidpolls.covid_concern_polls_adjusted"
+    SET tableName(5) = "dc_data_covidpolls.covid_concern_polls"
+    SET tableName(6) = "dc_data_covidpolls.covid_concern_toplines"
+    SET tableName(7) = "dc_data_covidpolls.data_dictionary_covid19_polls"
+       
+    SET fileName(1) = "/opt/irisapp/src/data/covidpolls/covid_approval_polls_adjusted.csv"
+    SET fileName(2) = "/opt/irisapp/src/data/covidpolls/covid_approval_polls.csv"
+    SET fileName(3) = "/opt/irisapp/src/data/covidpolls/covid_approval_toplines.csv"
+    SET fileName(4) = "/opt/irisapp/src/data/covidpolls/covid_concern_polls_adjusted.csv"
+    SET fileName(5) = "/opt/irisapp/src/data/covidpolls/covid_concern_polls.csv"
+    SET fileName(6) = "/opt/irisapp/src/data/covidpolls/covid_concern_toplines.csv"
+    SET fileName(7) = "/opt/irisapp/src/data/covidpolls/data_dictionary_covid19_polls.csv"
+    FOR i=1:1:7
+        {
+        do ..InitDSDtl(tableName(i),fileName(i))
+        }
+    }
+     //5
+    if id=5 {
+
+    SET tableName(1) = "dc_data_cancerrates.uscs_map_death_all"
+    SET tableName(2) = "dc_data_cancerrates.uscs_map_incidence_all"
+         
+    SET fileName(1) = "/opt/irisapp/src/data/cancerrates/uscs_map_death_all.csv"
+    SET fileName(2) = "/opt/irisapp/src/data/cancerrates/uscs_map_incidence_all.csv"
+   
+    FOR i=1:1:2
+        {
+        do ..InitDSDtl(tableName(i),fileName(i))
+        }
+    }
+     //6
+    if id=6 {
+
+    SET tableName(1) = "dc_data_overdosedeaths.Multiple_Cause_of_Death_1999_2014"
+    SET tableName(2) = "dc_data_overdosedeaths.Multiple_Cause_of_Death_1999_2014_v1"
+         
+    SET fileName(1) = "/opt/irisapp/src/data/overdosedeaths/Multiple_Cause_of_Death_1999_2014.csv"
+    SET fileName(2) = "/opt/irisapp/src/data/overdosedeaths/Multiple_Cause_of_Death_1999_2014_v1.csv"
+   
+    FOR i=1:1:2
+        {
+        do ..InitDSDtl(tableName(i),fileName(i))
+        }
+    }
+      //7
+    if id=7 {
+
+    SET tableName(1) = "dc_data_hdprediction.Heart_Disease_Prediction"           
+    SET fileName(1) = "/opt/irisapp/src/data/hdprediction/Heart_Disease_Prediction.csv"
+    do ..InitDSDtl(tableName(1),fileName(1))
+    }
+     if id=8 {
+
+    SET tableName(1) = "dc_data_medicalservices.medical_services"           
+    SET fileName(1) = "/opt/irisapp/src/data/medicalservices/medical_services.csv"
+    do ..InitDSDtl(tableName(1),fileName(1))
+    }
+    if id=9 {
+
+    SET tableName(1) = "dc_data_hospitalratings.Hospital_General_Information"           
+    SET fileName(1) = "/opt/irisapp/src/data/hospitalratings/Hospital_General_Information.csv"
+    do ..InitDSDtl(tableName(1),fileName(1))
+    }
+    if id=10 {
+
+    SET tableName(1) = "dc_data_hfprediction.heart_failure_clinical_records_dataset"           
+    SET fileName(1) = "/opt/irisapp/src/data/hfprediction/heart_failure_clinical_records_dataset.csv"
+    do ..InitDSDtl(tableName(1),fileName(1))
+    }
+    if id=11 {
+
+    SET tableName(1) = "dc_data_diabetes.Diabetes_Dataset"           
+    SET fileName(1) = "/opt/irisapp/src/data/diabetes/Diabetes_Dataset.csv"
+    do ..InitDSDtl(tableName(1),fileName(1))
+    }
+    if id=12 {
+
+    SET tableName(1) = "dc_data_kidneydisease.new_model"           
+    SET fileName(1) = "/opt/irisapp/src/data/kidneydisease/new_model.csv"
+    do ..InitDSDtl(tableName(1),fileName(1))
+    }
+}
+
+ClassMethod RemoveWDS(id As %Integer)
+{
+    
+  
+   if id=1 {
+    SET tableName(1) = "dc_data_synthetic.all_prevalences"
+    SET tableName(2) = "dc_data_synthetic.allergies"
+    SET tableName(3) = "dc_data_synthetic.careplans"
+    SET tableName(4) = "dc_data_synthetic.claims"
+    SET tableName(5) = "dc_data_synthetic.conditions"
+    SET tableName(6) = "dc_data_synthetic.encounters"
+    SET tableName(7) = "dc_data_synthetic.immunizations"
+    SET tableName(8) = "dc_data_synthetic.medications"
+    SET tableName(9) = "dc_data_synthetic.observations"
+    SET tableName(10) = "dc_data_synthetic.patients"
+    SET tableName(11) = "dc_data_synthetic.procedures"
+  
+        FOR i=1:1:11
+        {
+        do ..RemoveDSDtl(tableName(i))
+        }
+    }
+    //2
+    if id=2 {
+    SET tableName(1) = "dc_data_hcanalytics.AV_First_Health_Camp_Attended"
+    SET tableName(2) = "dc_data_hcanalytics.AV_Health_Camp_Detail"
+    SET tableName(3) = "dc_data_hcanalytics.AV_Patient_Profile"
+    SET tableName(4) = "dc_data_hcanalytics.AV_sample_submmission"
+    SET tableName(5) = "dc_data_hcanalytics.AV_Second_Health_Camp_Attended"
+    SET tableName(6) = "dc_data_hcanalytics.AV_Test"
+    SET tableName(7) = "dc_data_hcanalytics.AV_Third_Health_Camp_Attended"
+    SET tableName(8) = "dc_data_hcanalytics.AV_Train"
+   
+   
+        FOR i=1:1:8
+        {
+        do ..RemoveDSDtl(tableName(i))
+        }
+    }
+    //3
+    if id=3 {
+    SET tableName(1) = "dc_data_globalsuicide.gender_rates"
+    SET tableName(2) = "dc_data_globalsuicide.Male_Female_Ratio_of_Suicide_Rates"
+    SET tableName(3) = "dc_data_globalsuicide.MH_12"
+    SET tableName(4) = "dc_data_globalsuicide.SDGSUICIDE"
+    SET tableName(5) = "dc_data_globalsuicide.suicide_by_age"
+    SET tableName(6) = "dc_data_globalsuicide.suicide_death_rates"
+    SET tableName(7) = "dc_data_globalsuicide.suicide_rates_by_country"
+       
+ 
+    FOR i=1:1:7
+        {
+        do ..RemoveDSDtl(tableName(i))
+        }
+    }
+    //4
+    if id=4 {
+
+    SET tableName(1) = "dc_data_covidpolls.covid_approval_polls_adjusted"
+    SET tableName(2) = "dc_data_covidpolls.covid_approval_polls"
+    SET tableName(3) = "dc_data_covidpolls.covid_approval_toplines"
+    SET tableName(4) = "dc_data_covidpolls.covid_concern_polls_adjusted"
+    SET tableName(5) = "dc_data_covidpolls.covid_concern_polls"
+    SET tableName(6) = "dc_data_covidpolls.covid_concern_toplines"
+    SET tableName(7) = "dc_data_covidpolls.data_dictionary_covid19_polls"
+       
+  
+    FOR i=1:1:7
+        {
+        do ..RemoveDSDtl(tableName(i))
+        }
+    }
+     //5
+    if id=5 {
+
+    SET tableName(1) = "dc_data_cancerrates.uscs_map_death_all"
+    SET tableName(2) = "dc_data_cancerrates.uscs_map_incidence_all"
+         
+   FOR i=1:1:2
+        {
+        do ..RemoveDSDtl(tableName(i))
+        }
+    }
+     //6
+    if id=6 {
+
+    SET tableName(1) = "dc_data_overdosedeaths.Multiple_Cause_of_Death_1999_2014"
+    SET tableName(2) = "dc_data_overdosedeaths.Multiple_Cause_of_Death_1999_2014_v1"
+         
+   
+   
+    FOR i=1:1:2
+        {
+        do ..RemoveDSDtl(tableName(i))
+        }
+    }
+      //7
+    if id=7 {
+
+    SET tableName(1) = "dc_data_hdprediction.Heart_Disease_Prediction"           
+    
+    do ..RemoveDSDtl(tableName(1))
+    }
+     if id=8 {
+
+    SET tableName(1) = "dc_data_medicalservices.medical_services"           
+    SET fileName(1) = "/opt/irisapp/src/data/medicalservices/medical_services.csv"
+    do ..RemoveDSDtl(tableName(1))
+    }
+    if id=9 {
+
+    SET tableName(1) = "dc_data_hospitalratings.Hospital_General_Information"           
+    SET fileName(1) = "/opt/irisapp/src/data/hospitalratings/Hospital_General_Information.csv"
+    do ..RemoveDSDtl(tableName(1))
+    }
+    if id=10 {
+
+    SET tableName(1) = "dc_data_hfprediction.heart_failure_clinical_records_dataset"           
+    SET fileName(1) = "/opt/irisapp/src/data/hfprediction/heart_failure_clinical_records_dataset.csv"
+    do ..RemoveDSDtl(tableName(1))
+    }
+    if id=11 {
+
+    SET tableName(1) = "dc_data_diabetes.Diabetes_Dataset"           
+    SET fileName(1) = "/opt/irisapp/src/data/diabetes/Diabetes_Dataset.csv"
+    do ..RemoveDSDtl(tableName(1))
+    }
+    if id=12 {
+
+    SET tableName(1) = "dc_data_kidneydisease.new_model"           
+    SET fileName(1) = "/opt/irisapp/src/data/kidneydisease/new_model.csv"
+    do ..RemoveDSDtl(tableName(1))
+    }
+}
+
+ClassMethod RemoveDSDtl(tableName As %String)
+{
+        SET qry = "DROP TABLE "_tableName
+        SET rset = ##class(%SQL.Statement).%ExecDirect(,qry)
+      
+        //Check if table deleted successfully
+        IF rset.%SQLCODE
+        {
+             WRITE "ERROR : ",rset.%Message,!          
+        } 
+        ELSE
+        {
+            WRITE "Table "_tableName_" deleted successfully",!
+        }
 }
 
 ClassMethod InitDSDtl(tableName As %String, fileName As %String)
@@ -512,7 +801,19 @@ ClassMethod InitDSDtl(tableName As %String, fileName As %String)
             } 
             ELSE
             {
-               WRITE "Table : "_tableName_",", ?45," LoadedRows="_rset.%ROWCOUNT,!
+                 //Check %SQL_Diag.Result table
+                 SET qry = "SELECT id,errorcount FROM %SQL_Diag.Result WHERE ID = (SELECT MAX(ID) FROM %SQL_Diag.Result )"
+                 SET tStatement = ##class(%SQL.Statement).%New()
+                 SET qStatus = tStatement.%Prepare(.qry)
+                 IF qStatus =1 {
+                     SET rsetD = tStatement.%Execute()
+                     //DO rset.%Display()
+                    WHILE rsetD.%Next() {
+                        SET diagID = rsetD.%GetData(1)
+                        SET errors = rsetD.%GetData(2)                      
+                    }
+                 }
+                WRITE "Table : "_tableName_",", ?45," LoadedRows="_rset.%ROWCOUNT_"", ?65," ErrorCount="_errors_"", ?85," DiagID="_diagID,!
             }
         }
 }
