@@ -5,6 +5,10 @@ DataSet can be installed or removed by terminal or by using web application. Dat
 
 ## Application Layout
 ![image](https://user-images.githubusercontent.com/18219467/148711350-34e9e161-0d05-4949-bd7a-dfae3003abf0.png)
+
+## Online Demo
+https://medicaldatasets.demo.community.intersystems.com/csp/datasets/index.csp by using SuperUser | SYS
+
 ## Datasets List
 * **1 - Synthetic Medical Data** : Synthetic medical record data for Introduction to Biomedical Data Science. [LICENCE:Public Domain](https://data.world/siyeh/synthetic-medical-data)
 * **2 - Health Care Analytics - 1** : Part of Janatahack Hackathon in Analytics Vidhya [LICENCE:Public Domain](https://www.kaggle.com/abisheksudarshan/health-care-analytics)
