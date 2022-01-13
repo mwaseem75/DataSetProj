@@ -1,9 +1,9 @@
 Class dc.data.medical.utility
 {
 
-ClassMethod ImportDS(id As %Integer)
+ClassMethod ImportDS(id As %Integer, isWebCall As %Boolean = 0) As %String
 {
-    //ZN "DATASETS"
+       
     // Check if parameter is defined
     IF $DATA(id) '= 1 
     {
@@ -11,7 +11,7 @@ ClassMethod ImportDS(id As %Integer)
         QUIT        
     }
     
-    //if id = 999 then install all the files by looping through all 12 folders
+        //if id = 999 then install all the files by looping through all 12 folders
     IF id = 999 
     {SET start=1,end=12}
     ELSE
@@ -37,7 +37,10 @@ ClassMethod ImportDS(id As %Integer)
     SET tRS=##class(%ResultSet).%New("%Library.File:FileSet")
     DO tRS.Execute(mDir,mFileSpec)
     //WRITE "SQL CODE VALUE"_tSC.%SQLCODE
-    WRITE "DATASET : "_ds,! 
+    //Initate return value for web application
+    SET returnVal = ""
+    IF isWebCall { SET returnVal = "DATASET : "_ds_" Installation Status"_$c(10)_$c(13) }
+    ELSE {WRITE "DATASET : "_ds,! }
     //Get all the files from directory 
     WHILE tRS.Next() {
         //Get file name
@@ -54,7 +57,7 @@ ClassMethod ImportDS(id As %Integer)
         //Check if table created successfully
         IF rset.%SQLCODE
         {
-             WRITE "ERROR : ",rset.%Message,!          
+             WRITE rset.%Message,!          
         }
         ELSE
         {
@@ -63,9 +66,11 @@ ClassMethod ImportDS(id As %Integer)
             SET rset = ##class(%SQL.Statement).%ExecDirect(,qry)
             IF rset.%SQLCODE
             {
-                WRITE "ERROR Table : " _tableName_" IMPORT FAILED: ",rset.%Message,!
+                IF isWebCall {SET returnVal = returnVal _ "ERROR Table : " _tableName_" IMPORT FAILED: "_rset.%Message_$c(10)_$c(13)}
+                ELSE {   WRITE "ERROR Table : " _tableName_" IMPORT FAILED: ",rset.%Message,!}
             } 
             ELSE
+            
             {
                 //Check %SQL_Diag.Result table
                  SET qry = "SELECT id,errorcount FROM %SQL_Diag.Result WHERE ID = (SELECT MAX(ID) FROM %SQL_Diag.Result )"
@@ -76,15 +81,23 @@ ClassMethod ImportDS(id As %Integer)
                      //DO rset.%Display()
                     WHILE rsetD.%Next() {
                         SET diagID = rsetD.%GetData(1)
-                        SET errors = rsetD.%GetData(2)
-                       
-                                   }
+                        SET errors = rsetD.%GetData(2)                        
+                        }
                  }
-                WRITE "Table : "_tableName_",", ?45," LoadedRows="_rset.%ROWCOUNT_"", ?65," ErrorCount="_errors_"", ?85," DiagID="_diagID,!
+                IF errors > 0 { 
+                    IF isWebCall {SET returnVal = returnVal _ "Table : "_tableName_", "_" LoadedRows="_rset.%ROWCOUNT_" DiagID="_diagID_"  Errors="_errors_$c(10)_$c(13)}
+                    ELSE {WRITE "Table : "_tableName_",", ?45," LoadedRows="_rset.%ROWCOUNT_"", ?65," DiagID="_diagID, "  Errors="_errors,!}
+                }
+                ELSE
+                {
+                   IF isWebCall {SET returnVal = returnVal _ "Table : "_tableName_", "_" LoadedRows="_rset.%ROWCOUNT_" DiagID="_diagID_$c(10)_$c(13)}
+                   ELSE {WRITE "Table : "_tableName_",", ?45," LoadedRows="_rset.%ROWCOUNT_"", ?65," DiagID="_diagID,!} 
+                }    
             }
         }   
     }
    }
+   return returnVal
 }
 
 // Get column lists based on the Header Row of CSV File
@@ -104,8 +117,8 @@ ClassMethod GetColTypes(filenamecsv As %String, ByRef coltype As %String, dlm As
         DO ..GetDataType($Piece(dataLine,dlm,i),.types)
         SET type=..GetType(.types) 
 
-        // if type is varchar then assign length 200
-        IF type="VARCHAR" SET type="VARCHAR(200)"
+        // if type is varchar then assign length 250
+        IF type="VARCHAR" SET type="VARCHAR(250)"
         SET $Piece(coltype,dlm,i)=$TR($Piece(header,dlm,i)," ","")_" "_type
     }
     SET coltype=$TR(coltype,dlm,",")
@@ -185,7 +198,7 @@ ClassMethod GetDSName(counter As %Integer) As %Status
 
 // Function to Remove particular Dataset
 
-ClassMethod RemoveDS(id As %Integer)
+ClassMethod RemoveDS(id As %Integer, isWebCall As %Boolean = 0) As %String
 {
     // Check if parameter is defined
     IF $DATA(id) '= 1 
@@ -193,7 +206,8 @@ ClassMethod RemoveDS(id As %Integer)
         WRITE "Invalid Parameter" 
         QUIT
     }
-    //ZN "DATASETS"
+    //Init variable
+    set returnVal=""
     //if id = 999 then run loop through all 12 folders
     IF id = 999 
     {SET start=1,end=12}
@@ -219,8 +233,10 @@ ClassMethod RemoveDS(id As %Integer)
     //User %ResultSet to read all the files from dirctory
     SET tRS=##class(%ResultSet).%New("%Library.File:FileSet")
     DO tRS.Execute(mDir,mFileSpec)
+   
+    IF isWebCall { SET returnVal = "DATASET : "_ds_$c(10)_$c(13) }
+    ELSE {WRITE "DATASET : "_ds,! }
     
-    WRITE "DATASET : "_ds,! 
     //Get all the files from directory 
     WHILE tRS.Next() {
         SET tableName=$REPLACE("dc_data_"_ds_"."_tRS.Get("ItemName"),".csv","")
@@ -231,14 +247,17 @@ ClassMethod RemoveDS(id As %Integer)
         //Check if table deleted successfully
         IF rset.%SQLCODE
         {
-             WRITE "ERROR : ",rset.%Message,!          
+             IF isWebCall { SET returnVal = returnVal_ "ERROR : "_rset.%Message_$c(13) }
+             ELSE {WRITE "ERROR : ",rset.%Message,!          }
         } 
         ELSE
         {
-            WRITE "Table "_tableName_" deleted successfully",!
+            IF isWebCall { SET returnVal = returnVal_"Table "_tableName_" Deleted Successfully"_$c(13) }
+            ELSE {WRITE "Table "_tableName_" Deleted Successfully",! }
         }
       }
    }
+   RETURN returnVal
 }
 
 // Function to check if particular dataset is imported or not 

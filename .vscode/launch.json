@@ -5,7 +5,7 @@
       "type": "objectscript",
       "request": "launch",
       "name": "ObjectScript Debug Class", 
-      "program": "##class(dc.data.medical.utility).InitDS()",
+      "program": "##class(dc.data.medical.utility).ImportDS()",
     },
     {
       "type": "objectscript",

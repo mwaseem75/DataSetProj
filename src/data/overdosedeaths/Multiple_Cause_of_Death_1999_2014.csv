@@ -1,4 +1,5 @@
 State,Year,Deaths,Population,CrudeRate,CrudeRatLower,CrudeRateUpper
+Alaska,2001,17,633714,Unreliable,1.6,4.3
 Alabama,1999,39,4430141,0.9,0.6,1.2
 Alabama,2000,46,4447100,1,0.8,1.4
 Alabama,2001,67,4467634,1.5,1.2,1.9
@@ -17,7 +18,6 @@ Alabama,2013,175,4833722,3.6,3.1,4.2
 Alabama,2014,282,4849377,5.8,5.1,6.5
 Alaska,1999,28,624779,4.5,3,6.5
 Alaska,2000,27,626932,4.3,2.8,6.3
-Alaska,2001,17,633714,Unreliable,1.6,4.3
 Alaska,2002,Suppressed,642337,Suppressed,Suppressed,Suppressed
 Alaska,2003,14,648414,Unreliable,1.2,3.6
 Alaska,2004,11,659286,Unreliable,0.8,3
