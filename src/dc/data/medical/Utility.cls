@@ -30,7 +30,8 @@ ClassMethod ImportDS(id As %Integer, isWebCall As %Boolean = 0) As %String
     }   
     
     //Get Directory Name
-    SET mDir = "/irisdev/app/src/data/"_ds
+    //SET mDir = "/irisdev/app/src/data/"_ds
+    SET mDir = "/usr/irissys/lib/data/"_ds
     SET mFileSpec = "*.csv"
     
     //User %ResultSet to read all the files from dirctory
@@ -227,7 +228,8 @@ ClassMethod RemoveDS(id As %Integer, isWebCall As %Boolean = 0) As %String
     }    
     
     //Get Directory Name
-    SET mDir = "/irisdev/app/src/data/"_ds
+    //SET mDir = "/irisdev/app/src/data/"_ds
+    SET mDir = "/usr/irissys/lib/data/"
     SET mFileSpec = "*.csv"
     
     //User %ResultSet to read all the files from dirctory
@@ -290,7 +292,8 @@ ClassMethod GetStatusDS(id As %Integer)
     }    
     
     //Get Directory Name
-    SET mDir = "/irisdev/app/src/data/"_ds
+    //SET mDir = "/irisdev/app/src/data/"_ds
+    SET mDir = "/usr/irissys/lib/data/"
     SET mFileSpec = "*.csv"
     
     //User %ResultSet to read all the files from dirctory
@@ -478,6 +481,7 @@ ClassMethod GetTotalRecords(id As %Integer) As %String
 ClassMethod InitDS()
 {
    
+
     SET tableName(1) = "dc_data_synthetic.all_prevalences"
     SET tableName(2) = "dc_data_synthetic.allergies"
     SET tableName(3) = "dc_data_synthetic.careplans"
@@ -489,18 +493,18 @@ ClassMethod InitDS()
     SET tableName(9) = "dc_data_synthetic.observations"
     SET tableName(10) = "dc_data_synthetic.patients"
     SET tableName(11) = "dc_data_synthetic.procedures"
-    SET fileName(1) = "/opt/irisapp/src/data/synthetic/all_prevalences.csv"
-    SET fileName(2) = "/opt/irisapp/src/data/synthetic/allergies.csv"
-    SET fileName(3) = "/opt/irisapp/src/data/synthetic/careplans.csv"
-    SET fileName(4) = "/opt/irisapp/src/data/synthetic/claims.csv"
-    SET fileName(5) = "/opt/irisapp/src/data/synthetic/conditions.csv"
-    SET fileName(6) = "/opt/irisapp/src/data/synthetic/encounters.csv"
-    SET fileName(7) = "/opt/irisapp/src/data/synthetic/immunizations.csv"
-    SET fileName(8) = "/opt/irisapp/src/data/synthetic/medications.csv"
-    SET fileName(9) = "/opt/irisapp/src/data/synthetic/observations.csv"
-    SET fileName(10) = "/opt/irisapp/src/data/synthetic/patients.csv"
-    SET fileName(11) = "/opt/irisapp/src/data/synthetic/procedures.csv"    
-   
+    SET fileName(1) = "/irisdev/app/src/data/synthetic/all_prevalences.csv"
+    SET fileName(2) = "/irisdev/app/src/data/synthetic/allergies.csv"
+    SET fileName(3) = "/irisdev/app/src/data/synthetic/careplans.csv"
+    SET fileName(4) = "/irisdev/app/src/data/synthetic/claims.csv"
+    SET fileName(5) = "/irisdev/app/src/data/synthetic/conditions.csv"
+    SET fileName(6) = "/irisdev/app/src/data/synthetic/encounters.csv"
+    SET fileName(7) = "/irisdev/app/src/data/synthetic/immunizations.csv"
+    SET fileName(8) = "/irisdev/app/src/data/synthetic/medications.csv"
+    SET fileName(9) = "/irisdev/app/src/data/synthetic/observations.csv"
+    SET fileName(10) = "/irisdev/app/src/data/synthetic/patients.csv"
+    SET fileName(11) = "/irisdev/app/src/data/synthetic/procedures.csv"    
+ 
         FOR i=1:1:11
         {
         do ..InitDSDtl(tableName(i),fileName(i))

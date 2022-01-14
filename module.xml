@@ -3,14 +3,14 @@
   <Document name="dataset-medical.ZPM">
     <Module>
       <Name>dataset-medical</Name>
-      <Version>1.0.2</Version>
+      <Version>1.0.3</Version>
       <Description>Medical DataSet Repository</Description>
       <Keywords>SQL,Load</Keywords>
       <Packaging>module</Packaging>
       <CSPApplication CookiePath="/csp/datasets/" DefaultTimeout="900" DeployPath="{cspdir}/csp/${namespace}/" Description="Interoperability Management Portal" MatchRoles=":{$dbrole}" PasswordAuthEnabled="1" Recurse="1" ServeFiles="1" ServeFilesTimeout="3600" SourcePath="/src/csp" UnauthenticatedEnabled="0" Url="/csp/datasets" UseSessionCookie="2"/>
       <SourcesRoot>src</SourcesRoot>
       <Resource Name="dc.data.medical.PKG"/>
-      <Invoke Class="dc.data.medical.utility" Method="InitDS"></Invoke>
+      <FileCopy Name="/src/data/" Target="${libdir}/data" Overlay="1"/>      
       
     </Module>
   </Document>
