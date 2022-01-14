@@ -7,8 +7,8 @@ ClassMethod ImportDS(id As %Integer, isWebCall As %Boolean = 0) As %String
     // Check if parameter is defined
     IF $DATA(id) '= 1 
     {
-        WRITE "Invalid Parameter" 
-        QUIT        
+        WRITE "Invalid Parameter"
+        QUIT ""       
     }
     
         //if id = 999 then install all the files by looping through all 12 folders
@@ -26,7 +26,7 @@ ClassMethod ImportDS(id As %Integer, isWebCall As %Boolean = 0) As %String
     IF ds = "Invalid" 
     { 
         WRITE "Invalid Option! Valid options are between 1 to 12"  
-        QUIT  
+        RETURN ""      
     }   
     
     //Get Directory Name
@@ -204,7 +204,7 @@ ClassMethod RemoveDS(id As %Integer, isWebCall As %Boolean = 0) As %String
     IF $DATA(id) '= 1 
     {
         WRITE "Invalid Parameter" 
-        QUIT
+        QUIT ""
     }
     //Init variable
     set returnVal=""
@@ -223,7 +223,7 @@ ClassMethod RemoveDS(id As %Integer, isWebCall As %Boolean = 0) As %String
     IF ds = "Invalid" 
     { 
         WRITE "Invalid Option! Valid options are between 1 to 12"  
-        QUIT  
+        RETURN "" 
     }    
     
     //Get Directory Name
