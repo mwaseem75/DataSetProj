@@ -30,7 +30,7 @@ https://medicaldatasets.demo.community.intersystems.com/csp/datasets/index.csp b
 * Dynamically view Imported Data from Web Application.
 * Functionality to Import data into CSV, Excel or PDF Format.
 * Responsive web application to view the status of Dataset.
-* All the datasets can be imported or removed by single command.
+* Any or All datasets can be install or Remove with single command.
 * Use of %SQL_Diag.Result and %SQL_Diag.Message tables with LOAD DATA
 
 ## Recommendation 
