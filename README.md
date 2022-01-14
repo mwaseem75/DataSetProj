@@ -86,8 +86,8 @@ ZN "DATASETS"
 ```
 do ##class(dc.data.medical.utility).ImportDS(1)
 ```
-![image](https://user-images.githubusercontent.com/18219467/148869158-7392a958-d813-410e-ad7e-82dd49513c37.png)
-**11** Tables are created, **83,341** Records Loaded successfully, **140** errors Reported
+![image](https://user-images.githubusercontent.com/18219467/149457635-47f84d86-7641-4ab5-9c8e-bb29a26b7a0c.png)
+**11** Tables are created, **83,341** Records Loaded successfully, **140** errors Reported which we will 
 ## Use of %SQL_Diag.Result and %SQL_Diag.Message to check errors
 As you noticed previous LOAD DATA returns **140** errors. To check the error details we will use %SQL_Diag.Result and %SQL_Diag.Message tables. We need diag ID to check detail which in our case is **5** (Last column in previous snapshot)
 ###### We will use Management Portal SQL to check the details
