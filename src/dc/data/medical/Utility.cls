@@ -30,8 +30,8 @@ ClassMethod ImportDS(id As %Integer, isWebCall As %Boolean = 0) As %String
     }   
     
     //Get Directory Name
-    //SET mDir = "/irisdev/app/src/data/"_ds
-    SET mDir = "/usr/irissys/lib/data/"_ds
+    SET mDir = "/irisdev/app/src/data/"_ds
+    //SET mDir = "/usr/irissys/lib/data/"_ds
     SET mFileSpec = "*.csv"
     
     //User %ResultSet to read all the files from dirctory
@@ -228,8 +228,8 @@ ClassMethod RemoveDS(id As %Integer, isWebCall As %Boolean = 0) As %String
     }    
     
     //Get Directory Name
-    //SET mDir = "/irisdev/app/src/data/"_ds
-    SET mDir = "/usr/irissys/lib/data/"
+    SET mDir = "/irisdev/app/src/data/"_ds
+    //SET mDir = "/usr/irissys/lib/data/"
     SET mFileSpec = "*.csv"
     
     //User %ResultSet to read all the files from dirctory
@@ -292,8 +292,8 @@ ClassMethod GetStatusDS(id As %Integer)
     }    
     
     //Get Directory Name
-    //SET mDir = "/irisdev/app/src/data/"_ds
-    SET mDir = "/usr/irissys/lib/data/"
+    SET mDir = "/irisdev/app/src/data/"_ds
+    //SET mDir = "/usr/irissys/lib/data/"
     SET mFileSpec = "*.csv"
     
     //User %ResultSet to read all the files from dirctory
@@ -480,8 +480,6 @@ ClassMethod GetTotalRecords(id As %Integer) As %String
 
 ClassMethod InitDS()
 {
-   
-
     SET tableName(1) = "dc_data_synthetic.all_prevalences"
     SET tableName(2) = "dc_data_synthetic.allergies"
     SET tableName(3) = "dc_data_synthetic.careplans"
