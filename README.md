@@ -21,7 +21,7 @@ https://medicaldatasets.demo.community.intersystems.com/csp/datasets/index.csp b
 * **9 - Hospital ratings** : This are the official datasets used on the Medicare.gov Hospital Compare Website provided by the Centers for Medicare & Medicaid Services. These data allow you to compare the quality of care at over 4,000 Medicare-certified hospitals across the country.  [LICENCE:Public Domain](https://www.kaggle.com/center-for-medicare-and-medicaid/hospital-ratings)
 * **10 -Heart Failure Prediction** : 12 clinical features por predicting death events. [LICENCE:Attribution 4.0 International (CC BY 4.0)](https://www.kaggle.com/andrewmvd/heart-failure-clinical-data) 
 * **11 -Diabetes Dataset** : This dataset is originally from the National Institute of Diabetes and Digestive and Kidney Diseases. The objective is to predict based on diagnostic measurements whether a patient has diabetes. [LICENCE:Public Domain](https://www.kaggle.com/mathchi/diabetes-data-set)
-* **12 -Chronic Kidney Disease** : This dataset is originally from UCI Machine Learning Repository. The objective of the dataset is to diagnostically predict whether a patient is having chronic kidney disease or not, based on certain diagnostic measurements included in the dataset.  [LICENCE:Public Domain](https://www.kaggle.com/mathchi/diabetes-data-set)
+* **12 -Chronic Kidney Disease** : This dataset is originally from UCI Machine Learning Repository. The objective of the dataset is to diagnostically predict whether a patient is having chronic kidney disease or not, based on certain diagnostic measurements included in the dataset.  [LICENCE:Public Domain](https://www.kaggle.com/abhia1999/chronic-kidney-disease)
 
 ## Features
 * Dynamically creation of table based on the CSV file data.
