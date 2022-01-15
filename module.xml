@@ -3,7 +3,7 @@
   <Document name="dataset-medical.ZPM">
     <Module>
       <Name>dataset-medical</Name>
-      <Version>1.0.3</Version>
+      <Version>1.0.5</Version>
       <Description>Medical DataSet Repository</Description>
       <Keywords>SQL,Load</Keywords>
       <Packaging>module</Packaging>

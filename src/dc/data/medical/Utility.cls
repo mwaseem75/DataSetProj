@@ -30,8 +30,8 @@ ClassMethod ImportDS(id As %Integer, isWebCall As %Boolean = 0) As %String
     }   
     
     //Get Directory Name
-    SET mDir = "/irisdev/app/src/data/"_ds
-    //SET mDir = "/usr/irissys/lib/data/"_ds
+    //SET mDir = "/irisdev/app/src/data/"_ds
+    SET mDir = "/usr/irissys/lib/data/"_ds
     SET mFileSpec = "*.csv"
     
     //User %ResultSet to read all the files from dirctory
@@ -228,8 +228,8 @@ ClassMethod RemoveDS(id As %Integer, isWebCall As %Boolean = 0) As %String
     }    
     
     //Get Directory Name
-    SET mDir = "/irisdev/app/src/data/"_ds
-    //SET mDir = "/usr/irissys/lib/data/"
+    //SET mDir = "/irisdev/app/src/data/"_ds
+    SET mDir = "/usr/irissys/lib/data/"_ds
     SET mFileSpec = "*.csv"
     
     //User %ResultSet to read all the files from dirctory
@@ -292,8 +292,8 @@ ClassMethod GetStatusDS(id As %Integer)
     }    
     
     //Get Directory Name
-    SET mDir = "/irisdev/app/src/data/"_ds
-    //SET mDir = "/usr/irissys/lib/data/"
+    //SET mDir = "/irisdev/app/src/data/"_ds
+    SET mDir = "/usr/irissys/lib/data/"_ds
     SET mFileSpec = "*.csv"
     
     //User %ResultSet to read all the files from dirctory
@@ -316,6 +316,56 @@ ClassMethod GetStatusDS(id As %Integer)
         {
             WRITE "Table "_tableName_" not Exists",!
         }
+      }
+   }
+}
+
+// Get status of all datasets
+
+ClassMethod ListDS()
+{
+    
+    WRITE "LIST OF DATASETS",! 
+    WRITE "ID", ?3,"NAME ", ?20,"SOURCE ",?35,"LICENCE", ?53, "STATUS ",!
+    WRITE "-------------------------------------------------------------",!
+    // Check the status of all 12 datasets
+    FOR counter=1:1:12
+    {
+    // Get directory name based on parameter value
+    
+    SET ds = ..GetDSName(counter)
+    SET dsSrc = $CASE(counter,4:"data.world",4:"data.world",5:"data.world",
+                              6:"data.world",7:"data.world", 8:"data.world",10:"data.world",:"kaggle.com")
+    SET dsLic = $CASE(counter,4:"CC-BY",10:"CC BY 4.0",:"Public Domain")                          
+    // Check if valid value is entered
+    IF ds = "Invalid" 
+    { 
+        WRITE "Invalid Option! Valid options are between 1 to 12"  
+        QUIT  
+    }    
+    
+    //Get Directory Name
+    //SET mDir = "/irisdev/app/src/data/"_ds
+    SET mDir = "/usr/irissys/lib/data/"_ds
+    SET mFileSpec = "*.csv"
+    
+    //User %ResultSet to read all the files from dirctory
+    SET tRS=##class(%ResultSet).%New("%Library.File:FileSet")
+    DO tRS.Execute(mDir,mFileSpec)
+    
+    
+    //Get all the files from directory 
+    WHILE tRS.Next() {
+        SET tableName=$REPLACE("dc_data_"_ds_"."_tRS.Get("ItemName"),".csv","")
+        //Get table Status 
+        SET sts = $SYSTEM.SQL.Schema.TableExists(tableName) 
+        
+        //Check if table deleted successfully
+        set insSts = "Not Installed"
+        IF sts = 1 set insSts = "Installed"
+        WRITE counter, ?3,ds, ?20,dsSrc, ?35, dsLic,?53,insSts,!     
+        //Run only once.
+        QUIT
       }
    }
 }
