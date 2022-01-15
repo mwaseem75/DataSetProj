@@ -21,7 +21,7 @@ https://medicaldatasets.demo.community.intersystems.com/csp/datasets/index.csp b
 * **9 - Hospital ratings** : This are the official datasets used on the Medicare.gov Hospital Compare Website provided by the Centers for Medicare & Medicaid Services. These data allow you to compare the quality of care at over 4,000 Medicare-certified hospitals across the country.  [LICENCE:Public Domain](https://www.kaggle.com/center-for-medicare-and-medicaid/hospital-ratings)
 * **10 -Heart Failure Prediction** : 12 clinical features por predicting death events. [LICENCE:Attribution 4.0 International (CC BY 4.0)](https://www.kaggle.com/andrewmvd/heart-failure-clinical-data) 
 * **11 -Diabetes Dataset** : This dataset is originally from the National Institute of Diabetes and Digestive and Kidney Diseases. The objective is to predict based on diagnostic measurements whether a patient has diabetes. [LICENCE:Public Domain](https://www.kaggle.com/mathchi/diabetes-data-set)
-* **12 -Chronic Kidney Disease** : This dataset is originally from UCI Machine Learning Repository. The objective of the dataset is to diagnostically predict whether a patient is having chronic kidney disease or not, based on certain diagnostic measurements included in the dataset.  [LICENCE:Public Domain](https://www.kaggle.com/mathchi/diabetes-data-set)
+* **12 -Chronic Kidney Disease** : This dataset is originally from UCI Machine Learning Repository. The objective of the dataset is to diagnostically predict whether a patient is having chronic kidney disease or not, based on certain diagnostic measurements included in the dataset.  [LICENCE:Public Domain](https://www.kaggle.com/abhia1999/chronic-kidney-disease)
 
 ## Features
 * Dynamically creation of table based on the CSV file data.
@@ -30,7 +30,7 @@ https://medicaldatasets.demo.community.intersystems.com/csp/datasets/index.csp b
 * Dynamically view Imported Data from Web Application.
 * Functionality to Import data into CSV, Excel or PDF Format.
 * Responsive web application to view the status of Dataset.
-* All the datasets can be imported or removed by single command.
+* Any or All datasets can be install or Remove with single command.
 * Use of %SQL_Diag.Result and %SQL_Diag.Message tables with LOAD DATA
 
 ## Recommendation 
@@ -86,7 +86,7 @@ ZN "DATASETS"
 ```
 do ##class(dc.data.medical.utility).ImportDS(1)
 ```
-![image](https://user-images.githubusercontent.com/18219467/148869158-7392a958-d813-410e-ad7e-82dd49513c37.png)
+![image](https://user-images.githubusercontent.com/18219467/149458527-4aa1e5fe-bcc0-4d77-a6b8-c2997d98ebb6.png)
 **11** Tables are created, **83,341** Records Loaded successfully, **140** errors Reported
 ## Use of %SQL_Diag.Result and %SQL_Diag.Message to check errors
 As you noticed previous LOAD DATA returns **140** errors. To check the error details we will use %SQL_Diag.Result and %SQL_Diag.Message tables. We need diag ID to check detail which in our case is **5** (Last column in previous snapshot)
