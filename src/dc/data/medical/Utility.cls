@@ -30,8 +30,8 @@ ClassMethod ImportDS(id As %Integer, isWebCall As %Boolean = 0) As %String
     }   
     
     //Get Directory Name
-    //SET mDir = "/irisdev/app/src/data/"_ds
-    SET mDir = "/usr/irissys/lib/data/"_ds
+    SET mDir = "/irisdev/app/src/data/"_ds
+    //SET mDir = "/usr/irissys/lib/data/"_ds
     SET mFileSpec = "*.csv"
     
     //User %ResultSet to read all the files from dirctory
@@ -228,8 +228,8 @@ ClassMethod RemoveDS(id As %Integer, isWebCall As %Boolean = 0) As %String
     }    
     
     //Get Directory Name
-    //SET mDir = "/irisdev/app/src/data/"_ds
-    SET mDir = "/usr/irissys/lib/data/"_ds
+    SET mDir = "/irisdev/app/src/data/"_ds
+    //SET mDir = "/usr/irissys/lib/data/"_ds
     SET mFileSpec = "*.csv"
     
     //User %ResultSet to read all the files from dirctory
@@ -292,8 +292,8 @@ ClassMethod GetStatusDS(id As %Integer)
     }    
     
     //Get Directory Name
-    //SET mDir = "/irisdev/app/src/data/"_ds
-    SET mDir = "/usr/irissys/lib/data/"_ds
+    SET mDir = "/irisdev/app/src/data/"_ds
+    //SET mDir = "/usr/irissys/lib/data/"_ds
     SET mFileSpec = "*.csv"
     
     //User %ResultSet to read all the files from dirctory
@@ -345,8 +345,8 @@ ClassMethod ListDS()
     }    
     
     //Get Directory Name
-    //SET mDir = "/irisdev/app/src/data/"_ds
-    SET mDir = "/usr/irissys/lib/data/"_ds
+    SET mDir = "/irisdev/app/src/data/"_ds
+    //SET mDir = "/usr/irissys/lib/data/"_ds
     SET mFileSpec = "*.csv"
     
     //User %ResultSet to read all the files from dirctory
