@@ -4,7 +4,7 @@ Application to create tables dynamically based on the files in folder and Load d
 DataSet can be installed or removed by terminal or by using web application. Data can be view and copied by using Web application.
 
 ## Application Layout
-![image](https://user-images.githubusercontent.com/18219467/148711350-34e9e161-0d05-4949-bd7a-dfae3003abf0.png)
+![image](https://user-images.githubusercontent.com/18219467/149624925-2d779d04-9391-4856-a7a2-c2907d14a70d.png)
 
 ## Online Demo
 https://medicaldatasets.demo.community.intersystems.com/csp/datasets/index.csp by using SuperUser | SYS
