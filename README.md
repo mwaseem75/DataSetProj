@@ -24,14 +24,14 @@ https://medicaldatasets.demo.community.intersystems.com/csp/datasets/index.csp b
 * [**12 -Chronic Kidney Disease**](https://www.kaggle.com/abhia1999/chronic-kidney-disease) : This dataset is originally from UCI Machine Learning Repository. The objective of the dataset is to diagnostically predict whether a patient is having chronic kidney disease or not, based on certain diagnostic measurements included in the dataset.  [LICENCE:Public Domain](https://docs.data.world/en/59261-59714-2--Common-license-types-for-datasets.html)
 
 ## Features
-* Dynamically creation of table based on the CSV file data.
+* Dynamically creation of tables based on the CSV file data.
 * Import dataset by using LOAD DATA functionality by Terminal or by web application.
 * Remove dataset programmatically by terminal or by Web Application.
 * Dynamically view Imported Data from Web Application.
 * Functionality to Import data into CSV, Excel or PDF Format.
 * Responsive web application to view the status of Dataset.
-* Any or All datasets can be install or Remove with single command.
-* Use of %SQL_Diag.Result and %SQL_Diag.Message tables with LOAD DATA
+* All of the datasets can be installed or removed by single command.
+* Usage of %SQL_Diag.Result and %SQL_Diag.Message tables with LOAD DATA
 
 ## Recommendation 
  * Read related documentations [LOAD DATA (SQL)](https://irisdocs.intersystems.com/iris20212/csp/docbook/DocBook.UI.Page.cls?KEY=RSQL_loaddata).
