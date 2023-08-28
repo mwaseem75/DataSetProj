@@ -6,7 +6,7 @@
     "active": true,
     "username": "_SYSTEM",
     "password": "SYS",
-    "ns": "USER",
+    "ns": "DATASETS",
     "docker-compose": {
       "service": "iris",
       "internalPort": 52773
