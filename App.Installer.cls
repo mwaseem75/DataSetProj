@@ -7,19 +7,15 @@ XData setup
 {
 <Manifest>
   <Default Name="NAMESPACE" Value="DATASETS"/>
-  <Default Name="DBNAME" Value="DATASETS"/>
-  <Default Name="APPPATH" Dir="/home/irisowner/dev/" />
-  <Default Name="SOURCESPATH" Dir="${APPPATH}src" />
-  <Default Name="CSPURL" Value="/csp/datasets" /> 
-  <Default Name="RESOURCE" Value="%DB_${DBNAME}" /> 
+  <Default Name="app" Value="datasets" />
 
-  <Resource Name="%DB_${DBNAME}" Description="Medical Dataset Application" Permission="RW"/>
-
-  <Namespace Name="${NAMESPACE}" Code="${DBNAME}" Data="${DBNAME}" Create="yes" Ensemble="1">
-    <Configuration>
-      <Database Name="${DBNAME}" Dir="${APPPATH}data" Create="yes" Resource="${RESOURCE}" MountAtStartup="true"/>
+  <Namespace Name="${NAMESPACE}" Code="${NAMESPACE}-CODE" Data="${NAMESPACE}-DATA" Create="yes" Ensemble="1">
+     <Configuration>
+      <Database Name="${NAMESPACE}-DATA" Dir="/usr/irissys/mgr/${app}/data" Create="yes" Resource="%DB_${NAMESPACE}-DATA"/>
+      <Database Name="${NAMESPACE}-CODE" Dir="/usr/irissys/mgr/${app}/code" Create="yes" Resource="%DB_${NAMESPACE}-CODE"/>
     </Configuration>
-    <CSPApplication Url="${CSPURL}" Directory="${APPPATH}csp/" ServeFiles="1" Recurse="1" Grant="%DB_${NAMESPACE},%SQL" AuthenticationMethods="32" />
+    <CSPApplication Url="/csp/${app}" Directory="${cspdir}${app}"  ServeFiles="1" Recurse="1" MatchRoles=":%DB_${NAMESPACE}" AuthenticationMethods="32" />
+
   </Namespace>
 
 </Manifest>

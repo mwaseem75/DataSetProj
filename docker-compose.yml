@@ -5,7 +5,7 @@ services:
       context: .
       dockerfile: Dockerfile
 
-    hostname: dataset-project
+    hostname: dataset-medical
     restart: always
     ports:
       - 1972
