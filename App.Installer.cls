@@ -8,7 +8,7 @@ XData setup
 <Manifest>
   <Default Name="NAMESPACE" Value="DATASETS"/>
   <Default Name="DBNAME" Value="DATASETS"/>
-  <Default Name="APPPATH" Dir="/opt/irisapp/" />
+  <Default Name="APPPATH" Dir="/home/irisowner/dev/" />
   <Default Name="SOURCESPATH" Dir="${APPPATH}src" />
   <Default Name="CSPURL" Value="/csp/datasets" /> 
   <Default Name="RESOURCE" Value="%DB_${DBNAME}" /> 

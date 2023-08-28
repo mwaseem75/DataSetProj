@@ -4,6 +4,8 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+
+    hostname: dataset-project
     restart: always
     ports:
       - 1972

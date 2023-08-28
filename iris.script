@@ -1,12 +1,12 @@
- do $SYSTEM.OBJ.Load("/opt/irisapp/Installer.cls", "ck")
+ zpm "install webterminal"
+ do $SYSTEM.OBJ.Load("/home/irisowner/dev/App.Installer.cls", "ck")
  set sc = ##class(App.Installer).setup() 
  set sc = ##class(App.Installer).SetAppProperties("/csp/datasets","/opt/irisapp/src/csp/")
   
  zn "DATASETS"
- do $System.OBJ.LoadDir("/opt/irisapp/src","ck",,1)
+ do $System.OBJ.LoadDir("/home/irisowner/dev/src","ck",,1)
  ;do ##class(dc.data.medical.utility).InitDS()
  zn "%SYS"
  Do ##class(Security.Users).UnExpireUserPasswords("*")
- ;zpm "load /opt/irisapp/ -v":1:1
  
 halt
