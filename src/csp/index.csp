@@ -96,7 +96,7 @@
 							<a class="nav-link active" href="/csp/sys/exp/%25CSP.UI.Portal.SQL.Home.zen?$NAMESPACE=DATASETS">DataSets SQL</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link active" href="https://irisdocs.intersystems.com/iris20212/csp/docbook/DocBook.UI.Page.cls?KEY=RSQL_loaddata">Load Data Docs</a>
+							<a class="nav-link active" href="https://docs.intersystems.com/irislatest/csp/docbook/DocBook.UI.Page.cls?KEY=RSQL_loaddata">Load Data Docs</a>
 						</li>			
 
 						
